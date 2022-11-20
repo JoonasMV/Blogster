@@ -2,6 +2,7 @@ const mongoose = require("mongoose")
 
 const blogSchema = new mongoose.Schema({
   title: String,
+  conent: String,
   user: {
     type: mongoose.Types.ObjectId,
     ref: "User"
@@ -12,4 +13,4 @@ const blogSchema = new mongoose.Schema({
   dateUpdated: Date,
 })
 
-export default mongoose.model("Blog", blogSchema)
+module.exports = mongoose.model("Blog", blogSchema)

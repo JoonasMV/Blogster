@@ -24,4 +24,4 @@ const userSchema = new mongoose.Schema({
 
 userSchema.plugin(uniqueValidator, { message : "username already taken"})
 
-export default mongoose.model("User", userSchema)
+module.exports = mongoose.model("User", userSchema)
