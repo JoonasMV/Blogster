@@ -6,6 +6,8 @@ import { Route, Routes } from "react-router-dom"
 const StyledBody = createGlobalStyle`
 body {
   margin: 0;
+  background-color: #060613;
+  color: white;
 }
 `
 

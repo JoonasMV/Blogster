@@ -2,22 +2,31 @@ import blogService from "../services/blogService"
 import styled from "styled-components"
 import { useEffect, useState } from "react"
 
-const Container = styled.div`
-  padding: 0 50vh;
+const BlogContent = styled.div`
+  width:50%;
+  margin: auto;
 `
 
 const Bloglist = () => {
   const [blogs, setBlogs] = useState([])
-  
-  useEffect(() => {
-    blogService.getAll()
-      .then(res => setBlogs(res))
-  }, [])
 
+  useEffect(() => {
+    blogService.getAll().then((res) => setBlogs(res))
+  }, [])
+  console.log(blogs)
   return (
-    <Container>
-      {blogs.map(blog => <div key={blog._id}>{blog.title}</div>)}
-    </Container>
+    <div>
+      {blogs.map((blog) => {
+        return (
+          <div key={blog._id}>
+            <BlogContent>
+            <h2>{blog.title}</h2>
+              {blog.content}
+              </BlogContent>
+          </div>
+        )
+      })}
+    </div>
   )
 }
 
