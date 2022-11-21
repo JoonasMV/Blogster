@@ -3,6 +3,7 @@ const express = require("express")
 const mongoose = require("mongoose")
 const cors = require("cors")
 const logger = require("./utils/logger")
+const authChecker = require("./utils/authChecker")
 
 const blogRouter = require("./routes/blogRouter")
 const userRouter = require("./routes/userRouter") 

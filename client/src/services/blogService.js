@@ -6,11 +6,13 @@ const getAll = async () => {
   return blogs.data
 }
 
-const getToken = () => sessionStorage.getItem("accessToken")
+const getToken = () => JSON.parse(sessionStorage.getItem("accessToken"))
 
 const postBlog = async (newBlog) => {
   const accessToken = getToken()
-  const postedBlog = await axios.post(baseUrl, newBlog, accessToken)
+  const postedBlog = await axios.post(baseUrl, newBlog, {
+    headers: { authorization: `Bearer ${accessToken}` },
+  })
   return postedBlog.data
 }
 
