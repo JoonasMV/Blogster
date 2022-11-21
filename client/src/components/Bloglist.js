@@ -13,12 +13,11 @@ const Bloglist = () => {
   useEffect(() => {
     blogService.getAll().then((res) => setBlogs(res))
   }, [])
-  console.log(blogs)
   return (
-    <div>
+    <>
       {blogs.map((blog) => {
         return (
-          <div key={blog._id}>
+          <div key={blog.id}>
             <BlogContent>
             <h2>{blog.title}</h2>
               {blog.content}
@@ -26,7 +25,7 @@ const Bloglist = () => {
           </div>
         )
       })}
-    </div>
+    </>
   )
 }
 

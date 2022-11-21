@@ -1,5 +1,6 @@
 import Banner from "./components/Banner";
 import Bloglist from "./components/Bloglist";
+import Userbox from "./components/Userbox";
 import styled, { createGlobalStyle } from "styled-components";
 import { Route, Routes } from "react-router-dom"
 
@@ -10,7 +11,15 @@ body {
   color: white;
   font-family: 'Open Sans', sans-serif;
   font-size: 20px;
+  
 }
+`
+
+const UserboxWrapper = styled.div`
+  position: sticky;
+  float: right;
+  top: 2vh;
+  right: 2vh;
 `
 
 function App() {
@@ -18,7 +27,9 @@ function App() {
     <div>
       <StyledBody />
       <Banner />
-
+      <UserboxWrapper>
+        <Userbox />
+      </UserboxWrapper>
       <Routes>
         <Route path={"/"} element={<Bloglist />} />
       </Routes>
