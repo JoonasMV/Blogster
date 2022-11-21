@@ -8,9 +8,10 @@ body {
   margin: 0;
   background-color: #060613;
   color: white;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 20px;
 }
 `
-
 
 function App() {
   return (

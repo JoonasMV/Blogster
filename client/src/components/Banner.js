@@ -2,13 +2,16 @@ import styled from "styled-components"
 
 const Background = styled.div`
   background-color: #b3fff0;
-  height: 20vh;
-  line-height: 17vh;
+  height: 22vh;
+  line-height: 18vh;
   text-align: center;
-  `
-  const Title = styled.h1`
+  mask-image: linear-gradient(
+    rgba(0, 0, 0, 1), transparent
+  );
+`
+const Title = styled.h1`
   margin: 0;
-  font-family: 'Pacifico', cursive;
+  font-family: "Pacifico", cursive;
   font-size: 110px;
   color: #000066;
 `
