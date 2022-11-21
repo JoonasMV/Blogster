@@ -15,8 +15,8 @@ const userSchema = new mongoose.Schema({
   passwordHash: String,
   blogs: [
     {
-      type: mongoose.Types.ObjectId,
-      ref: "User"
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Blog"
     }
   ],
   bio: String,

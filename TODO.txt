@@ -1,0 +1,12 @@
+---Front end---
+
+User page
+Blogform
+
+---Back end---
+
+Login working
+Session token
+PUT for user and blog
+.populate()
+individual routes
