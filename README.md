@@ -4,6 +4,6 @@
 |20/11|1|Frontend started|
 |20/11|1|Backend started|
 |21/11|1|Connecting front and back|
-|21/11|2|Front end styling and components|
-|21/11|2|Login work|
-|total|9||
+|21/11|3|Front end styling and components|
+|21/11|3|Login work|
+|total|10||

@@ -1,8 +1,8 @@
-import Banner from "./components/Banner";
-import Bloglist from "./components/Bloglist";
-import Blogform from "./components/Blogform";
-import Userbox from "./components/Userbox";
-import styled, { createGlobalStyle } from "styled-components";
+import Banner from "./components/Banner"
+import Bloglist from "./components/Bloglist"
+import Blogform from "./components/Blogform"
+import Userbox from "./components/Userbox"
+import styled, { createGlobalStyle } from "styled-components"
 import { Route, Routes } from "react-router-dom"
 
 const StyledBody = createGlobalStyle`
@@ -10,12 +10,11 @@ body {
   margin: 0;
   background-color: #060613;
   color: white;
-  font-family: 'Open Sans', sans-serif;
+  /* font-family: 'Open Sans', sans-serif; */
   font-size: 20px;
   
 }
 `
-
 const UserboxWrapper = styled.div`
   position: sticky;
   float: right;
@@ -28,15 +27,23 @@ function App() {
     <div>
       <StyledBody />
       <Banner />
-      <UserboxWrapper>
-        <Userbox />
-      </UserboxWrapper>
+
       <Routes>
-        <Route path={"/"} element={<Bloglist />} />
+        <Route
+          path={"/"}
+          element={
+            <>
+              <UserboxWrapper>
+                <Userbox />
+              </UserboxWrapper>
+              <Bloglist />
+            </>
+          }
+        />
         <Route path={"/newBlog"} element={<Blogform />} />
       </Routes>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
