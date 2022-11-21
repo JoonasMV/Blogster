@@ -1,4 +1,6 @@
+import { useState } from "react"
 import styled from "styled-components"
+import loginService from "../services/loginService"
 
 const Container = styled.div`
   width: 25vh;
@@ -29,6 +31,14 @@ const StyledInput = styled.input`
 `
 
 const Userbox = () => {
+  const [username, setUsername] = useState()
+  const [password, setPassword] = useState()
+
+  const handleLogin = (event) => {
+    event.preventDefault()
+    loginService.login(username, password)
+  }
+
   return (
     <Container>
       <Sh3>Login</Sh3>
@@ -36,14 +46,18 @@ const Userbox = () => {
         Username
         <StyledInput 
           type="text"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
         />
 
         Password
         <StyledInput 
           type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
         />
 
-      <button>Login</button>
+      <button onClick={handleLogin}>Login</button>
       </StyledForm>
     </Container>
   )

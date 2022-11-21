@@ -6,6 +6,7 @@ Blogform
 ---Back end---
 
 Login working
+Login username caps insensitive
 Session token
 PUT for user and blog
 .populate()
