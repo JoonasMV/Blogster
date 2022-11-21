@@ -8,21 +8,16 @@ body {
   margin: 0;
 }
 `
-const Container = styled.div`
-  padding: 0 50vh;
-`
+
 
 function App() {
   return (
     <div>
       <StyledBody />
       <Banner />
-      <Container>
-        <Bloglist />
-      </Container>
 
       <Routes>
-        <Route to={"/"} element={<Bloglist />} />
+        <Route path={"/"} element={<Bloglist />} />
       </Routes>
     </div>
   );
