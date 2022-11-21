@@ -1,5 +1,6 @@
 import Banner from "./components/Banner";
 import Bloglist from "./components/Bloglist";
+import Blogform from "./components/Blogform";
 import Userbox from "./components/Userbox";
 import styled, { createGlobalStyle } from "styled-components";
 import { Route, Routes } from "react-router-dom"
@@ -32,6 +33,7 @@ function App() {
       </UserboxWrapper>
       <Routes>
         <Route path={"/"} element={<Bloglist />} />
+        <Route path={"/newBlog"} element={<Blogform />} />
       </Routes>
     </div>
   );

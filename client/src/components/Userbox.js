@@ -31,12 +31,13 @@ const StyledInput = styled.input`
 `
 
 const Userbox = () => {
-  const [username, setUsername] = useState()
-  const [password, setPassword] = useState()
+  const [username, setUsername] = useState("")
+  const [password, setPassword] = useState("")
 
-  const handleLogin = (event) => {
+  const handleLogin = async (event) => {
     event.preventDefault()
-    loginService.login(username, password)
+    const accessToken = await loginService.login(username, password)
+    sessionStorage.setItem("accessToken", JSON.stringify(accessToken))
   }
 
   return (

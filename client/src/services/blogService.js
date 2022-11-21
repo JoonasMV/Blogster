@@ -1,5 +1,4 @@
 import axios from "axios"
-
 const baseUrl = "/api/blogs"
 
 const getAll = async () => {
@@ -7,4 +6,12 @@ const getAll = async () => {
   return blogs.data
 }
 
-export default { getAll }
+const getToken = () => sessionStorage.getItem("accessToken")
+
+const postBlog = async (newBlog) => {
+  const accessToken = getToken()
+  const postedBlog = await axios.post(baseUrl, newBlog, accessToken)
+  return postedBlog.data
+}
+
+export default { getAll, postBlog }
