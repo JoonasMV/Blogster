@@ -4,6 +4,7 @@ import Blogform from "./components/Blogform"
 import Loginbox from "./components/Loginbox"
 import styled, { createGlobalStyle } from "styled-components"
 import { Route, Routes } from "react-router-dom"
+import { useState } from "react"
 
 const StyledBody = createGlobalStyle`
 body {
@@ -23,6 +24,8 @@ const UserboxWrapper = styled.div`
 `
 
 function App() {
+  const [user, setUser] = useState({username: "", blogs: []})
+
   return (
     <div>
       <StyledBody />
@@ -34,7 +37,7 @@ function App() {
           element={
             <>
               <UserboxWrapper>
-                <Loginbox />
+                <Loginbox setUser={setUser}/>
               </UserboxWrapper>
               <Bloglist />
             </>

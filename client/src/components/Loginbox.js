@@ -5,7 +5,7 @@ import loginService from "../services/loginService"
 const Container = styled.div`
   padding: 2px;
   width: 25vh;
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(179, 255, 240, 0.5);
   color: black;
   border-radius: 10px;
 `
@@ -33,13 +33,17 @@ const StyledInput = styled.input`
   border-radius: 9px 0 9px;
 `
 
-const Loginbox = () => {
-  const [username, setUsername] = useState("")
+const Loginbox = ({ setUser }) => {
+  const [loginUsername, setUsername] = useState("")
   const [password, setPassword] = useState("")
 
   const handleLogin = async (event) => {
     event.preventDefault()
-    const accessToken = await loginService.login(username, password)
+    const { accessToken, username, blogs } = await loginService.login(
+      loginUsername,
+      password
+    )
+    setUser({ username, blogs })
     sessionStorage.setItem("accessToken", JSON.stringify(accessToken))
   }
 
@@ -51,7 +55,7 @@ const Loginbox = () => {
           Username
           <StyledInput
             type="text"
-            value={username}
+            value={loginUsername}
             onChange={(e) => setUsername(e.target.value)}
           />
           Password
