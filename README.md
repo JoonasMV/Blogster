@@ -6,4 +6,5 @@
 |21/11|1|Connecting front and back|
 |21/11|3|Front end styling and components|
 |21/11|3|Login work|
+|22/11|1|css|
 |total|10||
