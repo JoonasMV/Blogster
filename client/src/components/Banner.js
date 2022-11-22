@@ -12,7 +12,7 @@ const Title = styled.h1`
   margin: 0;
   font-family: "Pacifico", cursive;
   font-size: 110px;
-  color: #000080;
+  color: #060613;
 `
 
 const Banner = () => {

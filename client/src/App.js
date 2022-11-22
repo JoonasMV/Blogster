@@ -1,7 +1,7 @@
 import Banner from "./components/Banner"
 import Bloglist from "./components/Bloglist"
 import Blogform from "./components/Blogform"
-import Userbox from "./components/Userbox"
+import Loginbox from "./components/Loginbox"
 import styled, { createGlobalStyle } from "styled-components"
 import { Route, Routes } from "react-router-dom"
 
@@ -34,7 +34,7 @@ function App() {
           element={
             <>
               <UserboxWrapper>
-                <Userbox />
+                <Loginbox />
               </UserboxWrapper>
               <Bloglist />
             </>

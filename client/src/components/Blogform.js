@@ -1,30 +1,43 @@
 import blogService from "../services/blogService"
 import styled from "styled-components"
-import { useRef } from "react"
+import { useRef, useState } from "react"
 
 const FormWrapper = styled.div`
   margin: auto;
-  width: 75%;
+  width: 60%;
+  height: 70vh;
+  margin-top: 20vh;
+  /* background-color: #12123b; */
+  /* box-shadow: 0px 0px 15px 15px #12123b;
+  border-radius: 50px 0 50px 50px; */
+  padding-top: 2vh;
 `
 
-const BlogForm = styled.form`
+const StyledBlog = styled.form`
   text-align: center;
 `
 
 const Sh2 = styled.h2`
   text-align: center;
-  font-family: "Open Sans";
-  font-weight: 700;
-  font-style: italic;
+  font-family: "Pacifico", cursive;
+  font-size: 50px;
+  color: #b3fff0;
+  margin-bottom: 0;
+  margin-top: 0;
 `
 
 const StyledTextArea = styled.textarea`
-  width: 100%;
-  height: 60vh;
+  width: 90%;
+  height: 51vh;
   font-family: "Open Sans", sans-serif;
+  border: none;
+  background: #ededed;
+  /* opacity: 0.5; */
+  border-radius: 10px;
+  font-size: 20px;
 `
 
-const TitleInput = styled.textarea`
+const StyledTitleArea = styled.textarea`
   font-family: "Open Sans";
   font-weight: 600;
   font-size: 30px;
@@ -36,9 +49,14 @@ const TitleInput = styled.textarea`
   resize: none;
   padding: 0;
   width: 50%;
+  margin-bottom: 2vh;
+  &:focus {
+    outline: none;
+  }
 `
 
 const Blogform = () => {
+  const [content, setContent] = useState("")
   const titleRef = useRef(null)
 
   const resizeField = () => {
@@ -48,13 +66,20 @@ const Blogform = () => {
     textarea.style.height = textarea.scrollHeight + "px"
   }
 
+  const tabHandler = (e) => {
+    if (e.keyCode === 9) {
+      e.preventDefault()
+      setContent((prevState) => prevState + "    ")
+    }
+  }
+
   return (
     <>
-      <Sh2>Write a new blog</Sh2>
       <FormWrapper>
-        <BlogForm>
-          <div style={{ marginBottom: 10 }}>
-            <TitleInput
+        <Sh2>Write a new blog</Sh2>
+        <StyledBlog>
+          <div>
+            <StyledTitleArea
               id="textarea"
               rows={1}
               type="text"
@@ -65,9 +90,14 @@ const Blogform = () => {
           </div>
 
           <div>
-            <StyledTextArea placeholder="content" />
+            <StyledTextArea
+              placeholder="content"
+              onChange={(e) => setContent(e.target.value)}
+              onKeyDown={tabHandler}
+              value={content}
+            />
           </div>
-        </BlogForm>
+        </StyledBlog>
       </FormWrapper>
     </>
   )
