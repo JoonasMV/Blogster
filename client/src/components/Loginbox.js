@@ -2,7 +2,7 @@ import { useState } from "react"
 import styled from "styled-components"
 import loginService from "../services/loginService"
 
-const Container = styled.div`
+export const Container = styled.div`
   padding: 2px;
   width: 25vh;
   background-color: rgba(179, 255, 240, 0.5);
@@ -39,12 +39,13 @@ const Loginbox = ({ setUser }) => {
 
   const handleLogin = async (event) => {
     event.preventDefault()
-    const { accessToken, username, blogs } = await loginService.login(
+    const { accessToken, username } = await loginService.login(
       loginUsername,
       password
     )
-    setUser({ username, blogs })
+    setUser({ username })
     sessionStorage.setItem("accessToken", JSON.stringify(accessToken))
+    sessionStorage.setItem("username", JSON.stringify(username))
   }
 
   return (
