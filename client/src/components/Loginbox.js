@@ -3,11 +3,15 @@ import styled from "styled-components"
 import loginService from "../services/loginService"
 
 export const Container = styled.div`
-  padding: 2px;
-  width: 25vh;
-  background-color: rgba(179, 255, 240, 0.5);
-  color: black;
+  text-align: center;
+  border: double 4px transparent;
   border-radius: 10px;
+  background-image: linear-gradient(#060613, #060613), radial-gradient(circle at top left, #f00,#3020ff);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  padding: 1vh;
+  padding-top: 0.5vh;
+  width: 25vh;
 `
 const StyledForm = styled.form`
   margin: 10px;
@@ -18,7 +22,6 @@ const Sh3 = styled.h3`
   text-align: center;
   margin-top: 5px;
   margin-bottom: 0;
-  opacity: 0.7;
   margin-bottom: 1vh;
 `
 
