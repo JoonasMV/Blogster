@@ -39,22 +39,24 @@ const StyledGreet = styled.div`
   background-image: linear-gradient(#060613, #060613), radial-gradient(circle at top left, #971c1c, #7820ff);
   background-origin: border-box;
   background-clip: padding-box, border-box;
-
-
-
   width: 100%;
   margin: auto;
   color: white;
 `
 
-const Userbox = ({ user }) => {
+const Userbox = ({ user, setUser }) => {
+  const logout = () => {
+    sessionStorage.clear()
+    setUser(null)
+  }
+
   return (
     <>
       <Container>
         <StyledGreet>{user.username}</StyledGreet>
         <StyledLink to="/newBlog">New blog</StyledLink>
         <div>
-          <StyledButton>Log out</StyledButton>
+          <StyledButton onClick={logout}>Log out</StyledButton>
         </div>
       </Container>
     </>

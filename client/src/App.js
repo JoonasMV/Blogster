@@ -33,7 +33,7 @@ function App() {
     }
   }, [])
 
-  const [user, setUser] = useState({username: ""})
+  const [user, setUser] = useState(null)
 
   return (
     <div>
@@ -46,8 +46,8 @@ function App() {
           element={
             <>
               <UserboxWrapper>
-                {user.username
-                  ? <Userbox user={user}/>
+                {user
+                  ? <Userbox user={user} setUser={setUser}/>
                   : <Loginbox setUser={setUser}/>}
               </UserboxWrapper>
               <Bloglist />
