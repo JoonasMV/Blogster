@@ -53,7 +53,7 @@ const Userbox = ({ user, setUser }) => {
   return (
     <>
       <Container>
-        <StyledGreet>{user.username}</StyledGreet>
+        <Link to={`user/${user.id}`}><StyledGreet>{user.username}</StyledGreet></Link>
         <StyledLink to="/newBlog">New blog</StyledLink>
         <div>
           <StyledButton onClick={logout}>Log out</StyledButton>

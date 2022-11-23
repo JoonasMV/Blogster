@@ -1,5 +1,6 @@
 const blogRouter = require("express").Router()
 const Blog = require("../models/blogModel")
+const User = require("../models/userModel")
 const authChecker = require("../utils/authChecker")
 
 blogRouter.get("/", async (req, res) => {
@@ -7,7 +8,7 @@ blogRouter.get("/", async (req, res) => {
   res.json(blogs)
 })
 
-blogRouter.get("/:id", async (req,res) => {
+blogRouter.get("/:id", async (req, res) => {
   const id = req.params.id
   console.log(id)
   try {
@@ -21,20 +22,25 @@ blogRouter.get("/:id", async (req,res) => {
 
 blogRouter.post("/", authChecker, async (req, res) => {
   const { title, content } = req.body
-  console.log(req.user)
-    const newBlog = new Blog({
-      title,
-      content,
-      dateAdded: new Date(),
-      user: req.user
-    })
+  const user = req.user
+  //const MongoUser = await User.findById(user.id)
+  console.log(user)
+  const newBlog = new Blog({
+    title,
+    content,
+    dateAdded: new Date(),
+    user: user,
+  })
 
-    try {
-      const savedBlog = await newBlog.save()
-      return res.json(savedBlog)
-    } catch (error) {
-      return res.send(error).status(400)
-    }
+  
+  try {
+    const savedBlog = await newBlog.save()
+    user.blogs = user.blogs.concat(savedBlog._id)
+    await user.save()
+    return res.json(savedBlog)
+  } catch (error) {
+    return res.send(error).status(400)
+  }
 })
 
 module.exports = blogRouter

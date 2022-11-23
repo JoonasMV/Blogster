@@ -1,6 +1,7 @@
 import Banner from "./components/Banner"
 import Bloglist from "./components/Bloglist"
 import Blog from "./components/Blog"
+import User from "./components/User"
 import Blogform from "./components/Blogform"
 import Loginbox from "./components/Loginbox"
 import Userbox from "./components/Userbox"
@@ -14,7 +15,6 @@ body {
   margin: 0;
   background-color: #060613;
   color: white;
-  /* font-family: 'Open Sans', sans-serif; */
   font-size: 20px;
   
 }
@@ -27,14 +27,18 @@ const UserboxWrapper = styled.div`
 `
 
 function App() {
+  const [user, setUser] = useState({username: null, id: null})
+
   useEffect(() => {
     if (sessionStorage.length !== 0) {
-      setUser({username: JSON.parse(sessionStorage.getItem("username"))})
+      setUser({
+        username: JSON.parse(sessionStorage.getItem("username")),
+        id: JSON.parse(sessionStorage.getItem("id"))
+      })
 
     }
   }, [])
 
-  const [user, setUser] = useState(null)
 
   return (
     <div>
@@ -57,6 +61,7 @@ function App() {
         />
         <Route path={"/newBlog"} element={<Blogform />} />
         <Route path={"/blog/:id"} element={<Blog />} />
+        <Route path="/user/:id" element={<User />} />
       </Routes>
     </div>
   )

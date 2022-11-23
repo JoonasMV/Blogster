@@ -42,13 +42,14 @@ const Loginbox = ({ setUser }) => {
 
   const handleLogin = async (event) => {
     event.preventDefault()
-    const { accessToken, username } = await loginService.login(
+    const { accessToken, username, id } = await loginService.login(
       loginUsername,
       password
     )
     setUser({ username })
     sessionStorage.setItem("accessToken", JSON.stringify(accessToken))
     sessionStorage.setItem("username", JSON.stringify(username))
+    sessionStorage.setItem("id", JSON.stringify(id))
   }
 
   return (
