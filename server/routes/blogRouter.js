@@ -9,6 +9,7 @@ blogRouter.get("/", async (req, res) => {
 
 blogRouter.post("/", authChecker, async (req, res) => {
   const { title, content } = req.body
+  console.log(req.user)
     const newBlog = new Blog({
       title,
       content,

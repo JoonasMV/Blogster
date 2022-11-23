@@ -1,6 +1,7 @@
 import blogService from "../services/blogService"
 import styled from "styled-components"
 import { useEffect, useState } from "react"
+import { Link } from "react-router-dom"
 
 const BlogContent = styled.div`
   width:50%;
@@ -19,7 +20,7 @@ const Bloglist = () => {
         return (
           <div key={blog.id}>
             <BlogContent>
-            <h2>{blog.title}</h2>
+            <Link to={`/blog/${blog.id}`}><h2>{blog.title}</h2></Link>
               {blog.content}
               </BlogContent>
           </div>

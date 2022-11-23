@@ -56,10 +56,12 @@ const StyledTitleArea = styled.textarea`
 `
 
 const Blogform = () => {
+  const [title, setTitle] = useState("")
   const [content, setContent] = useState("")
   const titleRef = useRef(null)
 
-  const resizeField = () => {
+  const resizeField = (e) => {
+    setTitle(e.target.value)
     const textarea = titleRef.current
     console.log(textarea.style.height)
     textarea.style.height = ""
@@ -73,11 +75,20 @@ const Blogform = () => {
     }
   }
 
+  const handleBlogPost = (e) => {
+    e.preventDefault()
+    const newBlog = {
+      title: title,
+      content: content
+    }
+    blogService.postBlog(newBlog)
+  }
+
   return (
     <>
       <FormWrapper>
         <Sh2>Write a new blog</Sh2>
-        <StyledBlog>
+        <StyledBlog onSubmit={handleBlogPost}>
           <div>
             <StyledTitleArea
               id="textarea"
@@ -85,6 +96,7 @@ const Blogform = () => {
               type="text"
               ref={titleRef}
               onChange={resizeField}
+              value={title}
               placeholder="Title"
             />
           </div>
@@ -97,6 +109,9 @@ const Blogform = () => {
               value={content}
             />
           </div>
+          <button
+            type="submit"
+            style={{margin: "auto"}}>Post</button>
         </StyledBlog>
       </FormWrapper>
     </>

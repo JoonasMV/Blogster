@@ -1,5 +1,6 @@
 import Banner from "./components/Banner"
 import Bloglist from "./components/Bloglist"
+import Blog from "./components/Blog"
 import Blogform from "./components/Blogform"
 import Loginbox from "./components/Loginbox"
 import Userbox from "./components/Userbox"
@@ -55,6 +56,7 @@ function App() {
           }
         />
         <Route path={"/newBlog"} element={<Blogform />} />
+        <Route path={"/blog/:id"} element={<Blog />} />
       </Routes>
     </div>
   )

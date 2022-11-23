@@ -10,7 +10,7 @@ const authChecker = async (req, res, next) => {
     req.user = await User.findById(userFromToken.id)
     next()
   } catch (error) {
-    return res.sendStatus(403)
+    return res.status(403).json({error: "token error"})
   }
 }
 
