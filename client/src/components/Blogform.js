@@ -1,15 +1,13 @@
 import blogService from "../services/blogService"
 import styled from "styled-components"
 import { useRef, useState } from "react"
+import { Link } from "react-router-dom"
 
 const FormWrapper = styled.div`
   margin: auto;
   width: 60%;
   height: 70vh;
   margin-top: 20vh;
-  /* background-color: #12123b; */
-  /* box-shadow: 0px 0px 15px 15px #12123b;
-  border-radius: 50px 0 50px 50px; */
   padding-top: 2vh;
 `
 
@@ -32,7 +30,6 @@ const StyledTextArea = styled.textarea`
   font-family: "Open Sans", sans-serif;
   border: none;
   background: #ededed;
-  /* opacity: 0.5; */
   border-radius: 10px;
   font-size: 20px;
 `
@@ -82,6 +79,8 @@ const Blogform = () => {
       content: content
     }
     blogService.postBlog(newBlog)
+    setTitle("")
+    setContent("")
   }
 
   return (
@@ -112,6 +111,7 @@ const Blogform = () => {
           <button
             type="submit"
             style={{margin: "auto"}}>Post</button>
+          <Link to="/">cancel</Link>
         </StyledBlog>
       </FormWrapper>
     </>

@@ -6,6 +6,11 @@ const getAll = async () => {
   return blogs.data
 }
 
+const getOne = async (id) => {
+  const blog = await axios.get(`${baseUrl}/${id}`)
+  return blog.data
+}
+
 const getToken = () => JSON.parse(sessionStorage.getItem("accessToken"))
 
 const postBlog = async (newBlog) => {
@@ -15,4 +20,4 @@ const postBlog = async (newBlog) => {
   return postedBlog.data
 }
 
-export default { getAll, postBlog }
+export default { getAll, getOne, postBlog }

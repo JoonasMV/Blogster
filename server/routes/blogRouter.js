@@ -7,6 +7,18 @@ blogRouter.get("/", async (req, res) => {
   res.json(blogs)
 })
 
+blogRouter.get("/:id", async (req,res) => {
+  const id = req.params.id
+  console.log(id)
+  try {
+    const blog = await Blog.findById(id).populate("user")
+    res.json(blog)
+  } catch (error) {
+    console.log(error)
+    res.sendStatus(404)
+  }
+})
+
 blogRouter.post("/", authChecker, async (req, res) => {
   const { title, content } = req.body
   console.log(req.user)
