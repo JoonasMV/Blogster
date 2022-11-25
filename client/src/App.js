@@ -27,7 +27,7 @@ const UserboxWrapper = styled.div`
 `
 
 function App() {
-  const [user, setUser] = useState({username: null, id: null})
+  const [user, setUser] = useState(null)
 
   useEffect(() => {
     if (sessionStorage.length !== 0) {
@@ -60,7 +60,7 @@ function App() {
           }
         />
         <Route path={"/newBlog"} element={<Blogform />} />
-        <Route path={"/blog/:id"} element={<Blog />} />
+        <Route path={"/blogs/:id"} element={<Blog />} />
         <Route path="/user/:id" element={<User />} />
       </Routes>
     </div>

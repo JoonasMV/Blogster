@@ -20,7 +20,7 @@ const Bloglist = () => {
         return (
           <div key={blog.id}>
             <BlogContent>
-            <Link to={`/blog/${blog.id}`}><h2>{blog.title}</h2></Link>
+            <Link to={`/blogs/${blog.id}`}><h2>{blog.title}</h2></Link>
               {blog.content}
               </BlogContent>
           </div>
