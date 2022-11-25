@@ -17,6 +17,7 @@ const CommentBox = styled.textarea`
 
 const Blog = () => {
   const [blog, setBlog] = useState(null)
+  const [comment, setComment] = useState("")
   const { id } = useParams()
   const commentRef = useRef()
 
@@ -25,9 +26,9 @@ const Blog = () => {
       .then(res => setBlog(res))
   }, [])
 
-  const handleCommentArea = () => {
+  const handleCommentArea = (e) => {
+    setComment(e.target.value)
     const commentBox = commentRef.current
-    console.log(commentBox.style.height)
     commentBox.style.height = ""
     commentBox.style.height = (commentBox.scrollHeight-3) + "px"
   }
@@ -50,6 +51,7 @@ const Blog = () => {
         ref={commentRef}
         onChange={handleCommentArea}
         placeholder={"test"}
+        value={comment}
       />
       </Container>
     </>

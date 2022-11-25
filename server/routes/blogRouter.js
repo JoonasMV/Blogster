@@ -29,7 +29,6 @@ blogRouter.post("/", authChecker, async (req, res) => {
     dateAdded: new Date(),
     user: user,
   })
-
   
   try {
     const savedBlog = await newBlog.save()
