@@ -10,7 +10,6 @@ blogRouter.get("/", async (req, res) => {
 
 blogRouter.get("/:id", async (req, res) => {
   const id = req.params.id
-  console.log(id)
   try {
     const blog = await Blog.findById(id).populate("user")
     res.json(blog)
@@ -24,7 +23,6 @@ blogRouter.post("/", authChecker, async (req, res) => {
   const { title, content } = req.body
   const user = req.user
   //const MongoUser = await User.findById(user.id)
-  console.log(user)
   const newBlog = new Blog({
     title,
     content,

@@ -60,7 +60,7 @@ const Blogform = () => {
   const resizeField = (e) => {
     setTitle(e.target.value)
     const textarea = titleRef.current
-    console.log(textarea.style.height)
+    //console.log(textarea.style.height)
     textarea.style.height = ""
     textarea.style.height = textarea.scrollHeight + "px"
   }
