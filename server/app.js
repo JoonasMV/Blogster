@@ -3,6 +3,7 @@ const express = require("express")
 const mongoose = require("mongoose")
 const cors = require("cors")
 const logger = require("./utils/logger")
+const authChecker = require("./utils/authChecker")
 
 const blogRouter = require("./routes/blogRouter")
 const userRouter = require("./routes/userRouter") 
@@ -22,7 +23,7 @@ app.use(logger)
 app.use("/api/blogs", blogRouter)
 app.use("/api/users", userRouter)
 app.use("/api/login", loginRouter)
-app.use("/api/comments", commentRouter)
+app.use("/api/comments", authChecker, commentRouter)
 
 
 module.exports = app

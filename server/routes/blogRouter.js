@@ -11,7 +11,12 @@ blogRouter.get("/", async (req, res) => {
 blogRouter.get("/:id", async (req, res) => {
   const id = req.params.id
   try {
-    const blog = await Blog.findById(id).populate("user")
+    const blog = await Blog.findById(id)
+      .populate("user")
+      .populate({ path: "comments",
+      populate: {
+        path: "user",
+      }})
     res.json(blog)
   } catch (error) {
     console.log(error)

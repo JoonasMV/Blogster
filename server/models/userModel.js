@@ -24,4 +24,12 @@ const userSchema = new mongoose.Schema({
 
 userSchema.plugin(uniqueValidator, { message : "username already taken"})
 
+userSchema.set("toJSON", {
+  virtuals: true,
+  transform: (doc, ret) => {
+    delete ret._id,
+    delete ret.__v
+  }
+})
+
 module.exports = mongoose.model("User", userSchema)

@@ -15,6 +15,10 @@ const CommentBox = styled.textarea`
   min-height: 40px;
 `
 
+const TestDiv = styled.div`
+  border:2px solid red ;
+`
+
 const Blog = () => {
   const [blog, setBlog] = useState(null)
   const [comment, setComment] = useState("")
@@ -22,37 +26,42 @@ const Blog = () => {
   const commentRef = useRef()
 
   useEffect(() => {
-    blogService.getOne(id)
-      .then(res => setBlog(res))
+    blogService.getOne(id).then((res) => setBlog(res))
   }, [])
 
   const handleCommentArea = (e) => {
     setComment(e.target.value)
     const commentBox = commentRef.current
     commentBox.style.height = ""
-    commentBox.style.height = (commentBox.scrollHeight-3) + "px"
+    commentBox.style.height = commentBox.scrollHeight - 3 + "px"
   }
 
-
-  if(!blog) return (null)
+  if (!blog) return null
 
   return (
     <>
       <Container>
-      <h2>{blog.title}</h2>
-      <div>{blog.content}</div>
-      <div style={{color: "red"}}>{blog.dateAdded}</div>
-      <h3>-{blog.user.username}</h3>
-      <h2>Comments</h2>
-      <div>test</div>
-      {/* {console.log(blog.comments)} */}
-      <CommentBox 
-        type="text"
-        ref={commentRef}
-        onChange={handleCommentArea}
-        placeholder={"test"}
-        value={comment}
-      />
+        <h2>{blog.title}</h2>
+        <div>{blog.content}</div>
+        <div style={{ color: "red" }}>{blog.dateAdded}</div>
+        <h3>-{blog.user.username}</h3>
+        <h2>Comments</h2>
+        <div>test</div>
+        <CommentBox
+          type="text"
+          ref={commentRef}
+          onChange={handleCommentArea}
+          placeholder={"test"}
+          value={comment}
+        />
+        <button>Post comment</button>
+        {blog.comments.map((comment) => {
+          return <TestDiv key={comment.id}>
+                    {comment.content}
+                    <div>posted by: <strong>{comment.user.username}</strong></div>
+                    <div style={{color: "red"}}>{comment.dateAdded}</div>
+                  </TestDiv>
+        })}
       </Container>
     </>
   )

@@ -23,9 +23,9 @@ const blogSchema = new mongoose.Schema({
   },
   comments: [
     {
-      type: String,
-      minlength: 1,
-    },
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Comment"
+    },  
   ],
   dateAdded: Date,
   dateUpdated: Date,

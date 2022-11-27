@@ -10,4 +10,6 @@
 |22/11|1|userbox|
 |23/11|1|css|
 |23/11|2|backend work|
-|total|14||
+|24/11|1|comments|
+|27/11|1|comments|
+|total|17||

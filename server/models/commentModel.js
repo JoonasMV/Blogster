@@ -3,16 +3,19 @@ const mongoose = require("mongoose")
 const commentSchema = new mongoose.Schema({
   content: {
     type: String,
-    require: true,
+    required: true,
     minLength: 1
   },
-  User: {
+  user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User"
+  },
+  dateAdded: {
+    type: Date
   }
 })
 
-commenSchema.set("toJSON", {
+commentSchema.set("toJSON", {
   virtuals: true,
   transform: (doc, ret) => {
     delete ret._id,

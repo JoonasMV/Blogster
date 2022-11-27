@@ -2,6 +2,7 @@
 
 User page
 Blogform
+Stop fetching data everytime page renders
 
 ---Back end---
 
