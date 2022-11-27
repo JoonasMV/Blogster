@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useRef, useState } from "react"
 import styled, { css } from "styled-components"
 import loginService from "../services/loginService"
 import { Link } from "react-router-dom"
@@ -44,6 +44,7 @@ const StyledInput = styled.input`
 
 const StyledTextArea = styled.textarea`
   ${inputCSS}
+  resize: none;
 `
 
 const CreateUser = styled(Link)`
@@ -55,6 +56,15 @@ const Loginbox = ({ setUser }) => {
   const [loginUsername, setUsername] = useState("")
   const [password, setPassword] = useState("")
   const [newUser, setNewUser] = useState(false)
+  const bioRef = useRef()
+
+  const handleResize = () => {
+    console.log("test")
+    const textarea = bioRef.current
+    textarea.style.height = ""
+    textarea.style.height = (textarea.scrollHeight+2) + "px"
+  }
+  
 
   const handleLogin = async (event) => {
     event.preventDefault()
@@ -95,13 +105,15 @@ const Loginbox = ({ setUser }) => {
         Bio
         <StyledTextArea 
           type="text"
+          ref={bioRef}
+          onChange={handleResize}
         />
           </>
           }
           <button onClick={handleLogin}>{newUser ? "Create user" : "Login"}</button>
         </StyledForm>
         <div style={{textAlign: "left"}}>
-          <CreateUser onClick={() => setNewUser(prev => !prev)}>Create account</CreateUser>
+          <CreateUser onClick={() => setNewUser(prev => !prev)}>{newUser ? "Cancel" : "Create account"}</CreateUser>
         </div>
       </Container>
     </>

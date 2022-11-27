@@ -12,4 +12,5 @@
 |23/11|2|backend work|
 |24/11|1|comments|
 |27/11|1|comments|
+|27/11|1|new user|
 |total|17||
