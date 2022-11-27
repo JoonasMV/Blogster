@@ -1,6 +1,7 @@
 import { useState } from "react"
-import styled from "styled-components"
+import styled, { css } from "styled-components"
 import loginService from "../services/loginService"
+import { Link } from "react-router-dom"
 
 export const Container = styled.div`
   text-align: center;
@@ -16,6 +17,7 @@ export const Container = styled.div`
 const StyledForm = styled.form`
   margin: 10px;
   margin-top: 5px;
+  margin-bottom: 0;
 `
 const Sh3 = styled.h3`
   font-family: "Open Sans";
@@ -25,7 +27,7 @@ const Sh3 = styled.h3`
   margin-bottom: 1vh;
 `
 
-const StyledInput = styled.input`
+const inputCSS = css`
   width: 100%;
   padding: 5px 20px;
   padding-left: 7px;
@@ -36,9 +38,23 @@ const StyledInput = styled.input`
   border-radius: 9px 0 9px;
 `
 
+const StyledInput = styled.input`
+  ${inputCSS}
+`
+
+const StyledTextArea = styled.textarea`
+  ${inputCSS}
+`
+
+const CreateUser = styled(Link)`
+  font-size: 15px;
+  text-align: left;
+`
+
 const Loginbox = ({ setUser }) => {
   const [loginUsername, setUsername] = useState("")
   const [password, setPassword] = useState("")
+  const [newUser, setNewUser] = useState(false)
 
   const handleLogin = async (event) => {
     event.preventDefault()
@@ -69,8 +85,24 @@ const Loginbox = ({ setUser }) => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <button onClick={handleLogin}>Login</button>
+        {newUser && 
+        <>
+        E-mail
+        <StyledInput
+          type="email"
+          />
+
+        Bio
+        <StyledTextArea 
+          type="text"
+        />
+          </>
+          }
+          <button onClick={handleLogin}>{newUser ? "Create user" : "Login"}</button>
         </StyledForm>
+        <div style={{textAlign: "left"}}>
+          <CreateUser onClick={() => setNewUser(prev => !prev)}>Create account</CreateUser>
+        </div>
       </Container>
     </>
   )
