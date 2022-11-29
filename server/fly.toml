@@ -9,9 +9,7 @@ processes = []
   builder = "heroku/buildpacks:20"
 
 [env]
-  PORT = "3003"
-  MONGOURL = "mongodb+srv://FullStack22:ykhQdPIPM3VbnJ6z@cluster0.chfes.mongodb.net/blogProject?retryWrites=true&w=majority"
-  SECRET = "f%sb6P1Mb*t^hTOb9jHsBwWe8BV1wovgr$o7osj@IJGP9o!$WD"
+  NODE_ENV = "production"
 
 [experimental]
   allowed_public_ports = []
