@@ -1,13 +1,9 @@
 ---Front end---
 
-User page
-Blogform
 Stop fetching data everytime page renders
 
 ---Back end---
 
-Login working
 Login username caps insensitive
-Session token
 PUT for user and blog
-individual routes
+comment updating poopy
