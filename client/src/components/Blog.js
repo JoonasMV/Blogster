@@ -2,9 +2,11 @@ import { useEffect, useRef, useState } from "react"
 import { useParams } from "react-router-dom"
 import styled from "styled-components"
 import blogService from "../services/blogService"
+import { Link } from "react-router-dom"
+import commentService from "../services/commentService"
 
 const Container = styled.div`
-  padding: 5vh 50vh 0 50vh;
+  padding: 5vh 25% 0 25%;
 `
 
 const CommentBox = styled.textarea`
@@ -21,12 +23,17 @@ const TestDiv = styled.div`
 
 const Blog = () => {
   const [blog, setBlog] = useState(null)
+  const [blogComments, setBlogComments] = useState(null)
   const [comment, setComment] = useState("")
   const { id } = useParams()
   const commentRef = useRef()
 
   useEffect(() => {
-    blogService.getOne(id).then((res) => setBlog(res))
+    blogService.getOne(id).then((res) => {
+      setBlog(res)
+      setBlogComments(res.comments)
+    })
+    
   }, [])
 
   const handleCommentArea = (e) => {
@@ -34,6 +41,11 @@ const Blog = () => {
     const commentBox = commentRef.current
     commentBox.style.height = ""
     commentBox.style.height = commentBox.scrollHeight - 3 + "px"
+  }
+
+  const handlePosting = async () => {
+    const postedComment = await commentService.postComment(id, comment)
+    setBlogComments(comments => comments.concat(postedComment))
   }
 
   if (!blog) return null
@@ -54,11 +66,11 @@ const Blog = () => {
           placeholder={"test"}
           value={comment}
         />
-        <button>Post comment</button>
-        {blog.comments.map((comment) => {
+        <button onClick={handlePosting}>Post comment</button>
+        {blogComments.map((comment) => {
           return <TestDiv key={comment.id}>
                     {comment.content}
-                    <div>posted by: <strong>{comment.user.username}</strong></div>
+                    <div>posted by: <Link to={`/user/${comment.user.id}`}><strong>{comment.user.username}</strong></Link></div>
                     <div style={{color: "red"}}>{comment.dateAdded}</div>
                   </TestDiv>
         })}

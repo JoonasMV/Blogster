@@ -13,14 +13,13 @@ commentRouter.post("/:id", async (req, res) => {
   })
 
   try {
-    await comment.save()
+    const retComment = await comment.save()
     blogToComment.comments = blogToComment.comments.concat(comment._id)
     await blogToComment.save()
+    res.status(201).json(retComment)
   } catch (error) {
     return res.status(400).json(error.message)
   }
-
-  res.sendStatus(201)
 })
 
 module.exports = commentRouter

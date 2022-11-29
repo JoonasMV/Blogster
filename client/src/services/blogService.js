@@ -1,4 +1,5 @@
 import axios from "axios"
+import getToken from "./utils"
 const baseUrl = "/api/blogs"
 
 const getAll = async () => {
@@ -11,12 +12,8 @@ const getOne = async (id) => {
   return blog.data
 }
 
-const getToken = () => JSON.parse(sessionStorage.getItem("accessToken"))
-
 const postBlog = async (newBlog) => {
-  const postedBlog = await axios.post(baseUrl, newBlog, {
-    headers: { authorization: `Bearer ${getToken()}` },
-  })
+  const postedBlog = await axios.post(baseUrl, newBlog, getToken)
   return postedBlog.data
 }
 
