@@ -16,8 +16,9 @@ mongoose.connect(config.MONGOURL)
   
 const app = express()
 
-app.use(cors())
 app.use(express.json())
+app.use(cors())
+app.use(express.static("build"))
 app.use(logger)
 
 app.use("/api/blogs", blogRouter)

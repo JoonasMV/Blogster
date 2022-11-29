@@ -14,4 +14,5 @@
 |27/11|1|comments|
 |27/11|1|new user|
 |29/11|1|commenting from front end|
-|total|17||
+|29/11|3|first deployment|
+|total|xxx||
