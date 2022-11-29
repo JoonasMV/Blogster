@@ -10,8 +10,8 @@ processes = []
 
 [env]
   PORT = "3003"
-  MONGOURL = "mongodb+srv://FullStack22:fCJ9pbAY4ZqZ5APA@cluster0.chfes.mongodb.net/blogProject?retryWrites=true&w=majority"
-  SECRET = "cFgokfys$Ao47HHoCaicD9LX261f5NbdM%nFoJoY$ukE2SLejA"
+  MONGOURL = "mongodb+srv://FullStack22:ykhQdPIPM3VbnJ6z@cluster0.chfes.mongodb.net/blogProject?retryWrites=true&w=majority"
+  SECRET = "f%sb6P1Mb*t^hTOb9jHsBwWe8BV1wovgr$o7osj@IJGP9o!$WD"
 
 [experimental]
   allowed_public_ports = []
