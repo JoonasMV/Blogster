@@ -1,9 +1,12 @@
 ---Front end---
 
 Stop fetching data everytime page renders
+comment responses
+Load More buttons
 
 ---Back end---
 
 Login username caps insensitive
 PUT for user and blog
+Load More functionality
 comment updating poopy

@@ -4,21 +4,44 @@ import styled from "styled-components"
 import blogService from "../services/blogService"
 import { Link } from "react-router-dom"
 import commentService from "../services/commentService"
+import { fadeBoxCss } from "../css/divCss"
+import { buttonCSS } from "../css/buttonCss"
 
 const Container = styled.div`
   padding: 5vh 25% 0 25%;
 `
 
 const CommentBox = styled.textarea`
+  font-family: "Open Sans", sans-serif;
+  border-radius: 10px 0;
+  font-size: 20px;
   width: 100%;
   resize: none;
   padding: 2px;
   line-height: 20px;
   min-height: 40px;
+  color: black;
+  &:focus {
+    outline: none;
+  }
+  &::selection {
+    background-color: gray;
+  }
 `
 
-const TestDiv = styled.div`
-  border:2px solid red ;
+const Comment = styled.div`
+  ${fadeBoxCss}
+  margin: 1rem 0;
+  padding: 0.5rem;
+`
+
+const PostButton = styled.button`
+  ${buttonCSS}
+  margin: 5px;
+`
+
+const CommentHeader = styled.h2`
+  margin: 15px 0 10px;
 `
 
 const Blog = () => {
@@ -33,7 +56,6 @@ const Blog = () => {
       setBlog(res)
       setBlogComments(res.comments)
     })
-    
   }, [])
 
   const handleCommentArea = (e) => {
@@ -45,7 +67,7 @@ const Blog = () => {
 
   const handlePosting = async () => {
     const postedComment = await commentService.postComment(id, comment)
-    setBlogComments(comments => comments.concat(postedComment))
+    setBlogComments((comments) => comments.concat(postedComment))
   }
 
   if (!blog) return null
@@ -56,23 +78,30 @@ const Blog = () => {
         <h2>{blog.title}</h2>
         <div>{blog.content}</div>
         <div style={{ color: "red" }}>{blog.dateAdded}</div>
-        <h3>-{blog.user.username}</h3>
-        <h2>Comments</h2>
-        <div>test</div>
+        <h3 style={{marginTop: 3}}>-{blog.user.username}</h3>
+        <hr></hr>
+        <CommentHeader>Comments</CommentHeader>
         <CommentBox
           type="text"
           ref={commentRef}
           onChange={handleCommentArea}
           placeholder={"test"}
           value={comment}
-        />
-        <button onClick={handlePosting}>Post comment</button>
+          />
+        <PostButton onClick={handlePosting}>Post comment</PostButton>
         {blogComments.map((comment) => {
-          return <TestDiv key={comment.id}>
-                    {comment.content}
-                    <div>posted by: <Link to={`/user/${comment.user.id}`}><strong>{comment.user.username}</strong></Link></div>
-                    <div style={{color: "red"}}>{comment.dateAdded}</div>
-                  </TestDiv>
+          return (
+            <Comment key={comment.id}>
+              {comment.content}
+              <div>
+                posted by:{" "}
+                <Link to={`/user/${comment.user.id}`}>
+                  <strong>{comment.user.username}</strong>
+                </Link>
+              </div>
+              <div style={{ color: "red" }}>{comment.dateAdded}</div>
+            </Comment>
+          )
         })}
       </Container>
     </>

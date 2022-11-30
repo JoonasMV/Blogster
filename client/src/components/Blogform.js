@@ -39,6 +39,9 @@ const StyledTextArea = styled.textarea`
   background: #ededed;
   border-radius: 10px;
   font-size: 20px;
+  &:focus {
+    outline: none;
+  }
   @media (max-width: 1000px) {
     height: 60vh;
   }
