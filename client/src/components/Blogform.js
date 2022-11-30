@@ -2,13 +2,15 @@ import blogService from "../services/blogService"
 import styled from "styled-components"
 import { useRef, useState } from "react"
 import { Link } from "react-router-dom"
+import { buttonCSS } from "../css/buttonCss"
 
 const FormWrapper = styled.div`
   margin: auto;
   width: 60%;
-  height: 70vh;
-  margin-top: 20vh;
-  padding-top: 2vh;
+  @media (max-width: 1000px) {
+    width: 90%;
+    margin-top: 100px;
+  }
 `
 
 const StyledBlog = styled.form`
@@ -22,6 +24,11 @@ const Sh2 = styled.h2`
   color: #b3fff0;
   margin-bottom: 0;
   margin-top: 0;
+  @media (max-width: 700px) {
+    width: 100%;
+    font-size: 30px;
+    line-height: 30px;
+  }
 `
 
 const StyledTextArea = styled.textarea`
@@ -32,6 +39,9 @@ const StyledTextArea = styled.textarea`
   background: #ededed;
   border-radius: 10px;
   font-size: 20px;
+  @media (max-width: 1000px) {
+    height: 60vh;
+  }
 `
 
 const StyledTitleArea = styled.textarea`
@@ -50,6 +60,16 @@ const StyledTitleArea = styled.textarea`
   &:focus {
     outline: none;
   }
+  @media (max-width: 1000px) {
+    width: 90%;
+    font-size: 20px;
+    margin-top: 1rem;
+  }
+`
+
+const StyledButton = styled.button`
+  ${buttonCSS}
+  width: 5rem;
 `
 
 const Blogform = () => {
@@ -60,7 +80,6 @@ const Blogform = () => {
   const resizeField = (e) => {
     setTitle(e.target.value)
     const textarea = titleRef.current
-    //console.log(textarea.style.height)
     textarea.style.height = ""
     textarea.style.height = textarea.scrollHeight + "px"
   }
@@ -108,10 +127,12 @@ const Blogform = () => {
               value={content}
             />
           </div>
-          <button
+          <div style={{marginBottom: 10}}>
+          <StyledButton
             type="submit"
-            style={{margin: "auto"}}>Post</button>
-          <Link to="/">cancel</Link>
+            style={{margin: "auto"}}>Post</StyledButton>
+          <Link to="/"><StyledButton type="button">cancel</StyledButton></Link>
+          </div>
         </StyledBlog>
       </FormWrapper>
     </>
