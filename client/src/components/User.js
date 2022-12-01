@@ -3,17 +3,19 @@ import { useParams } from "react-router-dom"
 import styled from "styled-components"
 import userService from "../services/userService"
 import { Link } from "react-router-dom"
+import { fadeBoxCss } from "../css/divCss"
 
 const Container = styled.div`
-  display: flex;
+  /* display: flex; */
   padding: 0 50vh;
+  margin-bottom: 2rem;
 `
 
 const Blogs = styled.div`
-  width: 75%;
+  ${fadeBoxCss}
   padding: 2vh;
   padding-top: 0;
-  border: 2px solid red;
+  margin-top: 1rem;
 `
 
 const BlogPreview = styled.div`
@@ -26,8 +28,29 @@ const BlogPreview = styled.div`
 `
 
 const UserInfo = styled.div`
+  display: flex;
+  `
+
+const UserWrapper = styled.div`
+  ${fadeBoxCss}
   width: 25%;
-  border: 2px solid blue;
+  margin-right: 1rem;
+  text-align: center;
+`
+
+const BioBox = styled.div`
+ ${fadeBoxCss}
+  width: 75%;
+  text-align: center;
+`
+
+const BioWrapper = styled.div`
+  margin-bottom: 1rem;
+`
+
+const Sh2 = styled.h2`
+  margin-bottom: 0;
+  margin-top: 1rem;
 `
 
 const User = () => {
@@ -44,14 +67,22 @@ const User = () => {
     <>
       <Container>
         <UserInfo>
-          <h2>{pageUser.username}'s page</h2>
-          <div>{pageUser.bio}</div>
+          <UserWrapper>
+            <h2>{pageUser.username}'s page</h2>
+          </UserWrapper>
+          <BioBox>
+              <Sh2>About me</Sh2>
+              <BioWrapper>{pageUser.bio}</BioWrapper>
+          </BioBox>
         </UserInfo>
         <Blogs>
           {pageUser.blogs.map((blog) => (
             <div key={blog.id}>
-              <Link to={`/blogs/${blog.id}`}><h3>{blog.title}</h3></Link>
+              <Link to={`/blogs/${blog.id}`}>
+                <h3>{blog.title}</h3>
+              </Link>
               <BlogPreview>{blog.content}</BlogPreview>
+              <hr/>
             </div>
           ))}
         </Blogs>

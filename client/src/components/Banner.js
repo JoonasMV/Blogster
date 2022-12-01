@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import { Link } from "react-router-dom"
 
 const Background = styled.div`
   background-color: #b3fff0;
@@ -25,7 +26,7 @@ const Title = styled.h1`
 const Banner = () => {
   return (
     <Background>
-      <Title>Blogster</Title>
+      <Link to="/" style={{textDecoration: "none"}}><Title>Blogster</Title></Link>
     </Background>
   )
 }

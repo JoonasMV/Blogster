@@ -23,7 +23,7 @@ const UserboxWrapper = styled.div`
   top: 2rem;
   right: 1rem;
   float: right;
-  width: 20%;
+  /* width: 20%; */
   @media (max-width: 1000px) {
   }
 `

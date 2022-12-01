@@ -8,6 +8,7 @@ const BlogContent = styled.div`
   ${fadeBoxCss}
   width:50%;
   margin: auto;
+  margin-bottom: 2rem;
   padding: 1rem;
   font-family: "Open Sans";
 `

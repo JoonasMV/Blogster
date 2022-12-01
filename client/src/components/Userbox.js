@@ -5,12 +5,13 @@ const Container = styled.div`
   text-align: center;
   border: double 4px transparent;
   border-radius: 10px;
-  background-image: linear-gradient(#060613, #060613), radial-gradient(circle at top left, #f00,#3020ff);
+  background-image: linear-gradient(#060613, #060613),
+    radial-gradient(circle at top left, #f00, #3020ff);
   background-origin: border-box;
   background-clip: padding-box, border-box;
   padding: 1vh;
   padding-top: 0.5vh;
-  width: 15vh;
+  width: 14vw;
 `
 
 const StyledLink = styled(Link)`
@@ -34,26 +35,25 @@ const StyledButton = styled.button`
 const StyledGreet = styled.div`
   font-family: "Open Sans";
   font-weight: 600;
-  text-align: center;
   border-bottom: 2px solid transparent;
-  background-image: linear-gradient(#060613, #060613), radial-gradient(circle at top left, #971c1c, #7820ff);
-  background-origin: border-box;
+  background-image: linear-gradient(#060613, #060613),
+    radial-gradient(circle at top left, #971c1c, #7820ff);
   background-clip: padding-box, border-box;
-  width: 100%;
-  margin: auto;
   color: white;
 `
 
 const Userbox = ({ user, setUser }) => {
   const logout = () => {
     sessionStorage.clear()
-    setUser({username: null, id: null})
+    setUser({ username: null, id: null })
   }
 
   return (
     <>
       <Container>
-        <Link to={`user/${user.id}`}><StyledGreet>{user.username}</StyledGreet></Link>
+        <Link to={`user/${user.id}`} style={{textDecoration: "none"}}>
+          <StyledGreet>{user.username}</StyledGreet>
+        </Link>
         <StyledLink to="/newBlog">New blog</StyledLink>
         <div>
           <StyledButton onClick={logout}>Log out</StyledButton>

@@ -6,6 +6,8 @@ comment responses
 Back button to homepage
 Phone css
 button colors
+linebreak and tabs don't work
+console angery >:(
 
 ---Back end---
 

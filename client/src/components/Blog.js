@@ -58,6 +58,15 @@ const Blog = () => {
     })
   }, [])
 
+  const formatDate = (dateAsString) => {
+    const date = new Date(dateAsString)
+    return [
+      date.getDate(),
+      date.getMonth() + 1,
+      date.getFullYear(),
+    ].join("/")
+  }
+
   const handleCommentArea = (e) => {
     setComment(e.target.value)
     const commentBox = commentRef.current
@@ -77,7 +86,7 @@ const Blog = () => {
       <Container>
         <h2>{blog.title}</h2>
         <div>{blog.content}</div>
-        <div style={{ color: "red" }}>{blog.dateAdded}</div>
+        <div style={{ color: "red" }}>{formatDate(blog.dateAdded)}</div>
         <h3 style={{marginTop: 3}}>-{blog.user.username}</h3>
         <hr></hr>
         <CommentHeader>Comments</CommentHeader>
@@ -99,7 +108,7 @@ const Blog = () => {
                   <strong>{comment.user.username}</strong>
                 </Link>
               </div>
-              <div style={{ color: "red" }}>{comment.dateAdded}</div>
+              <div style={{ color: "red" }}>{formatDate(comment.dateAdded)}</div>
             </Comment>
           )
         })}

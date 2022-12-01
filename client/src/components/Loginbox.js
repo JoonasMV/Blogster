@@ -8,11 +8,13 @@ export const Container = styled.div`
   text-align: center;
   border: double 4px transparent;
   border-radius: 10px;
-  background-image: linear-gradient(#060613, #060613), radial-gradient(circle at top left, #f00,#3020ff);
+  background-image: linear-gradient(#060613, #060613),
+    radial-gradient(circle at top left, #f00, #3020ff);
   background-origin: border-box;
   background-clip: padding-box, border-box;
   padding: 1vh;
   padding-top: 0.5vh;
+  width: 14vw;
 `
 const StyledForm = styled.form`
   margin: 10px;
@@ -28,7 +30,6 @@ const Sh3 = styled.h3`
 `
 
 const inputCSS = css`
-  width: 100%;
   padding: 5px 20px;
   padding-left: 7px;
   margin: 3px 0;
@@ -56,7 +57,7 @@ const StyledButton = styled(Link)`
 `
 
 const isValid = {
-  outline: "3px solid red"
+  outline: "3px solid red",
 }
 
 const Loginbox = ({ setUser }) => {
@@ -71,13 +72,12 @@ const Loginbox = ({ setUser }) => {
     setBio(e.target.value)
     const textarea = bioRef.current
     textarea.style.height = ""
-    textarea.style.height = (textarea.scrollHeight+2) + "px"
+    textarea.style.height = textarea.scrollHeight + 2 + "px"
   }
-  
+
   const handleEmail = (e) => {
     setEmail(e.target.value)
   }
-
 
   const handleLogin = async (event) => {
     event.preventDefault()
@@ -98,7 +98,7 @@ const Loginbox = ({ setUser }) => {
       username: loginUsername,
       password: password,
       email: email,
-      bio: bio
+      bio: bio,
     }
 
     const response = await userService.createNewUser(newUser)
@@ -116,42 +116,54 @@ const Loginbox = ({ setUser }) => {
       <Container>
         <StyledForm>
           Username
-          <StyledInput style={!(loginUsername.match(/^[a-zA-Z0-9]+$/)) && loginUsername ? isValid : null}
-            type="text"
-            value={loginUsername}
-            onChange={(e) => setUsername(e.target.value)}
-          />
+          <div>
+            <StyledInput
+              style={
+                !loginUsername.match(/^[a-zA-Z0-9]+$/) && loginUsername
+                  ? isValid
+                  : null
+              }
+              type="text"
+              value={loginUsername}
+              onChange={(e) => setUsername(e.target.value)}
+            />
+          </div>
           Password
-          <StyledInput
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        {newUser && 
-        <>
-        E-mail
-        <StyledInput style={!(email.match(/\S+@\S+\.\S+/)) && email ? isValid : null}
-          type="email"
-          value={email}
-          onChange={handleEmail}
-          />
-
-        Bio
-        <StyledTextArea 
-          type="text"
-          ref={bioRef}
-          onChange={handleBio}
-          value={bio}
-        />
-          </>
-          }
-          {newUser 
-          ? <button onClick={createNewUser}>Create new user</button>
-          : <button onClick={handleLogin}>Login</button>
-        }
+          <div>
+            <StyledInput
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </div>
+          {newUser && (
+            <>
+              E-mail
+              <StyledInput
+                style={!email.match(/\S+@\S+\.\S+/) && email ? isValid : null}
+                type="email"
+                value={email}
+                onChange={handleEmail}
+              />
+              Bio
+              <StyledTextArea
+                type="text"
+                ref={bioRef}
+                onChange={handleBio}
+                value={bio}
+              />
+            </>
+          )}
+          {newUser ? (
+            <button onClick={createNewUser}>Create new user</button>
+          ) : (
+            <button onClick={handleLogin}>Login</button>
+          )}
         </StyledForm>
-        <div style={{textAlign: "left"}}>
-          <StyledButton onClick={() => setNewUser(prev => !prev)}>{newUser ? "Cancel" : "Create account"}</StyledButton>
+        <div style={{ textAlign: "left" }}>
+          <StyledButton onClick={() => setNewUser((prev) => !prev)}>
+            {newUser ? "Cancel" : "Create account"}
+          </StyledButton>
         </div>
       </Container>
     </>

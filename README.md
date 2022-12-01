@@ -17,5 +17,5 @@
 |29/11|3|first deployment|
 |30/11|1|css|
 |31/11|1|user creation|
-|31/11|1|css|
+|31/11|2|css|
 |total|xxx||
