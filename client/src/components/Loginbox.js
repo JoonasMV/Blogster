@@ -13,7 +13,6 @@ export const Container = styled.div`
   background-clip: padding-box, border-box;
   padding: 1vh;
   padding-top: 0.5vh;
-  width: 25vh;
 `
 const StyledForm = styled.form`
   margin: 10px;
@@ -117,7 +116,7 @@ const Loginbox = ({ setUser }) => {
       <Container>
         <StyledForm>
           Username
-          <StyledInput style={!(loginUsername.match(/^[a-zA-Z0-9]+$/)) ? isValid : null}
+          <StyledInput style={!(loginUsername.match(/^[a-zA-Z0-9]+$/)) && loginUsername ? isValid : null}
             type="text"
             value={loginUsername}
             onChange={(e) => setUsername(e.target.value)}
@@ -131,7 +130,7 @@ const Loginbox = ({ setUser }) => {
         {newUser && 
         <>
         E-mail
-        <StyledInput style={!(email.match(/\S+@\S+\.\S+/)) ? isValid : null}
+        <StyledInput style={!(email.match(/\S+@\S+\.\S+/)) && email ? isValid : null}
           type="email"
           value={email}
           onChange={handleEmail}

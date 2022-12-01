@@ -2,11 +2,11 @@ import styled from "styled-components"
 
 const Background = styled.div`
   background-color: #b3fff0;
-  height: 5vh;
-  margin-bottom: 15vh;
+  /* height: 5vh; */
+  margin-bottom: 4rem;
   line-height: 18vh;
   text-align: center;
-  box-shadow: 0px 0px 65px 130px #b3fff0;
+  box-shadow: 0px 0px 45px 50px #b3fff0;
   @media (max-width: 1000px) {
     box-shadow: 0px 0px 40px 55px #b3fff0;
   }

@@ -16,14 +16,16 @@ body {
   background-color: #060613;
   color: white;
   font-size: 20px;
-  
 }
 `
 const UserboxWrapper = styled.div`
   position: sticky;
+  top: 2rem;
+  right: 1rem;
   float: right;
-  top: 2vh;
-  right: 2vh;
+  width: 20%;
+  @media (max-width: 1000px) {
+  }
 `
 
 function App() {
@@ -55,7 +57,7 @@ function App() {
                   ? <Userbox user={user} setUser={setUser}/>
                   : <Loginbox setUser={setUser}/>}
               </UserboxWrapper>
-              <Bloglist />
+                  <Bloglist />
             </>
           }
         />
