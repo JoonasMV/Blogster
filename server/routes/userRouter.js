@@ -14,18 +14,22 @@ userRouter.get("/:id", async (req, res) => {
 })
 
 userRouter.post("/", async (req, res) => {
-  const { username, email, password, bio } = req.body
-  const passwordHash = await bcrypt.hash(password, 10)
-  
-  const newUser = new User({
-    username,
-    email,
-    passwordHash,
-    bio,
-  })
+  try {
+    console.log(req.body)
+    const { username, email = null, password, bio } = req.body
+    const passwordHash = await bcrypt.hash(password, 10)
 
-  const addedUser = await newUser.save()
-  res.json(addedUser)
+    const newUser = new User({
+      username,
+      email,
+      passwordHash,
+      bio,
+    })
+    const addedUser = await newUser.save()
+    res.status(201).json(addedUser)
+  } catch (ex) {
+    res.sendStatus(400)
+  }
 })
 
 module.exports = userRouter

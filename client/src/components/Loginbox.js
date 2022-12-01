@@ -1,6 +1,7 @@
 import { useRef, useState } from "react"
 import styled, { css } from "styled-components"
 import loginService from "../services/loginService"
+import userService from "../services/userService"
 import { Link } from "react-router-dom"
 
 export const Container = styled.div`
@@ -40,6 +41,9 @@ const inputCSS = css`
 
 const StyledInput = styled.input`
   ${inputCSS}
+  &:focus {
+    outline: none;
+  }
 `
 
 const StyledTextArea = styled.textarea`
@@ -47,24 +51,34 @@ const StyledTextArea = styled.textarea`
   resize: none;
 `
 
-const CreateUser = styled(Link)`
+const StyledButton = styled(Link)`
   font-size: 15px;
   text-align: left;
 `
 
+const isValid = {
+  outline: "3px solid red"
+}
+
 const Loginbox = ({ setUser }) => {
   const [loginUsername, setUsername] = useState("")
   const [password, setPassword] = useState("")
+  const [email, setEmail] = useState("")
+  const [bio, setBio] = useState("")
   const [newUser, setNewUser] = useState(false)
   const bioRef = useRef()
 
-  const handleResize = () => {
-    console.log("test")
+  const handleBio = (e) => {
+    setBio(e.target.value)
     const textarea = bioRef.current
     textarea.style.height = ""
     textarea.style.height = (textarea.scrollHeight+2) + "px"
   }
   
+  const handleEmail = (e) => {
+    setEmail(e.target.value)
+  }
+
 
   const handleLogin = async (event) => {
     event.preventDefault()
@@ -78,13 +92,32 @@ const Loginbox = ({ setUser }) => {
     sessionStorage.setItem("id", JSON.stringify(id))
   }
 
+  const createNewUser = async (e) => {
+    e.preventDefault()
+
+    const newUser = {
+      username: loginUsername,
+      password: password,
+      email: email,
+      bio: bio
+    }
+
+    const response = await userService.createNewUser(newUser)
+    console.log(response.status)
+    if (response.status === 201) {
+      console.log("user creation successfull")
+    } else {
+      console.log("user creation unsuccessfull")
+    }
+  }
+
   return (
     <>
       <Sh3>Login</Sh3>
       <Container>
         <StyledForm>
           Username
-          <StyledInput
+          <StyledInput style={!(loginUsername.match(/^[a-zA-Z0-9]+$/)) ? isValid : null}
             type="text"
             value={loginUsername}
             onChange={(e) => setUsername(e.target.value)}
@@ -98,22 +131,28 @@ const Loginbox = ({ setUser }) => {
         {newUser && 
         <>
         E-mail
-        <StyledInput
+        <StyledInput style={!(email.match(/\S+@\S+\.\S+/)) ? isValid : null}
           type="email"
+          value={email}
+          onChange={handleEmail}
           />
 
         Bio
         <StyledTextArea 
           type="text"
           ref={bioRef}
-          onChange={handleResize}
+          onChange={handleBio}
+          value={bio}
         />
           </>
           }
-          <button onClick={handleLogin}>{newUser ? "Create user" : "Login"}</button>
+          {newUser 
+          ? <button onClick={createNewUser}>Create new user</button>
+          : <button onClick={handleLogin}>Login</button>
+        }
         </StyledForm>
         <div style={{textAlign: "left"}}>
-          <CreateUser onClick={() => setNewUser(prev => !prev)}>{newUser ? "Cancel" : "Create account"}</CreateUser>
+          <StyledButton onClick={() => setNewUser(prev => !prev)}>{newUser ? "Cancel" : "Create account"}</StyledButton>
         </div>
       </Container>
     </>

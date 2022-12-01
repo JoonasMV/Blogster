@@ -2,11 +2,15 @@
 
 Stop fetching data everytime page renders
 comment responses
-Load More buttons
+"Load More" buttons
+Back button to homepage
+Phone css
+button colors
 
 ---Back end---
 
 Login username caps insensitive
 PUT for user and blog
-Load More functionality
+"Load More" functionality
 comment updating poopy
+User creation doesn't work
