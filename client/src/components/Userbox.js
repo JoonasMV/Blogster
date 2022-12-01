@@ -47,7 +47,7 @@ const StyledGreet = styled.div`
 const Userbox = ({ user, setUser }) => {
   const logout = () => {
     sessionStorage.clear()
-    setUser(null)
+    setUser({username: null, id: null})
   }
 
   return (

@@ -27,7 +27,7 @@ const UserboxWrapper = styled.div`
 `
 
 function App() {
-  const [user, setUser] = useState(null)
+  const [user, setUser] = useState({username: null, id: null})
 
   useEffect(() => {
     if (sessionStorage.length !== 0) {
@@ -51,7 +51,7 @@ function App() {
           element={
             <>
               <UserboxWrapper>
-              {user
+              {user.id
                   ? <Userbox user={user} setUser={setUser}/>
                   : <Loginbox setUser={setUser}/>}
               </UserboxWrapper>

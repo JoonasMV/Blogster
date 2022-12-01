@@ -86,7 +86,7 @@ const Loginbox = ({ setUser }) => {
       loginUsername,
       password
     )
-    setUser({ username })
+    setUser({ username, id })
     sessionStorage.setItem("accessToken", JSON.stringify(accessToken))
     sessionStorage.setItem("username", JSON.stringify(username))
     sessionStorage.setItem("id", JSON.stringify(id))
