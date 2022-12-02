@@ -52,9 +52,9 @@ const Blog = () => {
     blogService.getOne(id).then((res) => {
       setBlog(res)
     })
-    commentService.getComments(id).then(res => {
+    commentService.getComments(id, 0, 2).then(res => {
+      //console.log(res)
       setBlogComments(res)
-      console.log(res)
     })
   }, [])
 

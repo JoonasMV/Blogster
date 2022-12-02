@@ -8,8 +8,9 @@ const postComment = async (id, comment) => {
   return postedComment.data
 }
 
-const getComments = async (id) => {
-  const comments = await axios.get(`${baseUrl}/${id}`)
+const getComments = async (id, min, max) => {
+  console.log(min, max)
+  const comments = await axios.get(`${baseUrl}/${id}`, { params: { minDoc: min, maxDoc: max }})
   return comments.data
 }
 
