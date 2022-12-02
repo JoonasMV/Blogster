@@ -9,7 +9,6 @@ const postComment = async (id, comment) => {
 }
 
 const getComments = async (id, min, max) => {
-  console.log(min, max)
   const comments = await axios.get(`${baseUrl}/${id}`, { params: { minDoc: min, maxDoc: max }})
   return comments.data
 }

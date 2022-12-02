@@ -1,10 +1,11 @@
-import Comment from "./Comment"
+import Commentlist from "./Commentlist"
 import { useEffect, useRef, useState } from "react"
 import { useParams } from "react-router-dom"
 import styled from "styled-components"
 import blogService from "../services/blogService"
 import commentService from "../services/commentService"
 import { buttonCSS } from "../css/buttonCss"
+import formatDate from "../utils/dateFormatter"
 
 const Container = styled.div`
   padding: 5vh 25% 0 25%;
@@ -43,8 +44,10 @@ const BlogContent = styled.div`
 
 const Blog = () => {
   const [blog, setBlog] = useState(null)
-  const [blogComments, setBlogComments] = useState(null)
+  const [blogComments, setBlogComments] = useState([])
   const [comment, setComment] = useState("")
+  const [min, setMin] = useState(0)
+  const [max, setMax] = useState(2)
   const { id } = useParams()
   const commentRef = useRef()
 
@@ -52,20 +55,11 @@ const Blog = () => {
     blogService.getOne(id).then((res) => {
       setBlog(res)
     })
-    commentService.getComments(id, 0, 2).then(res => {
+    commentService.getComments(id, min, max).then(res => {
       //console.log(res)
       setBlogComments(res)
     })
   }, [])
-
-  const formatDate = (dateAsString) => {
-    const date = new Date(dateAsString)
-    return [
-      date.getDate(),
-      date.getMonth() + 1,
-      date.getFullYear(),
-    ].join("/")
-  }
 
   const handleCommentArea = (e) => {
     setComment(e.target.value)
@@ -79,8 +73,18 @@ const Blog = () => {
     setBlogComments((comments) => comments.concat(postedComment))
   }
 
-  if (!blog) return null
+  const loadMoreComments = async () => {
+    const commentsToLoad = 2
+    const comments = await commentService.getComments(id, min + commentsToLoad, max + commentsToLoad)
+    
+    setMin(prev => prev + commentsToLoad)
+    setMax(prev => prev + commentsToLoad)
+    
+    console.log(comments)
+    setBlogComments(prev => prev.concat(comments))
+  }
 
+  if (!blog) return null
   return (
     <>
       <Container>
@@ -98,11 +102,7 @@ const Blog = () => {
           value={comment}
           />
         <PostButton onClick={handlePosting}>Post comment</PostButton>
-        {blogComments && blogComments.map((comment) => {
-          return (
-            <Comment key={comment.id} comment={comment} />
-          )
-        })}
+        {blogComments && <Commentlist comments={blogComments} loadMore={loadMoreComments}/>}
       </Container>
     </>
   )

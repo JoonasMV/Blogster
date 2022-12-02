@@ -17,7 +17,7 @@
 |29/11|3|first deployment|
 |30/11|1|css|
 |31/11|1|user creation|
-|31/11|2|css|
+|31/11|1|css|
 |1/12|1|css|
-|2/12|1|comment backend|
+|2/12|2|comment backend|
 |total|xxx||
