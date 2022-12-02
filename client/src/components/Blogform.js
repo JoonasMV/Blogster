@@ -87,12 +87,12 @@ const Blogform = () => {
     textarea.style.height = textarea.scrollHeight + "px"
   }
 
-  const tabHandler = (e) => {
-    if (e.keyCode === 9) {
-      e.preventDefault()
-      setContent((prevState) => prevState + "    ")
-    }
-  }
+  // const tabHandler = (e) => {
+  //   if (e.keyCode === 9) {
+  //     e.preventDefault()
+  //     setContent((prevState) => prevState + "    ")
+  //   }
+  // }
 
   const handleBlogPost = (e) => {
     e.preventDefault()
@@ -126,7 +126,7 @@ const Blogform = () => {
             <StyledTextArea
               placeholder="content"
               onChange={(e) => setContent(e.target.value)}
-              onKeyDown={tabHandler}
+              // onKeyDown={tabHandler}
               value={content}
             />
           </div>

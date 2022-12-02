@@ -8,4 +8,9 @@ const postComment = async (id, comment) => {
   return postedComment.data
 }
 
-export default { postComment }
+const getComments = async (id) => {
+  const comments = await axios.get(`${baseUrl}/${id}`)
+  return comments.data
+}
+
+export default { postComment, getComments }

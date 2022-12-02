@@ -24,7 +24,7 @@ app.use(logger)
 app.use("/api/blogs", blogRouter)
 app.use("/api/users", userRouter)
 app.use("/api/login", loginRouter)
-app.use("/api/comments", authChecker, commentRouter)
+app.use("/api/comments", commentRouter)
 
 
 module.exports = app

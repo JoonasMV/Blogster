@@ -1,10 +1,9 @@
+import Comment from "./Comment"
 import { useEffect, useRef, useState } from "react"
 import { useParams } from "react-router-dom"
 import styled from "styled-components"
 import blogService from "../services/blogService"
-import { Link } from "react-router-dom"
 import commentService from "../services/commentService"
-import { fadeBoxCss } from "../css/divCss"
 import { buttonCSS } from "../css/buttonCss"
 
 const Container = styled.div`
@@ -29,12 +28,6 @@ const CommentBox = styled.textarea`
   }
 `
 
-const Comment = styled.div`
-  ${fadeBoxCss}
-  margin: 1rem 0;
-  padding: 0.5rem;
-`
-
 const PostButton = styled.button`
   ${buttonCSS}
   margin: 5px;
@@ -42,6 +35,10 @@ const PostButton = styled.button`
 
 const CommentHeader = styled.h2`
   margin: 15px 0 10px;
+`
+
+const BlogContent = styled.div`
+  white-space: pre-line;
 `
 
 const Blog = () => {
@@ -54,7 +51,10 @@ const Blog = () => {
   useEffect(() => {
     blogService.getOne(id).then((res) => {
       setBlog(res)
-      setBlogComments(res.comments)
+    })
+    commentService.getComments(id).then(res => {
+      setBlogComments(res)
+      console.log(res)
     })
   }, [])
 
@@ -85,7 +85,7 @@ const Blog = () => {
     <>
       <Container>
         <h2>{blog.title}</h2>
-        <div>{blog.content}</div>
+        <BlogContent>{blog.content}</BlogContent>
         <div style={{ color: "red" }}>{formatDate(blog.dateAdded)}</div>
         <h3 style={{marginTop: 3}}>-{blog.user.username}</h3>
         <hr></hr>
@@ -98,18 +98,9 @@ const Blog = () => {
           value={comment}
           />
         <PostButton onClick={handlePosting}>Post comment</PostButton>
-        {blogComments.map((comment) => {
+        {blogComments && blogComments.map((comment) => {
           return (
-            <Comment key={comment.id}>
-              {comment.content}
-              <div>
-                posted by:{" "}
-                <Link to={`/user/${comment.user.id}`}>
-                  <strong>{comment.user.username}</strong>
-                </Link>
-              </div>
-              <div style={{ color: "red" }}>{formatDate(comment.dateAdded)}</div>
-            </Comment>
+            <Comment key={comment.id} comment={comment} />
           )
         })}
       </Container>
