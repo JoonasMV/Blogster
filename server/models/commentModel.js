@@ -14,6 +14,11 @@ const commentSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "Blog"
   },
+  responses: {
+    type: String,
+    required: true,
+    minLength: 1
+  },
   dateAdded: {
     type: Date
   }

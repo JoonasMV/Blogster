@@ -26,7 +26,7 @@ commentRouter.post("/:id", authChecker, async (req, res) => {
 
 commentRouter.get("/:id", async (req, res) => {
   console.log(req.query)
-  const comments = await Comment.find({ blog: req.params.id }).skip(req.query.minDoc).limit(req.query.maxDoc)
+  const comments = await Comment.find({ blog: req.params.id }).populate("user").skip(req.query.minDoc).limit(req.query.maxDoc)
   res.json(comments)
 })
 
