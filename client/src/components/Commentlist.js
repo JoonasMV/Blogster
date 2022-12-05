@@ -2,24 +2,29 @@ import styled from "styled-components"
 import { fadeBoxCss } from "../css/divCss"
 import { Link } from "react-router-dom"
 import formatDate from "../utils/dateFormatter"
-import { useRef, useState } from "react"
-import Response from "./Response"
+import { useState } from "react"
+import Responseform from "./Responseform"
 
 const CommentDiv = styled.div`
   ${fadeBoxCss}
   margin: 1rem 0;
   padding: 0.5rem;
 `
-
-
+const SResponse = styled.div`
+  ${fadeBoxCss}
+  padding: 3px;
+`
 
 const Commentlist = ({ comments, loadMore }) => {
-  const [show, setShow] = useState("")
+  // const [show, setShow] = useState("")
 
-  const changeVisibility = () => {
-    if (show === "") { setShow("none") }
-    else {setShow("")}
-  }
+  // const changeVisibility = () => {
+  //   if (show === "") {
+  //     setShow("none")
+  //   } else {
+  //     setShow("")
+  //   }
+  // }
 
   return (
     <>
@@ -34,7 +39,16 @@ const Commentlist = ({ comments, loadMore }) => {
               </Link>
             </div>
             <div style={{ color: "red" }}>{formatDate(comment.dateAdded)}</div>
-            <Response />
+            <Responseform />
+            {comment.responses.map((response) => {
+              return (
+                <SResponse key={response.id}>
+                  {response.content}
+                  <br />
+                  <Responseform>{response.content}</Responseform>
+                </SResponse>
+              )
+            })}
           </CommentDiv>
         )
       })}

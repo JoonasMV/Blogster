@@ -6,15 +6,12 @@ const Stextarea = styled.textarea`
   resize: none;
 `
 
-const Response = () => {
+const Responseform = () => {
   const [show, setShow] = useState(false)
   const [response, setResponse] = useState("")
   const isVisible = show ? "" : "none"
 
-  const submitResponse = () => {
-
-    
-  }
+  const submitResponse = () => { }
 
   return (
     <>
@@ -35,4 +32,4 @@ const Response = () => {
   )
 }
 
-export default Response
+export default Responseform

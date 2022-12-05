@@ -16,6 +16,7 @@ body {
   background-color: #060613;
   color: white;
   font-size: 20px;
+  white-space: pre-line;
 }
 `
 const UserboxWrapper = styled.div`

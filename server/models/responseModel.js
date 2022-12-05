@@ -1,6 +1,6 @@
 const mongoose = require("mongoose")
 
-const commentSchema = new mongoose.Schema({
+const responseSchema = new mongoose.Schema({
   content: {
     type: String,
     required: true,
@@ -10,21 +10,17 @@ const commentSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
   },
-  blog: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Blog",
-  },
-  responses: [this],
   dateAdded: {
     type: Date,
   },
 })
 
-commentSchema.set("toJSON", {
+responseSchema.set("toJSON", {
   virtuals: true,
   transform: (doc, ret) => {
-    delete ret._id, delete ret.__v
-  },
+    delete ret._id,
+    delete ret.__v
+  }
 })
 
-module.exports = mongoose.model("Comment", commentSchema)
+module.exports = mongoose.model("Response", responseSchema)

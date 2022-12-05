@@ -56,7 +56,6 @@ const Blog = () => {
       setBlog(res)
     })
     commentService.getComments(id, min, max).then(res => {
-      //console.log(res)
       setBlogComments(res)
     })
   }, [])
