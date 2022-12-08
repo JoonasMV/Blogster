@@ -1,12 +1,8 @@
 import commentService from "../services/commentService"
 import { useEffect, useState } from "react"
-import styled from "styled-components"
-import { fadeBoxCss } from "../css/divCss"
-
-const SResponse = styled.div`
-  ${fadeBoxCss}
-  padding: 3px;
-`
+import Responseform from "./Responseform"
+import formatDate from "../utils/dateFormatter"
+import { SResponse } from "./Commentlist"
 
 const CommentResponse = ({ commentId }) => {
   const [comment, setComment] = useState("")
@@ -17,20 +13,16 @@ const CommentResponse = ({ commentId }) => {
 
   if (!comment) return null
 
-  console.log(comment)
-
   return (
-    <>
+    <SResponse>
       <div>{comment.content}</div>
       <div>{comment.user.username}</div>
-      <div style={{ color: "red" }}>{comment.dateAdded}</div>
-      <SResponse>
-        {comment.responses &&
-          comment.responses.map((resp) => {
-            return <CommentResponse key={resp} commentId={resp} />
-          })}
-      </SResponse>
-    </>
+      <div style={{color: "red"}}>{formatDate(comment.dateAdded)}</div>
+      <Responseform />
+      {comment.responses.map((resp) => {
+        return <CommentResponse key={resp} commentId={resp} />
+      })}
+    </SResponse>
   )
 }
 
