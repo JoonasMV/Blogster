@@ -1,13 +1,11 @@
 const commentRouter = require("express").Router()
 const Comment = require("../models/commentModel")
 const Blog = require("../models/blogModel")
-const Response = require("../models/responseModel")
 const authChecker = require("../utils/authChecker")
 
 commentRouter.post("/:id", authChecker, async (req, res) => {
   const id = req.params.id
   const blogToComment = await Blog.findById(id)
-  console.log(blogToComment)
 
   const comment = new Comment({
     content: req.body.content,
@@ -27,15 +25,17 @@ commentRouter.post("/:id", authChecker, async (req, res) => {
 })
 
 commentRouter.post("/response/:id", authChecker, async (req, res) => {
+  console.log(req.user)
   const id = req.params.id
   const commentToRespond = await Comment.findById(id)
-  console.log(commentToRespond)
 
   const response = new Comment({
     content: req.body.content,
     user: req.user,
     dateAdded: new Date(),
   })
+
+  console.log(response)
 
   try {
     const savedResponse = await response.save()

@@ -8,6 +8,11 @@ const postComment = async (id, comment) => {
   return postedComment.data
 }
 
+const postResponse = async (id, comment) => {
+  const content = { content: comment }
+  const postedResponse = await axios.post(`${baseUrl}/response/${id}`, content, getToken)
+}
+
 const getBlogComments = async (id, min, max) => {
   const comments = await axios.get(`${baseUrl}/blog/${id}`, { params: { minDoc: min, maxDoc: max }})
   return comments.data
@@ -18,4 +23,4 @@ const getResponse = async (id ,commentId) => {
   return response.data
 }
 
-export default { postComment, getBlogComments, getResponse }
+export default { postComment, getBlogComments, getResponse, postResponse }

@@ -1,17 +1,20 @@
 import styled from "styled-components"
 import { useState } from "react"
+import commentService from "../services/commentService"
 
 const Stextarea = styled.textarea`
   width: 100%;
   resize: none;
 `
 
-const Responseform = () => {
+const Responseform = ({ idToRespond }) => {
   const [show, setShow] = useState(false)
   const [response, setResponse] = useState("")
   const isVisible = show ? "" : "none"
 
-  const submitResponse = () => { }
+  const submitResponse = () => {
+      commentService.postResponse(idToRespond, response)
+   }
 
   return (
     <>

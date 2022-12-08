@@ -18,7 +18,7 @@ const Commentlist = ({ comments, loadMore }) => {
             <div>{comment.content}</div>
             <div>{comment.user.username}</div>
             <div style={{ color: "red" }}>{formatDate(comment.dateAdded)}</div>
-            <Responseform />
+            <Responseform idToRespond={comment.id}/>
 
             {comment.responses &&
               comment.responses.map((response) => {
