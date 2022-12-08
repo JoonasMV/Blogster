@@ -39,7 +39,9 @@ commentRouter.post("/response/:id", authChecker, async (req, res) => {
 
   try {
     const savedResponse = await response.save()
-    commentToRespond.responses = commentToRespond.responses.concat(savedResponse._id)
+    commentToRespond.responses = commentToRespond.responses.concat(
+      savedResponse._id
+    )
     await commentToRespond.save()
     res.sendStatus(201)
   } catch (error) {
@@ -47,14 +49,21 @@ commentRouter.post("/response/:id", authChecker, async (req, res) => {
   }
 })
 
-commentRouter.get("/:id", async (req, res) => {
-  console.log(req.query)
+commentRouter.get("/blog/:id", async (req, res) => {
+  //console.log(req.query)
   const comments = await Comment.find({ blog: req.params.id })
-  .populate("user")
-  .populate({ path: "responses", model: "Comment" })
+    .populate("user")
+    //.populate({ path: "responses", model: "Comment" })
     .skip(req.query.minDoc)
     .limit(req.query.maxDoc)
   res.json(comments)
+})
+
+commentRouter.get("/:id", async (req, res) => {
+  console.log(req.params)
+  const commentResponse = await Comment.findOne({ _id: req.params.id})
+    .populate("user", "username")
+  res.json(commentResponse)
 })
 
 module.exports = commentRouter

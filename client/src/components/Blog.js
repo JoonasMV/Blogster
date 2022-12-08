@@ -55,7 +55,7 @@ const Blog = () => {
     blogService.getOne(id).then((res) => {
       setBlog(res)
     })
-    commentService.getComments(id, min, max).then(res => {
+    commentService.getBlogComments(id, min, max).then(res => {
       setBlogComments(res)
     })
   }, [])
@@ -74,7 +74,7 @@ const Blog = () => {
 
   const loadMoreComments = async () => {
     const commentsToLoad = 2
-    const comments = await commentService.getComments(id, min + commentsToLoad, max + commentsToLoad)
+    const comments = await commentService.getBlogComments(id, min + commentsToLoad, max + commentsToLoad)
     
     setMin(prev => prev + commentsToLoad)
     setMax(prev => prev + commentsToLoad)

@@ -4,6 +4,8 @@ import { Link } from "react-router-dom"
 import formatDate from "../utils/dateFormatter"
 import { useState } from "react"
 import Responseform from "./Responseform"
+import CommentResponse from "./CommentResponse"
+import commentService from "../services/commentService"
 
 const CommentDiv = styled.div`
   ${fadeBoxCss}
@@ -16,21 +18,12 @@ const SResponse = styled.div`
 `
 
 const Commentlist = ({ comments, loadMore }) => {
-  // const [show, setShow] = useState("")
-
-  // const changeVisibility = () => {
-  //   if (show === "") {
-  //     setShow("none")
-  //   } else {
-  //     setShow("")
-  //   }
-  // }
 
   return (
     <>
       {comments.map((comment) => {
         return (
-          <CommentDiv key={comment.id}>
+          <CommentDiv key={comment.blog.id}>
             {comment.content}
             <div>
               posted by:{" "}
@@ -39,16 +32,18 @@ const Commentlist = ({ comments, loadMore }) => {
               </Link>
             </div>
             <div style={{ color: "red" }}>{formatDate(comment.dateAdded)}</div>
+            
             <Responseform />
-            {comment.responses.map((response) => {
+            
+            {/* {comment.responses.map((response) => {
               return (
-                <SResponse key={response.id}>
-                  {response.content}
-                  <br />
+                <SResponse key={`${response.id}nest`}>
+                  {console.log(response)}
+                  <CommentResponse response={response} />
                   <Responseform>{response.content}</Responseform>
                 </SResponse>
               )
-            })}
+            })} */}
           </CommentDiv>
         )
       })}
