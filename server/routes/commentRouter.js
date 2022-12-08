@@ -60,10 +60,12 @@ commentRouter.get("/blog/:id", async (req, res) => {
 })
 
 commentRouter.get("/:id", async (req, res) => {
-  console.log(req.params)
-  const commentResponse = await Comment.findOne({ _id: req.params.id})
-    .populate("user", "username")
-  res.json(commentResponse)
+  try {
+    const commentResponse = await Comment.findOne({
+      _id: req.params.id,
+    }).populate("user", "username")
+    res.json(commentResponse)
+  } catch (ex) {}
 })
 
 module.exports = commentRouter

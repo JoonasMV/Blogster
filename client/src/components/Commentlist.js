@@ -18,35 +18,27 @@ const SResponse = styled.div`
 `
 
 const Commentlist = ({ comments, loadMore }) => {
-
   return (
     <>
       {comments.map((comment) => {
         return (
-          <CommentDiv key={comment.blog.id}>
-            {comment.content}
-            <div>
-              posted by:{" "}
-              <Link to={`/user/${comment.user.id}`}>
-                <strong>{comment.user.username}</strong>
-              </Link>
-            </div>
-            <div style={{ color: "red" }}>{formatDate(comment.dateAdded)}</div>
-            
+          <SResponse key={comment.id}>
+            <div>{comment.content}</div>
+            <div>{comment.user.username}</div>
             <Responseform />
-            
-            {/* {comment.responses.map((response) => {
-              return (
-                <SResponse key={`${response.id}nest`}>
-                  {console.log(response)}
-                  <CommentResponse response={response} />
-                  <Responseform>{response.content}</Responseform>
-                </SResponse>
-              )
-            })} */}
-          </CommentDiv>
+            {console.log(comment.responses)}
+            {comment.responses &&
+              comment.responses.map((responseId) => {
+                return (
+                  <SResponse key={responseId}>
+                    <CommentResponse commentId={responseId} />
+                  </SResponse>
+                )
+              })}
+          </SResponse>
         )
       })}
+
       <button onClick={loadMore}>Load more</button>
     </>
   )

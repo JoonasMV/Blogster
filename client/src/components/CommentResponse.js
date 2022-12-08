@@ -8,11 +8,11 @@ const SResponse = styled.div`
   padding: 3px;
 `
 
-const CommentResponse = ({ response }) => {
+const CommentResponse = ({ commentId }) => {
   const [comment, setComment] = useState("")
 
   useEffect(() => {
-    commentService.getResponse(response).then((res) => setComment(res))
+    commentService.getResponse(commentId).then((res) => setComment(res))
   }, [])
 
   if (!comment) return null
@@ -27,7 +27,7 @@ const CommentResponse = ({ response }) => {
       <SResponse>
         {comment.responses &&
           comment.responses.map((resp) => {
-            return <CommentResponse key={resp} response={resp} />
+            return <CommentResponse key={resp} commentId={resp} />
           })}
       </SResponse>
     </>
