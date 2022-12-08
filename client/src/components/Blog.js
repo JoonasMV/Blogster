@@ -50,6 +50,7 @@ const Blog = () => {
   const [max, setMax] = useState(2)
   const { id } = useParams()
   const commentRef = useRef()
+  console.log(id)
 
   useEffect(() => {
     blogService.getOne(id).then((res) => {

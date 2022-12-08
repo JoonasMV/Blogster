@@ -22,4 +22,5 @@
 |2/12|2|comment backend|
 |5/12|2.5|comment responding|
 |8/12|4|comment responding|
+|8/12|1|fixed routes with params|
 |total|xxx||

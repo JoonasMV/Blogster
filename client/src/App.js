@@ -6,7 +6,7 @@ import Blogform from "./components/Blogform"
 import Loginbox from "./components/Loginbox"
 import Userbox from "./components/Userbox"
 import styled, { createGlobalStyle } from "styled-components"
-import { Route, Routes } from "react-router-dom"
+import { Route, Routes, useParams } from "react-router-dom"
 import { useState } from "react"
 import { useEffect } from "react"
 
@@ -41,13 +41,13 @@ function App() {
 
     }
   }, [])
-
+  const params = useParams()
+  console.log("params")
 
   return (
     <div>
       <StyledBody />
       <Banner />
-
       <Routes>
         <Route
           path={"/"}
@@ -63,7 +63,7 @@ function App() {
           }
         />
         <Route path={"/newBlog"} element={<Blogform />} />
-        <Route path={"/blogs/:id"} element={<Blog />} />
+        <Route path="/blogs/:id" element={<Blog />} />
         <Route path="/user/:id" element={<User />} />
       </Routes>
     </div>

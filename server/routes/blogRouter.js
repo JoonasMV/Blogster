@@ -9,6 +9,7 @@ blogRouter.get("/", async (req, res) => {
 })
 
 blogRouter.get("/:id", async (req, res) => {
+  console.log("Test")
   const id = req.params.id
   try {
     const blog = await Blog.findById(id)
@@ -20,7 +21,7 @@ blogRouter.get("/:id", async (req, res) => {
     res.json(blog)
   } catch (error) {
     console.log(error)
-    res.sendStatus(404)
+    res.sendStatus(400)
   }
 })
 
