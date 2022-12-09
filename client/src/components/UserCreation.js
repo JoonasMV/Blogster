@@ -1,15 +1,11 @@
-import { StyledInput } from "./Loginbox"
-import styled from "styled-components"
-import {inputCSS} from "../css/inputCss"
-import { isValid } from "./Loginbox"
-import { useRef } from "react"
+import { useRef, useState } from "react"
+import { StyledInput } from "../css/Userbox"
+import { StyledTextArea } from "../css/Userbox"
+import userService from "../services/userService"
 
-const StyledTextArea = styled.textarea`
-  ${inputCSS}
-  resize: none;
-`
-
-const UserCreation = ({ email, setEmail, bio ,setBio }) => {
+const UserCreation = ({ username, password, setNewUser }) => {
+  const [email, setEmail] = useState("")
+  const [bio, setBio] = useState("")
   const bioRef = useRef()
 
   const handleBio = (e) => {
@@ -19,25 +15,47 @@ const UserCreation = ({ email, setEmail, bio ,setBio }) => {
     textarea.style.height = textarea.scrollHeight + 2 + "px"
   }
 
+  const createNewUser = async () => {
+    const newUser = {
+      username,
+      password,
+      email,
+      bio,
+    }
+
+    const response = await userService.createNewUser(newUser)
+    if (response.status === 201) {
+      setNewUser(false)
+      console.log("user creation successfull")
+    } else {
+      console.log("user creation failed")
+    }
+  }
+
   return (
     <>
-    E-mail
-    <StyledInput
-      style={!email.match(/\S+@\S+\.\S+/) && email ? isValid : null}
-      type="email"
-      value={email}
-      onChange={(e) => setEmail(e.target.value)}
-    />
-    Bio
-    <StyledTextArea
-      type="text"
-      ref={bioRef}
-      onChange={handleBio}
-      value={bio}
-    />
-  </>
+      e-mail
+      <div>
+        <StyledInput
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+      </div>
+      bio
+      <div>
+        <StyledTextArea
+          type="text"
+          ref={bioRef}
+          value={bio}
+          onChange={handleBio}
+        />
+      </div>
+      <div>
+        <button onClick={createNewUser}>Create user</button>
+      </div>
+    </>
   )
-
 }
 
 export default UserCreation

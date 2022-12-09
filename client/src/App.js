@@ -3,7 +3,7 @@ import Bloglist from "./components/Bloglist"
 import Blog from "./components/Blog"
 import User from "./components/User"
 import Blogform from "./components/Blogform"
-import Loginbox from "./components/Loginbox"
+import UserLogin from "./components/UserLogin"
 import Userbox from "./components/Userbox"
 import styled, { createGlobalStyle } from "styled-components"
 import { Route, Routes, useParams } from "react-router-dom"
@@ -41,8 +41,6 @@ function App() {
 
     }
   }, [])
-  const params = useParams()
-  console.log("params")
 
   return (
     <div>
@@ -56,7 +54,7 @@ function App() {
               <UserboxWrapper>
               {user.id
                   ? <Userbox user={user} setUser={setUser}/>
-                  : <Loginbox setUser={setUser}/>}
+                  : <UserLogin setUser={setUser}/>}
               </UserboxWrapper>
                   <Bloglist />
             </>
