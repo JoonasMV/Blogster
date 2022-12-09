@@ -1,36 +1,10 @@
 import styled from "styled-components"
 import { Link } from "react-router-dom"
+import { Container, StyledButton, NewBlog, LinkWrapper } from "../css/Userbox"
 
-const Container = styled.div`
-  text-align: center;
-  border: double 4px transparent;
-  border-radius: 10px;
-  background-image: linear-gradient(#060613, #060613),
-    radial-gradient(circle at top left, #f00, #3020ff);
-  background-origin: border-box;
-  background-clip: padding-box, border-box;
-  padding: 1vh;
-  padding-top: 0.5vh;
-  width: 14vw;
-`
 
-const StyledLink = styled(Link)`
-  text-decoration: none;
-  text-align: left;
-  font-family: "Open Sans";
-  color: lightpink;
-`
 
-const StyledButton = styled.button`
-  width: 100%;
-  padding: 5px 20px;
-  padding-left: 7px;
-  margin: 3px 0;
-  box-sizing: border-box;
-  border: none;
-  border-bottom: 2px solid black;
-  border-radius: 9px 0 9px;
-`
+
 
 const StyledGreet = styled.div`
   font-family: "Open Sans";
@@ -54,7 +28,7 @@ const Userbox = ({ user, setUser }) => {
         <Link to={`user/${user.id}`} style={{textDecoration: "none"}}>
           <StyledGreet>{user.username}</StyledGreet>
         </Link>
-        <StyledLink to="/newBlog">New blog</StyledLink>
+        <LinkWrapper><NewBlog to="/newBlog">New blog</NewBlog></LinkWrapper>
         <div>
           <StyledButton onClick={logout}>Log out</StyledButton>
         </div>

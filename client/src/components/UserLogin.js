@@ -2,12 +2,7 @@ import { useState } from "react"
 import loginService from "../services/loginService"
 import UserCreation from "./UserCreation"
 import Notification from "./Notification"
-import { TextButton } from "../css/Userbox"
-import { StyledForm } from "../css/Userbox"
-import { StyledInput } from "../css/Userbox"
-import { isValid } from "../css/Userbox"
-import { Container } from "../css/Userbox"
-import { Sh3 } from "../css/Userbox"
+import { TextButton, StyledInput, isValid, Container, Sh3, StyledButton } from "../css/UserLogin"
 
 const UserLogin = ({ setUser }) => {
   const [username, setUsername] = useState("")
@@ -36,7 +31,7 @@ const UserLogin = ({ setUser }) => {
     <Container>
       <Sh3>Login</Sh3>
       <Notification message={notification} setMessage={setNotification} />
-      <StyledForm>
+      <form>
         Username
         <div>
           <StyledInput
@@ -56,8 +51,8 @@ const UserLogin = ({ setUser }) => {
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
-        {!newUser && <button onClick={handleLogin}>Login</button>}
-      </StyledForm>
+        {!newUser && <StyledButton onClick={handleLogin}>Login</StyledButton>}
+      </form>
 
       {newUser && <UserCreation username={username} password={password} setNewUser={setNewUser} setNotification={setNotification}/>}
 

@@ -2,7 +2,7 @@ import blogService from "../services/blogService"
 import styled from "styled-components"
 import { useRef, useState } from "react"
 import { Link } from "react-router-dom"
-import { buttonCSS } from "../css/buttonCss"
+import { blueButton } from "../css/buttonCss"
 
 const FormWrapper = styled.div`
   margin: auto;
@@ -71,8 +71,9 @@ const StyledTitleArea = styled.textarea`
 `
 
 const StyledButton = styled.button`
-  ${buttonCSS}
+  ${blueButton}
   width: 5rem;
+  font-size: 15px;
 `
 
 const Blogform = () => {
@@ -133,7 +134,7 @@ const Blogform = () => {
           <div style={{marginBottom: 10}}>
           <StyledButton
             type="submit"
-            style={{margin: "auto"}}>Post</StyledButton>
+            style={{marginRight: 20}}>Post</StyledButton>
           <Link to="/"><StyledButton type="button">cancel</StyledButton></Link>
           </div>
         </StyledBlog>

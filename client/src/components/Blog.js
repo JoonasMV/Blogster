@@ -47,10 +47,9 @@ const Blog = () => {
   const [blogComments, setBlogComments] = useState([])
   const [comment, setComment] = useState("")
   const [min, setMin] = useState(0)
-  const [max, setMax] = useState(2)
+  const [max, setMax] = useState(5)
   const { id } = useParams()
   const commentRef = useRef()
-  console.log(id)
 
   useEffect(() => {
     blogService.getOne(id).then((res) => {
@@ -70,6 +69,7 @@ const Blog = () => {
 
   const handlePosting = async () => {
     const postedComment = await commentService.postComment(id, comment)
+    setComment("")
     setBlogComments((comments) => comments.concat(postedComment))
   }
 
@@ -80,7 +80,6 @@ const Blog = () => {
     setMin(prev => prev + commentsToLoad)
     setMax(prev => prev + commentsToLoad)
     
-    console.log(comments)
     setBlogComments(prev => prev.concat(comments))
   }
 

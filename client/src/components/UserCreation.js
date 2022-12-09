@@ -1,7 +1,8 @@
 import { useRef, useState } from "react"
-import { StyledInput } from "../css/Userbox"
-import { StyledTextArea } from "../css/Userbox"
+import { StyledInput } from "../css/UserLogin"
+import { StyledTextArea } from "../css/UserLogin"
 import userService from "../services/userService"
+import { CreateUserButton } from "../css/UserLogin"
 
 const UserCreation = ({ username, password, setNewUser, setNotification }) => {
   const [email, setEmail] = useState("")
@@ -51,9 +52,7 @@ const UserCreation = ({ username, password, setNewUser, setNotification }) => {
           onChange={handleBio}
         />
       </div>
-      <div>
-        <button onClick={createNewUser}>Create user</button>
-      </div>
+        <CreateUserButton onClick={createNewUser}>Create user</CreateUserButton>
     </>
   )
 }

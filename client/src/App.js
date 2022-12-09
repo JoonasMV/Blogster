@@ -6,7 +6,7 @@ import Blogform from "./components/Blogform"
 import UserLogin from "./components/UserLogin"
 import Userbox from "./components/Userbox"
 import styled, { createGlobalStyle } from "styled-components"
-import { Route, Routes, useParams } from "react-router-dom"
+import { Route, Routes } from "react-router-dom"
 import { useState } from "react"
 import { useEffect } from "react"
 
@@ -19,26 +19,37 @@ body {
   white-space: pre-line;
 }
 `
+
 const UserboxWrapper = styled.div`
-  position: sticky;
-  top: 2rem;
-  right: 1rem;
-  float: right;
-  /* width: 20%; */
-  @media (max-width: 1000px) {
+position: sticky;
+top: 2rem;
+right: 1rem;
+float: right;
+@media (max-width: 1000px) {
+  position: static;
+  float: none;
+  width: 50%;
+  margin: auto;
+  margin-bottom: 2vh;
+}
+`
+
+const PageWrapper = styled.div`
+  padding: 0 25%;
+  @media (max-width: 1000px) { 
+    padding: 0 5%;
   }
 `
 
 function App() {
-  const [user, setUser] = useState({username: null, id: null})
+  const [user, setUser] = useState({ username: null, id: null })
 
   useEffect(() => {
     if (sessionStorage.length !== 0) {
       setUser({
         username: JSON.parse(sessionStorage.getItem("username")),
-        id: JSON.parse(sessionStorage.getItem("id"))
+        id: JSON.parse(sessionStorage.getItem("id")),
       })
-
     }
   }, [])
 
@@ -52,17 +63,21 @@ function App() {
           element={
             <>
               <UserboxWrapper>
-              {user.id
-                  ? <Userbox user={user} setUser={setUser}/>
-                  : <UserLogin setUser={setUser}/>}
+                {user.id ? (
+                  <Userbox user={user} setUser={setUser} />
+                ) : (
+                  <UserLogin setUser={setUser} />
+                )}
               </UserboxWrapper>
-                  <Bloglist />
+              <PageWrapper>
+                <Bloglist />
+              </PageWrapper>
             </>
           }
         />
         <Route path={"/newBlog"} element={<Blogform />} />
         <Route path="/blogs/:id" element={<Blog />} />
-        <Route path="/user/:id" element={<User />} />
+        <Route path="/user/:id" element={<PageWrapper><User /></PageWrapper>} />
       </Routes>
     </div>
   )

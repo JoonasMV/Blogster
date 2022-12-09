@@ -11,7 +11,6 @@ const getOne = async (id) => {
   const blog = await axios.get(`${baseUrl}/${id}`)
   return blog.data
 }
-console.log(getToken)
 
 const postBlog = async (newBlog) => {
   const postedBlog = await axios.post(baseUrl, newBlog, getToken)

@@ -6,7 +6,7 @@ import { fadeBoxCss } from "../css/divCss"
 
 const BlogContent = styled.div`
   ${fadeBoxCss}
-  width:50%;
+  /* width:50%; */
   margin: auto;
   margin-bottom: 2rem;
   padding: 1rem;

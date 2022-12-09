@@ -8,6 +8,7 @@ const fadeBoxCss = css`
   background-origin: border-box;
   background-clip: padding-box, border-box;
   color: white;
+  box-sizing: border-box;
 `
 const redFadeBox = css`
   text-align: center;
@@ -17,6 +18,7 @@ const redFadeBox = css`
     radial-gradient(circle at top left, #f00, #3020ff);
   background-origin: border-box;
   background-clip: padding-box, border-box;
+  box-sizing: border-box;
 `
 
 export { fadeBoxCss, redFadeBox }

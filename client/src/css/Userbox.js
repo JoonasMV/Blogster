@@ -1,51 +1,40 @@
-import styled from "styled-components";
-import { inputCSS } from "./inputCss";
-import { Link } from "react-router-dom";
-
-export const TextButton = styled(Link)`
-font-size: 15px;
-text-align: left;
-`
-
-export const StyledInput = styled.input`
-${inputCSS}
-&:focus {
-  outline: none;
-}
-` 
-
-export const isValid = {
-  outline: "3px solid red",
-}
+import styled from "styled-components"
+import { buttonCSS } from "./buttonCss"
+import { Link } from "react-router-dom"
 
 export const Container = styled.div`
-text-align: center;
-border: double 4px transparent;
-border-radius: 10px;
-background-image: linear-gradient(#060613, #060613),
-  radial-gradient(circle at top left, #f00, #3020ff);
-background-origin: border-box;
-background-clip: padding-box, border-box;
-padding: 1vh;
-padding-top: 0.5vh;
-width: 14vw;
+  text-align: center;
+  border: double 4px transparent;
+  border-radius: 10px;
+  background-image: linear-gradient(#060613, #060613),
+    radial-gradient(circle at top left, #f00, #3020ff);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  padding: 5px;
+  width: 14vw;
+  @media (max-width: 1000px) {
+   width: 100%;
+}
 `
 
-export const Sh3 = styled.h3`
+export const StyledButton = styled.button`
+${buttonCSS}
+/* width: 100%;
+padding: 5px 20px;
+padding-left: 7px;
+margin: 3px 0;
+box-sizing: border-box;
+border: none;
+border-bottom: 2px solid black;
+border-radius: 9px 0 9px; */
+`
+export const NewBlog = styled(Link)`
+text-decoration: none;
+text-align: left;
 font-family: "Open Sans";
-text-align: center;
-margin-top: 5px;
-margin-bottom: 0;
-margin-bottom: 1vh;
+color: white;
 `
 
-export const StyledTextArea = styled.textarea`
-${inputCSS}
-resize: none;
-`
-
-export const StyledForm = styled.form`
-margin: 10px;
-margin-top: 5px;
-margin-bottom: 0;
+export const LinkWrapper = styled.div`
+  margin: 5px 0;
 `
