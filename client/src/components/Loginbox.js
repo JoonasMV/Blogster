@@ -3,6 +3,8 @@ import styled, { css } from "styled-components"
 import loginService from "../services/loginService"
 import userService from "../services/userService"
 import { Link } from "react-router-dom"
+import UserCreation from "./UserCreation"
+import { inputCSS } from "../css/inputCss"
 
 export const Container = styled.div`
   text-align: center;
@@ -29,26 +31,11 @@ const Sh3 = styled.h3`
   margin-bottom: 1vh;
 `
 
-const inputCSS = css`
-  padding: 5px 20px;
-  padding-left: 7px;
-  margin: 3px 0;
-  box-sizing: border-box;
-  border: none;
-  border-bottom: 2px solid black;
-  border-radius: 9px 0 9px;
-`
-
-const StyledInput = styled.input`
+export const StyledInput = styled.input`
   ${inputCSS}
   &:focus {
     outline: none;
   }
-`
-
-const StyledTextArea = styled.textarea`
-  ${inputCSS}
-  resize: none;
 `
 
 const StyledButton = styled(Link)`
@@ -56,7 +43,7 @@ const StyledButton = styled(Link)`
   text-align: left;
 `
 
-const isValid = {
+export const isValid = {
   outline: "3px solid red",
 }
 
@@ -66,18 +53,7 @@ const Loginbox = ({ setUser }) => {
   const [email, setEmail] = useState("")
   const [bio, setBio] = useState("")
   const [newUser, setNewUser] = useState(false)
-  const bioRef = useRef()
-
-  const handleBio = (e) => {
-    setBio(e.target.value)
-    const textarea = bioRef.current
-    textarea.style.height = ""
-    textarea.style.height = textarea.scrollHeight + 2 + "px"
-  }
-
-  const handleEmail = (e) => {
-    setEmail(e.target.value)
-  }
+  
 
   const handleLogin = async (event) => {
     event.preventDefault()
@@ -136,24 +112,12 @@ const Loginbox = ({ setUser }) => {
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
-          {newUser && (
-            <>
-              E-mail
-              <StyledInput
-                style={!email.match(/\S+@\S+\.\S+/) && email ? isValid : null}
-                type="email"
-                value={email}
-                onChange={handleEmail}
-              />
-              Bio
-              <StyledTextArea
-                type="text"
-                ref={bioRef}
-                onChange={handleBio}
-                value={bio}
-              />
-            </>
-          )}
+          {newUser && 
+          <UserCreation 
+            email={email} 
+            setEmail={setEmail} 
+            bio={bio}
+            setBio={setBio}/>}
           {newUser ? (
             <button onClick={createNewUser}>Create new user</button>
           ) : (
