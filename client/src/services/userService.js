@@ -7,8 +7,12 @@ const getById = async (id) => {
 }
 
 const createNewUser = async (newUser) => {
-  const createdUser = await axios.post(baseUrl, newUser)
-  return createdUser
+  try {
+    const createdUser = await axios.post(baseUrl, newUser)
+    return createdUser
+  } catch (error) {
+    return error.response
+  }
 }
 
 export default { getById, createNewUser }

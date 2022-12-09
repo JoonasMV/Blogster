@@ -22,8 +22,6 @@ const userSchema = new mongoose.Schema({
   bio: String,
 })
 
-userSchema.plugin(uniqueValidator, { message : "username already taken"})
-
 userSchema.set("toJSON", {
   virtuals: true,
   transform: (doc, ret) => {

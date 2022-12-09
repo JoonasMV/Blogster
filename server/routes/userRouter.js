@@ -25,10 +25,17 @@ userRouter.post("/", async (req, res) => {
       passwordHash,
       bio,
     })
+
+    const duolicateUser = await User.find({ username: {'$regex' : '^'+username+'$', '$options' : 'i'} })
+    if (!!duolicateUser === true) {
+      return res.status(400).json({ error: "Username already taken" })
+    }
+
     const addedUser = await newUser.save()
     res.status(201).json(addedUser)
   } catch (ex) {
-    res.sendStatus(400)
+    console.log(ex.message)
+    res.status(400).json({ error: "Username is invalid" })
   }
 })
 

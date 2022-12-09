@@ -1,5 +1,5 @@
 import axios from "axios"
-import getToken from "./utils"
+import getToken from "../utils/getToken"
 const baseUrl = "/api/blogs"
 
 const getAll = async () => {
@@ -11,6 +11,7 @@ const getOne = async (id) => {
   const blog = await axios.get(`${baseUrl}/${id}`)
   return blog.data
 }
+console.log(getToken)
 
 const postBlog = async (newBlog) => {
   const postedBlog = await axios.post(baseUrl, newBlog, getToken)

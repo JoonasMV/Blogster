@@ -3,7 +3,7 @@ import { StyledInput } from "../css/Userbox"
 import { StyledTextArea } from "../css/Userbox"
 import userService from "../services/userService"
 
-const UserCreation = ({ username, password, setNewUser }) => {
+const UserCreation = ({ username, password, setNewUser, setNotification }) => {
   const [email, setEmail] = useState("")
   const [bio, setBio] = useState("")
   const bioRef = useRef()
@@ -28,7 +28,7 @@ const UserCreation = ({ username, password, setNewUser }) => {
       setNewUser(false)
       console.log("user creation successfull")
     } else {
-      console.log("user creation failed")
+      setNotification(response.data.error)
     }
   }
 

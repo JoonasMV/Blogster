@@ -1,5 +1,5 @@
 import axios from "axios"
-import getToken from "./utils"
+import getToken from "../utils/getToken"
 const baseUrl = "/api/comments"
 
 const postComment = async (id, comment) => {
