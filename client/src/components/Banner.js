@@ -2,31 +2,44 @@ import styled from "styled-components"
 import { Link } from "react-router-dom"
 
 const Background = styled.div`
-  background-color: #b3fff0;
-  /* height: 5vh; */
-  margin-bottom: 4rem;
-  line-height: 18vh;
-  text-align: center;
-  box-shadow: 0px 0px 45px 50px #b3fff0;
-  @media (max-width: 1000px) {
-    box-shadow: 0px 0px 40px 55px #b3fff0;
-  }
+  background-color: #0d0d1a;
+  border-bottom: 1px solid rgba(255, 255, 255, .15);
+  display: flex;
+  position: fixed;
+  width: 100%;
+  top: 0;
   `
 const Title = styled.h1`
   margin: 0;
-  font-family: "Pacifico", cursive;
-  font-size: 110px;
-  color: #060613;
-  @media (max-width: 1000px) {
-    font-size: 70px;
-    line-height: 90px;
-  }
+  margin-left: 10px;
+  font-size: 60px;
+  color: white;
 `
+
+const ButtonWrapper = styled.div`
+  display: flex;
+  margin-left: auto;
+  align-items: center;
+  padding-right: 10px;
+`
+
+const StyledButton = styled.button`
+  border-radius: 15px;
+  font-size: 15px;
+  height: 45px;
+  width: 80px;
+  margin-left: 10px;
+`
+
 
 const Banner = () => {
   return (
     <Background>
       <Link to="/" style={{textDecoration: "none"}}><Title>Blogster</Title></Link>
+      <ButtonWrapper>
+        <StyledButton>Login</StyledButton>
+        <StyledButton>Sign up</StyledButton>
+      </ButtonWrapper>
     </Background>
   )
 }

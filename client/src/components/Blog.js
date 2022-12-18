@@ -9,17 +9,30 @@ import formatDate from "../utils/dateFormatter"
 
 const Container = styled.div`
   padding: 5vh 25% 0 25%;
+  `
+
+const BlogWrapper = styled.div`
+  background-color: #343a40;
+  padding: 1rem;
+  border-radius: 15px;
+`
+
+const Sh2 = styled.h2`
+  margin: 0;
+`
+
+const Sh3 = styled.h3`
+  margin: 0;
 `
 
 const CommentBox = styled.textarea`
   font-family: "Open Sans", sans-serif;
-  border-radius: 10px 0;
   font-size: 20px;
   width: 100%;
   resize: none;
-  padding: 2px;
   line-height: 20px;
   min-height: 40px;
+  display: inherit;
   color: black;
   &:focus {
     outline: none;
@@ -30,17 +43,25 @@ const CommentBox = styled.textarea`
 `
 
 const PostButton = styled.button`
-  ${buttonCSS}
-  margin: 5px;
+  border-radius: 15px;
+  font-size: 15px;
+  height: 45px;
+  width: 120px;
+  margin: 10px 0;
+  margin-bottom: 1rem;
 `
 
 const CommentHeader = styled.h2`
   margin: 15px 0 10px;
 `
 
-const BlogContent = styled.div`
+const BlogContent = styled.p`
   white-space: pre-line;
 `
+
+const Shr = styled.hr`
+  margin: 1rem 0;
+` 
 
 const Blog = () => {
   const [blog, setBlog] = useState(null)
@@ -87,11 +108,13 @@ const Blog = () => {
   return (
     <>
       <Container>
-        <h2>{blog.title}</h2>
-        <BlogContent>{blog.content}</BlogContent>
-        <div style={{ color: "red" }}>{formatDate(blog.dateAdded)}</div>
-        <h3 style={{marginTop: 3}}>-{blog.user.username}</h3>
-        <hr></hr>
+        <BlogWrapper>
+          <Sh2>{blog.title}</Sh2>
+          <BlogContent>{blog.content}</BlogContent>
+          <div style={{ color: "red" }}>{formatDate(blog.dateAdded)}</div>
+          <Sh3>- {blog.user.username}</Sh3>
+        </BlogWrapper>
+        <Shr></Shr>
         <CommentHeader>Comments</CommentHeader>
         <CommentBox
           type="text"

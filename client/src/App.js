@@ -13,10 +13,10 @@ import { useEffect } from "react"
 const StyledBody = createGlobalStyle`
 body {
   margin: 0;
-  background-color: #060613;
+  margin-top: 6rem;
+  background-color: #0d0d1a;
   color: white;
   font-size: 20px;
-  white-space: pre-line;
 }
 `
 
@@ -36,8 +36,8 @@ float: right;
 
 const PageWrapper = styled.div`
   padding: 0 25%;
-  @media (max-width: 1000px) { 
-    padding: 0 5%;
+  @media (max-width: 768px){
+    padding: 0;
   }
 `
 
@@ -62,13 +62,13 @@ function App() {
           path={"/"}
           element={
             <>
-              <UserboxWrapper>
+              {/* <UserboxWrapper>
                 {user.id ? (
                   <Userbox user={user} setUser={setUser} />
                 ) : (
                   <UserLogin setUser={setUser} />
                 )}
-              </UserboxWrapper>
+              </UserboxWrapper> */}
               <PageWrapper>
                 <Bloglist />
               </PageWrapper>

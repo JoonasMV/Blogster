@@ -5,8 +5,10 @@ import Responseform from "./Responseform"
 import CommentResponse from "./CommentResponse"
 
 export const SResponse = styled.div`
-  ${fadeBoxCss}
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 5px;
   padding: 3px;
+  margin-left: 5px;
 `
 
 const Commentlist = ({ comments, loadMore }) => {
@@ -22,7 +24,9 @@ const Commentlist = ({ comments, loadMore }) => {
 
             {comment.responses &&
               comment.responses.map((response) => {
-                return <CommentResponse key={response} commentId={response} />
+                return (
+                    <CommentResponse key={response} commentId={response} />
+                )
               })}
           </SResponse>
         )

@@ -2,22 +2,22 @@ import blogService from "../services/blogService"
 import styled from "styled-components"
 import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
-import { fadeBoxCss } from "../css/divCss"
 
 const BlogContent = styled.div`
-  ${fadeBoxCss}
-  /* width:50%; */
-  margin: auto;
-  margin-bottom: 2rem;
+  color: white;
+  background-color: #343a40;
   padding: 1rem;
-  font-family: "Open Sans";
+  border-radius: 5px;
+  @media (max-width: 768px){
+    border-radius: 0;
+  }
 `
 
 const Sh2 = styled.h2`
   margin: 0;
   margin-bottom: 1rem;
-  color: white;
   text-align: left;
+  color: white;
 `
 
 const SLink = styled(Link)`
@@ -26,6 +26,16 @@ const SLink = styled(Link)`
   &:hover {
     text-decoration: underline;
   }
+`
+
+const TopBar = styled.div`
+  background-color: #343a40;
+  margin-bottom: 1rem;
+`
+
+const Container = styled.div`
+  margin-top: 2rem;
+  box-sizing: border-box;
 `
 
 const Bloglist = () => {
@@ -38,13 +48,26 @@ const Bloglist = () => {
     <>
       {blogs.map((blog) => {
         return (
-          <div key={blog.id}>
+          <Container key={blog.id}>
             <BlogContent>
-            <SLink to={`/blogs/${blog.id}`}><Sh2>{blog.title}</Sh2></SLink>
-            <hr></hr>
+              <SLink to={`/user/${blog.user.id}`}>
+                <TopBar>{blog.user.username}</TopBar>
+              </SLink>
+              <SLink to={`/blogs/${blog.id}`}>
+                <Sh2>{blog.title}</Sh2>
+              </SLink>
+              <hr></hr>
               {blog.content}
-              </BlogContent>
-          </div>
+            </BlogContent>
+          </Container>
+
+          // <div key={blog.id}>
+          //   <BlogContent>
+          //   <SLink to={`/blogs/${blog.id}`}><Sh2>{blog.title}</Sh2></SLink>
+          //   <hr></hr>
+          //     {blog.content}
+          //     </BlogContent>
+          // </div>
         )
       })}
     </>

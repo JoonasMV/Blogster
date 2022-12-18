@@ -1,11 +1,18 @@
-import styled from "styled-components"
-import { fadeBoxCss } from "./divCss"
+import styled, { css } from "styled-components"
+import { gray } from "./color"
+import { Link } from "react-router-dom"
+
+const borderCSS = css`
+  border: 2px solid rgba(255, 255, 255, 1);
+  border-radius: 15px 0;
+`
 
 export const Blogs = styled.div`
-  ${fadeBoxCss}
+  ${borderCSS}
   padding: 2vh;
   padding-top: 0;
   margin-top: 1rem;
+  background-color: ${gray};
 `
 
 export const BlogPreview = styled.div`
@@ -25,7 +32,8 @@ export const UserInfo = styled.div`
 `
 
 export const UserWrapper = styled.div`
-  ${fadeBoxCss}
+  ${borderCSS}
+  background-color: ${gray};
   width: 25%;
   text-align: center;
   margin-right: 1rem;
@@ -36,7 +44,8 @@ export const UserWrapper = styled.div`
 `
 
 export const BioBox = styled.div`
-  ${fadeBoxCss}
+  ${borderCSS}
+  background-color: ${gray};
   width: 75%;
   text-align: center;
   @media (max-width: 1000px) {
@@ -51,4 +60,16 @@ export const BioWrapper = styled.div`
 export const Sh2 = styled.h2`
   margin-bottom: 0;
   margin-top: 1rem;
+`
+export const SLink = styled(Link)`
+  color: white;
+  text-decoration: none;
+  &:hover {
+    text-shadow: 1px 1px 2px white;
+    text-decoration: underline;
+  }
+`
+
+export const Sh3 = styled.h3`
+  display: inline-block;
 `

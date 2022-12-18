@@ -9,7 +9,9 @@ import {
   BioWrapper,
   Blogs,
   BlogPreview,
-  Sh2
+  Sh2,
+  Sh3,
+  SLink
 } from "../css/User"
 
 const User = () => {
@@ -36,9 +38,9 @@ const User = () => {
         <Blogs>
           {pageUser.blogs.map((blog) => (
             <div key={blog.id}>
-              <Link to={`/blogs/${blog.id}`}>
-                <h3>{blog.title}</h3>
-              </Link>
+              <SLink to={`/blogs/${blog.id}`}>
+                <Sh3>{blog.title}</Sh3>
+              </SLink>
               <BlogPreview>{blog.content}</BlogPreview>
               <hr />
             </div>

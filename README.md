@@ -25,4 +25,5 @@
 |8/12|1|fixed routes with params|
 |9/12|2.5|fixing everything|
 |9/12|2|css|
-|total|40||
+|18/12|2|css|
+|total|42||
