@@ -52,7 +52,7 @@ const UserCreation = ({ username, password, setNewUser, setNotification }) => {
           onChange={handleBio}
         />
       </div>
-        <CreateUserButton onClick={createNewUser}>Create user</CreateUserButton>
+        {/* <CreateUserButton onClick={createNewUser}>Create user</CreateUserButton> */}
     </>
   )
 }

@@ -4,12 +4,14 @@ import { useParams } from "react-router-dom"
 import styled from "styled-components"
 import blogService from "../services/blogService"
 import commentService from "../services/commentService"
-import { buttonCSS } from "../css/buttonCss"
-import formatDate from "../utils/dateFormatter"
+import { formatDate, formatTime } from "../utils/dateFormatter"
 
 const Container = styled.div`
   padding: 5vh 25% 0 25%;
-  `
+  @media (max-width: 1000px) {
+    padding: 0;
+  }
+`
 
 const BlogWrapper = styled.div`
   background-color: #343a40;
@@ -61,7 +63,18 @@ const BlogContent = styled.p`
 
 const Shr = styled.hr`
   margin: 1rem 0;
-` 
+`
+
+const Date = styled.div`
+`
+
+const Time = styled.div`
+  font-size: 16px;
+`
+
+const Timestamp = styled.div`
+  margin-bottom: .1rem;
+`
 
 const Blog = () => {
   const [blog, setBlog] = useState(null)
@@ -76,7 +89,7 @@ const Blog = () => {
     blogService.getOne(id).then((res) => {
       setBlog(res)
     })
-    commentService.getBlogComments(id, min, max).then(res => {
+    commentService.getBlogComments(id, min, max).then((res) => {
       setBlogComments(res)
     })
   }, [])
@@ -96,12 +109,16 @@ const Blog = () => {
 
   const loadMoreComments = async () => {
     const commentsToLoad = 2
-    const comments = await commentService.getBlogComments(id, min + commentsToLoad, max + commentsToLoad)
-    
-    setMin(prev => prev + commentsToLoad)
-    setMax(prev => prev + commentsToLoad)
-    
-    setBlogComments(prev => prev.concat(comments))
+    const comments = await commentService.getBlogComments(
+      id,
+      min + commentsToLoad,
+      max + commentsToLoad
+    )
+
+    setMin((prev) => prev + commentsToLoad)
+    setMax((prev) => prev + commentsToLoad)
+
+    setBlogComments((prev) => prev.concat(comments))
   }
 
   if (!blog) return null
@@ -111,7 +128,10 @@ const Blog = () => {
         <BlogWrapper>
           <Sh2>{blog.title}</Sh2>
           <BlogContent>{blog.content}</BlogContent>
-          <div style={{ color: "red" }}>{formatDate(blog.dateAdded)}</div>
+          <Timestamp>
+            <Date>{formatDate(blog.dateAdded)}</Date>
+            <Time>{formatTime(blog.dateAdded)}</Time>
+          </Timestamp>
           <Sh3>- {blog.user.username}</Sh3>
         </BlogWrapper>
         <Shr></Shr>
@@ -122,9 +142,11 @@ const Blog = () => {
           onChange={handleCommentArea}
           placeholder={"test"}
           value={comment}
-          />
+        />
         <PostButton onClick={handlePosting}>Post comment</PostButton>
-        {blogComments && <Commentlist comments={blogComments} loadMore={loadMoreComments}/>}
+        {blogComments && (
+          <Commentlist comments={blogComments} loadMore={loadMoreComments} />
+        )}
       </Container>
     </>
   )

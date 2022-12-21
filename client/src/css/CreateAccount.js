@@ -1,7 +1,6 @@
-import styled from "styled-components"
-import { inputCSS } from "./inputCss"
-import { buttonCSS } from "./buttonCss"
-import { gray } from "./color"
+import styled from "styled-components";
+import { gray } from "./color";
+import { inputCSS } from "./inputCss";
 
 export const Container = styled.div`
   position: absolute;
@@ -23,15 +22,12 @@ export const StyledInput = styled.input`
   }
 `
 
-export const isValid = {
-  outline: "3px solid red",
-}
-
-export const Sh3 = styled.h3`
-  font-family: "Open Sans";
-  text-align: center;
-  margin-top: 5px;
-  margin-bottom: 1vh;
+export const StyledTextArea = styled.textarea`
+  ${inputCSS}
+  resize: none;
+  padding: 2px;
+  box-sizing: border-box;
+  width: 100%;
 `
 
 export const StyledButton = styled.button`

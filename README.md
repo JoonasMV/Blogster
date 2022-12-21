@@ -26,4 +26,5 @@
 |9/12|2.5|fixing everything|
 |9/12|2|css|
 |18/12|2|css|
-|total|42||
+|21/12|4|refactoring|
+|total|47||

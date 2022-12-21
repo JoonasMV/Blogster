@@ -1,9 +1,8 @@
 import styled from "styled-components"
-import { redFadeBox } from "../css/divCss"
-
 
 const NotificationDiv = styled.div`
-  ${redFadeBox}
+  border: 2px solid white;
+  border-radius: 10px;
 `
 
 const Notification = ({ message, setMessage }) => {

@@ -1,13 +1,11 @@
 import { useState } from "react"
 import loginService from "../services/loginService"
-import UserCreation from "./UserCreation"
 import Notification from "./Notification"
-import { TextButton, StyledInput, isValid, Container, Sh3, StyledButton } from "../css/UserLogin"
+import { StyledInput, isValid, Container, Sh3, StyledButton } from "../css/UserLogin"
 
 const UserLogin = ({ setUser }) => {
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
-  const [newUser, setNewUser] = useState(false)
   const [notification, setNotification] = useState("")
 
   const handleLogin = async (e) => {
@@ -23,7 +21,7 @@ const UserLogin = ({ setUser }) => {
       sessionStorage.setItem("username", JSON.stringify(logged.username))
       sessionStorage.setItem("id", JSON.stringify(logged.id))
     } catch (error) {
-      setNotification(error.error.message)
+      setNotification(error.response.data.error)
     }
   }
 
@@ -51,14 +49,8 @@ const UserLogin = ({ setUser }) => {
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
-        {!newUser && <StyledButton onClick={handleLogin}>Login</StyledButton>}
+        <StyledButton onClick={handleLogin}>Sign in</StyledButton>
       </form>
-
-      {newUser && <UserCreation username={username} password={password} setNewUser={setNewUser} setNotification={setNotification}/>}
-
-      <TextButton onClick={() => setNewUser((prev) => !prev)}>
-        {newUser ? "Cancel" : "Create account"}
-      </TextButton>
     </Container>
   )
 }

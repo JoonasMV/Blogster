@@ -1,4 +1,4 @@
-const formatDate = (dateAsString) => {
+export const formatDate = (dateAsString) => {
   const date = new Date(dateAsString)
   return [
     date.getDate(),
@@ -7,4 +7,10 @@ const formatDate = (dateAsString) => {
   ].join("/")
 }
 
-export default formatDate
+export const formatTime = (dateAsString) => {
+  const date = new Date(dateAsString)
+  return [ 
+    date.getHours(),
+    date.getMinutes(),
+  ].join(".")
+}

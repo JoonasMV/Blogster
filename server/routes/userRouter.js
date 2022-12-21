@@ -26,8 +26,8 @@ userRouter.post("/", async (req, res) => {
       bio,
     })
 
-    const duolicateUser = await User.find({ username: {'$regex' : '^'+username+'$', '$options' : 'i'} })
-    if (!!duolicateUser === true) {
+    const duplicateUser = await User.find({ username: {'$regex' : '^'+username+'$', '$options' : 'i'} })
+    if (duplicateUser.length !== 0) {
       return res.status(400).json({ error: "Username already taken" })
     }
 

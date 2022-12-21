@@ -1,45 +1,32 @@
-import styled from "styled-components"
 import { Link } from "react-router-dom"
+import { Background, Title, ButtonWrapper, StyledButton } from "../css/Banner"
+import UserLogin from "./UserLogin"
+import Userbox from "./Userbox"
+import { useState } from "react"
+import CreateAccount from "./CreateAccount"
 
-const Background = styled.div`
-  background-color: #0d0d1a;
-  border-bottom: 1px solid rgba(255, 255, 255, .15);
-  display: flex;
-  position: fixed;
-  width: 100%;
-  top: 0;
-  `
-const Title = styled.h1`
-  margin: 0;
-  margin-left: 10px;
-  font-size: 60px;
-  color: white;
-`
+const Banner = ({ user, setUser }) => {
+  const [show, setShow] = useState(false)
+  const isVisible = show ? { display: "" } : { display: "none" }
 
-const ButtonWrapper = styled.div`
-  display: flex;
-  margin-left: auto;
-  align-items: center;
-  padding-right: 10px;
-`
-
-const StyledButton = styled.button`
-  border-radius: 15px;
-  font-size: 15px;
-  height: 45px;
-  width: 80px;
-  margin-left: 10px;
-`
-
-
-const Banner = () => {
   return (
     <Background>
-      <Link to="/" style={{textDecoration: "none"}}><Title>Blogster</Title></Link>
+      <Link to="/" style={{ textDecoration: "none" }}>
+        <Title>Blogster</Title>
+      </Link>
       <ButtonWrapper>
-        <StyledButton>Login</StyledButton>
-        <StyledButton>Sign up</StyledButton>
+        {!user.id && (
+          <>
+            <StyledButton onClick={() => setShow((show) => !show)}>
+              Login
+            </StyledButton>
+            <StyledButton>Sign up</StyledButton>
+          </>
+        )}
+        {user.id && <Userbox user={user} setUser={setUser} />}
       </ButtonWrapper>
+      <div style={isVisible}>{!user.id && <UserLogin setUser={setUser} />}</div>
+      <div><CreateAccount /></div>
     </Background>
   )
 }

@@ -3,6 +3,7 @@ import Bloglist from "./components/Bloglist"
 import Blog from "./components/Blog"
 import User from "./components/User"
 import Blogform from "./components/Blogform"
+import { darkPurple } from "./css/color"
 import UserLogin from "./components/UserLogin"
 import Userbox from "./components/Userbox"
 import styled, { createGlobalStyle } from "styled-components"
@@ -14,23 +15,9 @@ const StyledBody = createGlobalStyle`
 body {
   margin: 0;
   margin-top: 6rem;
-  background-color: #0d0d1a;
+  background-color: ${darkPurple};
   color: white;
   font-size: 20px;
-}
-`
-
-const UserboxWrapper = styled.div`
-position: sticky;
-top: 2rem;
-right: 1rem;
-float: right;
-@media (max-width: 1000px) {
-  position: static;
-  float: none;
-  width: 50%;
-  margin: auto;
-  margin-bottom: 2vh;
 }
 `
 
@@ -56,7 +43,7 @@ function App() {
   return (
     <div>
       <StyledBody />
-      <Banner />
+      <Banner user={user} setUser={setUser}/>
       <Routes>
         <Route
           path={"/"}

@@ -1,8 +1,8 @@
 import styled from "styled-components"
-import { fadeBoxCss } from "../css/divCss"
-import formatDate from "../utils/dateFormatter"
 import Responseform from "./Responseform"
 import CommentResponse from "./CommentResponse"
+import { Timestamp, Time, Date } from "../css/CommentResponse"
+import { formatDate, formatTime } from "../utils/dateFormatter"
 
 export const SResponse = styled.div`
   border: 1px solid rgba(255, 255, 255, 0.5);
@@ -19,14 +19,15 @@ const Commentlist = ({ comments, loadMore }) => {
           <SResponse key={comment.id}>
             <div>{comment.content}</div>
             <div>{comment.user.username}</div>
-            <div style={{ color: "red" }}>{formatDate(comment.dateAdded)}</div>
-            <Responseform idToRespond={comment.id}/>
-
+            <Timestamp>
+              <Date>{formatDate(comment.dateAdded)}</Date>
+              <div> </div>
+              <Time>{formatTime(comment.dateAdded)}</Time>
+            </Timestamp>{" "}
+            <Responseform idToRespond={comment.id} />
             {comment.responses &&
               comment.responses.map((response) => {
-                return (
-                    <CommentResponse key={response} commentId={response} />
-                )
+                return <CommentResponse key={response} commentId={response} />
               })}
           </SResponse>
         )
