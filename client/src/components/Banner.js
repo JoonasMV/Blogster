@@ -4,10 +4,25 @@ import UserLogin from "./UserLogin"
 import Userbox from "./Userbox"
 import { useState } from "react"
 import CreateAccount from "./CreateAccount"
+import ToggleVisible from "./ToggleVisible"
 
 const Banner = ({ user, setUser }) => {
-  const [show, setShow] = useState(false)
-  const isVisible = show ? { display: "" } : { display: "none" }
+  const [showLogin, setShowLogin] = useState(false)
+  const [showCreateAcc, setCreateAcc] = useState(false)
+
+  const handleShowLogin = () => {
+    setShowLogin((showLogin) => !showLogin)
+    if (showCreateAcc) {
+      setCreateAcc(false)
+    }
+  }
+
+  const handleShowCreateAcc = () => {
+    setCreateAcc((showCreateAcc) => !showCreateAcc)
+    if (showLogin) {
+      setShowLogin(false)
+    }
+  }
 
   return (
     <Background>
@@ -17,16 +32,18 @@ const Banner = ({ user, setUser }) => {
       <ButtonWrapper>
         {!user.id && (
           <>
-            <StyledButton onClick={() => setShow((show) => !show)}>
-              Login
-            </StyledButton>
-            <StyledButton>Sign up</StyledButton>
+            <StyledButton onClick={handleShowLogin}> Login </StyledButton>
+            <StyledButton onClick={handleShowCreateAcc}> Sign up </StyledButton>
           </>
         )}
         {user.id && <Userbox user={user} setUser={setUser} />}
       </ButtonWrapper>
-      <div style={isVisible}>{!user.id && <UserLogin setUser={setUser} />}</div>
-      <div><CreateAccount /></div>
+      <ToggleVisible visible={showLogin}>
+        {!user.id && <UserLogin setUser={setUser} setShowLogin={setShowLogin}/>}
+      </ToggleVisible>
+      <ToggleVisible visible={showCreateAcc}>
+        <CreateAccount setUser={setUser} setBoxVisibility={setCreateAcc}/>
+      </ToggleVisible>
     </Background>
   )
 }

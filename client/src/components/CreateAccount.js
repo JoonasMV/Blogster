@@ -1,10 +1,11 @@
 import { useState, useRef } from "react"
 import { Container, StyledInput, StyledTextArea, StyledButton } from "../css/CreateAccount"
 import { isValid } from "../css/UserLogin"
+import loginService from "../services/loginService"
 import userService from "../services/userService"
 import Notification from "./Notification"
 
-const CreateAccount = () => {
+const CreateAccount = ({ setUser, setBoxVisibility }) => {
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
   const [email, setEmail] = useState("")
@@ -19,7 +20,7 @@ const CreateAccount = () => {
     textarea.style.height = textarea.scrollHeight + 2 + "px"
   }
 
-  const createNewUser = async (e) => {
+  const handleCreateNewUser = async (e) => {
     e.preventDefault()
     const newUser = {
       username,
@@ -31,6 +32,15 @@ const CreateAccount = () => {
     const response = await userService.createNewUser(newUser)
     if (response.status === 201) {
       console.log("user creation successfull")
+      const logged = await loginService.login(
+        username,
+        password
+      )
+      setUser({ username, id: logged.id })
+      setBoxVisibility(false)
+      sessionStorage.setItem("accessToken", JSON.stringify(logged.accessToken))
+      sessionStorage.setItem("username", JSON.stringify(logged.username))
+      sessionStorage.setItem("id", JSON.stringify(logged.id))
     } else {
       setNotification(response.data.error)
     }
@@ -68,7 +78,7 @@ const CreateAccount = () => {
           value={bio}
           onChange={handleBio}
         />
-        <StyledButton onClick={createNewUser}>Create user</StyledButton>
+        <StyledButton onClick={handleCreateNewUser}>Create user</StyledButton>
       </form>
     </Container>
   )

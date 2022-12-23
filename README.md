@@ -27,4 +27,6 @@
 |9/12|2|css|
 |18/12|2|css|
 |21/12|4|refactoring|
-|total|47||
+|23/12|1|front end improvements|
+|23/12|1|blog editing started|
+|total|49||

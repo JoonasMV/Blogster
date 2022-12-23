@@ -3,7 +3,7 @@ import loginService from "../services/loginService"
 import Notification from "./Notification"
 import { StyledInput, isValid, Container, Sh3, StyledButton } from "../css/UserLogin"
 
-const UserLogin = ({ setUser }) => {
+const UserLogin = ({ setUser, setShowLogin }) => {
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
   const [notification, setNotification] = useState("")
@@ -17,6 +17,7 @@ const UserLogin = ({ setUser }) => {
         password
       )
       setUser({ username, id: logged.id })
+      setShowLogin(false)
       sessionStorage.setItem("accessToken", JSON.stringify(logged.accessToken))
       sessionStorage.setItem("username", JSON.stringify(logged.username))
       sessionStorage.setItem("id", JSON.stringify(logged.id))
