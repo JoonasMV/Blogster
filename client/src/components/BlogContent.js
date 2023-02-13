@@ -15,7 +15,7 @@ import blogService from "../services/blogService"
 import { useParams } from "react-router-dom"
 import { useRef } from "react"
 
-const BlogContent = () => {
+const BlogContent = ({ user }) => {
   const [blog, setBlog] = useState(null)
   const [editMode, setEditMode] = useState(false)
   const [editBlog, setEditBlog] = useState("")
@@ -44,6 +44,11 @@ const BlogContent = () => {
     textarea.style.height = textarea.scrollHeight + 2 + "px"
   }
 
+  const handleEditSaving = () => {
+    blogService.updateBlog(editBlog, blog.id)
+    setEditMode(() => false)
+  }
+
   if (!blog) return null
 
   return (
@@ -54,6 +59,7 @@ const BlogContent = () => {
           value={editBlog}
           onChange={handleBlogEditing}
           ref={editRef}
+          
         />
       ) : <BlogText>{blog.content}</BlogText>
       }
@@ -61,7 +67,9 @@ const BlogContent = () => {
         <Date>{formatDate(blog.dateAdded)}</Date>
         <Time>{formatTime(blog.dateAdded)}</Time>
       </Timestamp>
-      <EditButton onClick={handleEditMode}>Edit</EditButton>
+      {editMode ? <EditButton onClick={handleEditSaving}>Save</EditButton> : <></>}
+      {editMode ? <EditButton onClick={() => setEditMode(false)}>Cancel</EditButton> : <EditButton onClick={handleEditMode}>Edit</EditButton>}
+      
       <Sh3>- {blog.user.username}</Sh3>
     </BlogWrapper>
   )
