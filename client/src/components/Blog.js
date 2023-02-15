@@ -12,7 +12,7 @@ import {
 } from "../css/Blog"
 import BlogContent from "./BlogContent"
 
-const Blog = () => {
+const Blog = ({ user }) => {
   const [blogComments, setBlogComments] = useState([])
   const [comment, setComment] = useState("")
   const [userId, setUserId] = useState("")
@@ -57,7 +57,7 @@ const Blog = () => {
   return (
     <>
       <Container>
-        <BlogContent />
+        <BlogContent user={user} />
 
         <Shr></Shr>
         <CommentHeader>Comments</CommentHeader>

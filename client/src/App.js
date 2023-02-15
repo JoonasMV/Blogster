@@ -63,7 +63,7 @@ function App() {
           }
         />
         <Route path={"/newBlog"} element={<Blogform />} />
-        <Route path="/blogs/:id" element={<Blog />} />
+        <Route path="/blogs/:id" element={<Blog user={user} />} />
         <Route path="/user/:id" element={<PageWrapper><User /></PageWrapper>} />
       </Routes>
     </div>
