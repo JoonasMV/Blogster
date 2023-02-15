@@ -8,8 +8,8 @@ import {
   Sh3,
   BlogWrapper,
   EditButton,
-  Editarea
-} from "../css/Blog"
+  Editarea,
+} from "../css/BlogContent"
 import { formatDate, formatTime } from "../utils/dateFormatter"
 import blogService from "../services/blogService"
 import { useParams } from "react-router-dom"
@@ -22,7 +22,6 @@ const BlogContent = () => {
   const { id } = useParams()
   const editRef = useRef()
 
-
   useEffect(() => {
     blogService.getOne(id).then((res) => {
       setBlog(res)
@@ -34,14 +33,14 @@ const BlogContent = () => {
     await setEditBlog(blog.content)
     const textarea = editRef.current
     textarea.style.height = ""
-    textarea.style.height = textarea.scrollHeight + 2 + "px"
+    textarea.style.height = textarea.scrollHeight + "px"
   }
 
   const handleBlogEditing = (e) => {
     setEditBlog(e.target.value)
     const textarea = editRef.current
     textarea.style.height = ""
-    textarea.style.height = textarea.scrollHeight + 2 + "px"
+    textarea.style.height = textarea.scrollHeight + "px"
   }
 
   if (!blog) return null
@@ -50,18 +49,22 @@ const BlogContent = () => {
     <BlogWrapper>
       <Sh2>{blog.title}</Sh2>
       {editMode ? (
-        <Editarea
-          value={editBlog}
-          onChange={handleBlogEditing}
-          ref={editRef}
-        />
-      ) : <BlogText>{blog.content}</BlogText>
-      }
+        <Editarea value={editBlog} onChange={handleBlogEditing} ref={editRef} />
+      ) : (
+        <BlogText>{blog.content}</BlogText>
+      )}
       <Timestamp>
         <Date>{formatDate(blog.dateAdded)}</Date>
         <Time>{formatTime(blog.dateAdded)}</Time>
       </Timestamp>
-      <EditButton onClick={handleEditMode}>Edit</EditButton>
+      {editMode ? (
+        <div>
+          <EditButton>Save</EditButton>
+          <EditButton onClick={() => setEditMode(false)}>Cancel</EditButton>
+        </div>
+      ) : (
+        <EditButton onClick={handleEditMode}>Edit</EditButton>
+        )}
       <Sh3>- {blog.user.username}</Sh3>
     </BlogWrapper>
   )
