@@ -43,9 +43,14 @@ const BlogContent = ({ user }) => {
     textarea.style.height = textarea.scrollHeight + "px"
   }
 
-  const handleEditSaving = () => {
-    blogService.updateBlog(editBlog, blog.id)
+  const handleEditSaving = async () => {
+    const editedBlog = await blogService.updateBlog(editBlog, blog.id)
     setEditMode(() => false)
+
+    setBlog(prevState => ({
+      ...prevState,
+      content: editedBlog.content
+    }))
   }
 
   if (!blog) return null
@@ -62,9 +67,17 @@ const BlogContent = ({ user }) => {
         <Date>{formatDate(blog.dateAdded)}</Date>
         <Time>{formatTime(blog.dateAdded)}</Time>
       </Timestamp>
-      {editMode ? <EditButton onClick={handleEditSaving}>Save</EditButton> : <></>}
-      {editMode ? <EditButton onClick={() => setEditMode(false)}>Cancel</EditButton> : <EditButton onClick={handleEditMode}>Edit</EditButton>}
-      
+
+      {user.id === blog.user.id && !editMode
+      ? <EditButton onClick={handleEditMode}>Edit</EditButton>
+      : <EditButton onClick={() => setEditMode(false)}>Cancel</EditButton> }
+
+      {editMode ? (
+        <EditButton onClick={handleEditSaving}>Save</EditButton>
+      ) : (
+        <></>
+      )}
+
       <Sh3>- {blog.user.username}</Sh3>
     </BlogWrapper>
   )
