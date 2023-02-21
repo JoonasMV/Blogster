@@ -29,4 +29,5 @@
 |21/12|4|refactoring|
 |23/12|1|front end improvements|
 |23/12|1|blog editing started|
-|total|49||
+|13/02|1|backend editing started|
+|total|50||
