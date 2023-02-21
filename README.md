@@ -30,4 +30,5 @@
 |23/12|1|front end improvements|
 |23/12|1|blog editing started|
 |13/02|1|backend editing started|
-|total|50||
+|15/02|1.5|blog editing bug fixing|
+|total|50.5||

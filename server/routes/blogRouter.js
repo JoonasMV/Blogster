@@ -49,14 +49,13 @@ blogRouter.post("/", authChecker, async (req, res) => {
 blogRouter.put("/:id", authChecker, async (req, res) => {
   const { content } = req.body
   //const user = req.user
-  console.log("update ", content)
   const blog = {
     content: content
   }
 
   try {
-    await Blog.findByIdAndUpdate(req.params.id, blog, { new: true })
-    return res.send("asd").status(400)
+    const updatedBlog = await Blog.findByIdAndUpdate(req.params.id, blog, { new: true })
+    return res.json(updatedBlog)
   } catch (error) {
     return res.send(error).status(400)
   }
