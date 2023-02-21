@@ -31,4 +31,5 @@
 |23/12|1|blog editing started|
 |13/02|1|backend editing started|
 |15/02|1.5|blog editing bug fixing|
-|total|50.5||
+|21/02|1.5|started creating tests|
+|total|52||

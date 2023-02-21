@@ -15,7 +15,6 @@ userRouter.get("/:id", async (req, res) => {
 
 userRouter.post("/", async (req, res) => {
   try {
-    console.log(req.body)
     const { username, email = null, password, bio } = req.body
     const passwordHash = await bcrypt.hash(password, 10)
 
