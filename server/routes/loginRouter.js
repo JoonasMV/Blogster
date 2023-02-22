@@ -7,6 +7,9 @@ const jwt = require("jsonwebtoken")
 loginRouter.post("/", async (req, res) => {
   const { username, password } = req.body
 
+  if ( username === undefined || password === undefined) 
+    return res.sendStatus(400)
+
   const user = await User.findOne({ username: username })
   if (!user) return res.status(401).json({ error: "Wrong username or password" })
 

@@ -6,7 +6,9 @@ const User = require("../models/userModel")
 
 describe("Blog GET", () => {
   test("Get request returns blogs", async () => {
-
+      const response = await api.get("/api/blogs")
+      
+      console.log(response.text)
   })
 })
 
