@@ -39,7 +39,7 @@ blogRouter.post("/", authChecker, async (req, res) => {
     const savedBlog = await newBlog.save()
     user.blogs = user.blogs.concat(savedBlog._id)
     await user.save()
-    return res.json(savedBlog)
+    return res.status(201).json(savedBlog)
   } catch (error) {
     return res.send(error).status(400)
   }

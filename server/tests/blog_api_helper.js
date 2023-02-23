@@ -17,13 +17,28 @@ const testBlogs = [
   },
 ]
 
-const initateDbWithUserAndBlogs = async () => {
+const createUser = async (user) => {
+    await api.post("/api/users").send(user)
+}
 
+const getAccessToken = async (user) => {
+  const loggedInUser = await api.post("/api/login").send(user)
+  return loggedInUser.body.accessToken
+}
 
+const createBlog = async (blogToCreate) => {
+  const accessToken = await getAccessToken(testUser)
+
+  await api
+    .post("/api/blogs")
+    .send(blogToCreate)
+    .set({ Authorization: `Bearer ${accessToken}` })
 }
 
 module.exports = {
   testUser,
   testBlogs,
-  initateDbWithUserAndBlogs
+  createUser,
+  getAccessToken,
+  createBlog
 }
