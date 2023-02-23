@@ -12,7 +12,7 @@ const commentRouter = require("./routes/commentRouter")
 
 mongoose.connect(config.MONGOURL)
   .then(console.log("Connected to MongoDB"))
-  .catch(err => console.log("Error connecting to MongoDB", err))
+  .catch(err => console.error("Error connecting to MongoDB", err))
   
 const app = express()
 

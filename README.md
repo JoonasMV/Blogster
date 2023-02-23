@@ -33,4 +33,5 @@
 |15/02|1.5|blog editing bug fixing|
 |21/02|1.5|started creating tests|
 |22/02|1.5|test writing|
-|total|53.5||
+|23/02|1|test writing|
+|total|54.5||
