@@ -11,7 +11,7 @@ const authChecker = async (req, res, next) => {
     next()
   } catch (error) {
     console.log(error)
-    return res.status(403).json({error: "token error"})
+    return res.status(401).json({error: "token error"})
   }
 }
 

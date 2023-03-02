@@ -3,7 +3,6 @@ const supertest = require("supertest")
 const app = require("../app")
 const api = supertest(app)
 const Blog = require("../models/blogModel")
-const { findOne } = require("../models/userModel")
 const User = require("../models/userModel")
 const {
   testUser,
@@ -64,7 +63,7 @@ describe("Blog creation as logged user", () => {
 
     const accessToken = await getAccessToken(testUser)
 
-    const response = await api
+    await api
       .put(`/api/blogs/${blogToEdit.id}`)
       .send({ content: "edited content" })
       .set({ Authorization: `Bearer ${accessToken}` })
@@ -76,11 +75,72 @@ describe("Blog creation as logged user", () => {
 })
 
 describe("Blogs get created correctly", () => {
-  test("Blogs require a title", async () => {})
+  beforeEach(async () => {
+    await User.deleteMany({})
+    await Blog.deleteMany({})
+    await createUser(testUser)
+  })
 
-  test("Blogs requrie content", async () => {})
+  test("Blogs require a title", async () => {
+    const accessToken = await getAccessToken(testUser)
+
+    const blogsWithoutTitle = [{
+      title: "",
+      content: "content"
+    },
+    {
+      content: "content"
+    }
+  ]
+
+  await api
+    .post("/api/blogs/")
+    .send(blogsWithoutTitle[0])
+    .set({ Authorization: `Bearer ${accessToken}` })
+    .expect(400)
+    
+    await api
+    .post("/api/blogs/")
+    .send(blogsWithoutTitle[1])
+    .set({ Authorization: `Bearer ${accessToken}` })
+    .expect(400)  
+  })
+
+  test("Blogs require content", async () => {
+    const accessToken = await getAccessToken(testUser)
+
+    const blogsWithoutContent = [{
+      title: "title",
+      content: ""
+    },
+    {
+      title: "title"
+    }
+  ]
+
+  await api
+    .post("/api/blogs/")
+    .send(blogsWithoutContent[0])
+    .set({ Authorization: `Bearer ${accessToken}` })
+    .expect(400)
+    
+    await api
+    .post("/api/blogs/")
+    .send(blogsWithoutContent[1])
+    .set({ Authorization: `Bearer ${accessToken}` })
+    .expect(400) 
+
+  })
 })
 
 describe("Blog creation as non logged user", () => {
-  test("Blogs can't be created", async () => {})
+  test("Blogs can't be created", async () => {
+    await api
+      .post("/api/blogs/")
+      .send({
+        title: "title",
+        content: "content"
+      })
+      .expect(401)
+  })
 })

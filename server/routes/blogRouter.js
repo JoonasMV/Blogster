@@ -27,6 +27,9 @@ blogRouter.get("/:id", async (req, res) => {
 blogRouter.post("/", authChecker, async (req, res) => {
   const { title, content } = req.body
   const user = req.user
+
+  if (!title) return res.status(400).json({ error: "Title required" })
+  if (!content) return res.status(400).json({ error: "Content required" })
   //const MongoUser = await User.findById(user.id)
   const newBlog = new Blog({
     title,
