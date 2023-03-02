@@ -34,5 +34,5 @@
 |21/02|1.5|started creating tests|
 |22/02|1.5|test writing|
 |23/02|2|test writing|
-|02/03|0.5|test writing|
-|total|56||
+|02/03|2|test writing|
+|total|57.5||
