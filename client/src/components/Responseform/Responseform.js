@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import { useState } from "react"
-import commentService from "../services/commentService"
+import commentService from "../../services/commentService"
 
 const Stextarea = styled.textarea`
   width: 100%;

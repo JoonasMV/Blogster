@@ -1,16 +1,16 @@
-import Commentlist from "./Commentlist"
+import Commentlist from "../Commentlist/Commentlist"
 import { useEffect, useRef, useState } from "react"
 import { useParams } from "react-router-dom"
-import blogService from "../services/blogService"
-import commentService from "../services/commentService"
+import blogService from "../../services/blogService"
+import commentService from "../../services/commentService"
 import {
   Container,
   Shr,
   CommentHeader,
   CommentBox,
   PostButton,
-} from "../css/Blog"
-import BlogContent from "./BlogContent"
+} from "./Blog.style"
+import BlogContent from "../BlogContent/BlogContent"
 
 const Blog = ({ user }) => {
   const [blogComments, setBlogComments] = useState([])

@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router-dom"
-import { Username } from "../css/Userbox"
-import { StyledButton } from "../css/Banner"
+import { Username } from "./Userbox.style"
+import { StyledButton } from "../Banner/Banner.style"
 
 const Userbox = ({ user, setUser }) => {
   const location = useLocation()

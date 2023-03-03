@@ -1,4 +1,4 @@
-import blogService from "../services/blogService"
+import blogService from "../../services/blogService"
 import styled from "styled-components"
 import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"

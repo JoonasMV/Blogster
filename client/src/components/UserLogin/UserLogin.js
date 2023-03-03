@@ -1,7 +1,7 @@
 import { useState } from "react"
-import loginService from "../services/loginService"
-import Notification from "./Notification"
-import { StyledInput, isValid, Container, Sh3, StyledButton } from "../css/UserLogin"
+import loginService from "../../services/loginService"
+import Notification from "../Notification/Notification"
+import { StyledInput, isValid, Container, Sh3, StyledButton } from "./UserLogin.style"
 
 const UserLogin = ({ setUser, setShowLogin }) => {
   const [username, setUsername] = useState("")

@@ -1,9 +1,9 @@
-import commentService from "../services/commentService"
+import commentService from "../../services/commentService"
 import { useEffect, useState } from "react"
-import Responseform from "./Responseform"
-import { formatDate, formatTime } from "../utils/dateFormatter"
-import { SResponse } from "./Commentlist"
-import { Date, Time, Timestamp } from "../css/CommentResponse"
+import Responseform from "../Responseform/Responseform"
+import { formatDate, formatTime } from "../../utils/dateFormatter"
+import { SResponse } from "../Commentlist/Commentlist"
+import { Date, Time, Timestamp } from "./CommentResponse.style"
 
 
 const CommentResponse = ({ commentId }) => {

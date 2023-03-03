@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom"
-import { Background, Title, ButtonWrapper, StyledButton } from "../css/Banner"
-import UserLogin from "./UserLogin"
-import Userbox from "./Userbox"
+import { Background, Title, ButtonWrapper, StyledButton } from "./Banner.style"
+import UserLogin from "../UserLogin/UserLogin"
+import Userbox from "../Userbox/Userbox"
 import { useState } from "react"
-import CreateAccount from "./CreateAccount"
-import ToggleVisible from "./ToggleVisible"
+import CreateAccount from "../CreateAccount/CreateAccount"
+import ToggleVisible from "../ToggleVisibility/ToggleVisible"
 
 const Banner = ({ user, setUser }) => {
   const [showLogin, setShowLogin] = useState(false)

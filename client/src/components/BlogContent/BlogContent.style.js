@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { buttonCSS } from "./buttonCss"
+import { buttonCSS } from "../../css/buttonCss"
 
 export const Sh2 = styled.h2`
   margin: 0;

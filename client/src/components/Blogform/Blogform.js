@@ -1,8 +1,8 @@
-import blogService from "../services/blogService"
+import blogService from "../../services/blogService"
 import styled from "styled-components"
 import { useRef, useState } from "react"
 import { Link } from "react-router-dom"
-import { blueButton } from "../css/buttonCss"
+import { blueButton } from "../../css/buttonCss"
 
 const FormWrapper = styled.div`
   margin: auto;

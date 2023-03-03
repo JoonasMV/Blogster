@@ -1,8 +1,8 @@
 import styled from "styled-components"
-import Responseform from "./Responseform"
-import CommentResponse from "./CommentResponse"
-import { Timestamp, Time, Date } from "../css/CommentResponse"
-import { formatDate, formatTime } from "../utils/dateFormatter"
+import Responseform from "../Responseform/Responseform"
+import CommentResponse from "../CommentResponse/CommentResponse"
+import { Timestamp, Time, Date } from "../CommentResponse/CommentResponse.style"
+import { formatDate, formatTime } from "../../utils/dateFormatter"
 
 export const SResponse = styled.div`
   border: 1px solid rgba(255, 255, 255, 0.5);

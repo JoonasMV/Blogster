@@ -9,9 +9,9 @@ import {
   BlogWrapper,
   EditButton,
   Editarea,
-} from "../css/BlogContent"
-import { formatDate, formatTime } from "../utils/dateFormatter"
-import blogService from "../services/blogService"
+} from "./BlogContent.style"
+import { formatDate, formatTime } from "../../utils/dateFormatter"
+import blogService from "../../services/blogService"
 import { useParams } from "react-router-dom"
 import { useRef } from "react"
 
