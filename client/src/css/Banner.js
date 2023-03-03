@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { darkPurple } from "./color"
+import { buttonCSS } from "./buttonCss"
 
 export const Background = styled.div`
   background-color: #0d0d1a;
@@ -26,16 +26,8 @@ export const ButtonWrapper = styled.div`
 `
 
 export const StyledButton = styled.button`
-  border-radius: 15px;
-  font-size: 15px;
+  ${buttonCSS}
   height: 45px;
   width: 80px;
   margin-left: 10px;
-  border: 2px solid ${darkPurple};
-  &:hover {
-    cursor: pointer;
-    color: white;
-    background-color: ${darkPurple};
-    border: 2px solid white;
-  }
 `

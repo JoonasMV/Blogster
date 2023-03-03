@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import { buttonCSS } from "./buttonCss"
 
 export const Sh2 = styled.h2`
   margin: 0;
@@ -24,26 +25,24 @@ export const Timestamp = styled.div`
   margin-top: 1rem;
 `
 export const EditButton = styled.button`
-  border-radius: 15px;
-  font-size: 15px;
-  height: 30px;
+  ${buttonCSS}
+  border-radius: 8px;
   float: right;
-  white-space: pre-line;
-  &:hover {
-    cursor: pointer;
-  }
+  margin-right: 4px;
+  padding: 2px 4px 2px 4px;
 `
 
 export const Editarea = styled.textarea`
-  padding: 0;
   margin: 0;
   width: 100%;
+  padding: 2px 5px;
+  box-sizing: border-box;
   resize: none;
   font-family: "Open Sans";
   font-size: 20px;
   background: none;
   color: white;
-  border: none;
+  border: 3px white dashed;
   line-height: 120%;
   vertical-align: top;
   &:focus {
