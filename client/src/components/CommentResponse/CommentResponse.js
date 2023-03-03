@@ -2,9 +2,8 @@ import commentService from "../../services/commentService"
 import { useEffect, useState } from "react"
 import Responseform from "../Responseform/Responseform"
 import { formatDate, formatTime } from "../../utils/dateFormatter"
-import { SResponse } from "../Commentlist/Commentlist"
-import { Date, Time, Timestamp } from "./CommentResponse.style"
-
+import { Response } from "../Commentlist/Commentlist.style"
+import { Date, Time, Timestamp } from "css/DateTime"
 
 const CommentResponse = ({ commentId }) => {
   const [comment, setComment] = useState("")
@@ -16,7 +15,7 @@ const CommentResponse = ({ commentId }) => {
   if (!comment) return null
 
   return (
-    <SResponse>
+    <Response>
       <div>{comment.content}</div>
       <div>{comment.user.username}</div>
       <Timestamp>
@@ -28,7 +27,7 @@ const CommentResponse = ({ commentId }) => {
       {comment.responses.map((resp) => {
         return <CommentResponse key={resp} commentId={resp} />
       })}
-    </SResponse>
+    </Response>
   )
 }
 

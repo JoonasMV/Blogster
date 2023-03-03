@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { gray, darkPurple } from "../../css/color"
+import { gray, darkPurple } from "../../css/Color"
 
 export const Container = styled.div`
   text-align: center;

@@ -1,7 +1,6 @@
 import Commentlist from "../Commentlist/Commentlist"
 import { useEffect, useRef, useState } from "react"
 import { useParams } from "react-router-dom"
-import blogService from "../../services/blogService"
 import commentService from "../../services/commentService"
 import {
   Container,

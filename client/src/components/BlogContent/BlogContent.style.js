@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { buttonCSS } from "../../css/buttonCss"
+import { buttonCSS, SmallButton } from "../../css/ButtonCss"
 
 export const Sh2 = styled.h2`
   margin: 0;
@@ -24,12 +24,8 @@ export const Timestamp = styled.div`
   margin-bottom: 0.1rem;
   margin-top: 1rem;
 `
-export const EditButton = styled.button`
-  ${buttonCSS}
-  border-radius: 8px;
+export const EditButton = styled(SmallButton)`
   float: right;
-  margin-right: 4px;
-  padding: 2px 4px 2px 4px;
 `
 
 export const Editarea = styled.textarea`

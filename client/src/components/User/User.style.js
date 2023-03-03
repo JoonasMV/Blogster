@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components"
-import { gray } from "../../css/color"
+import { gray } from "../../css/Color"
 import { Link } from "react-router-dom"
 
 const borderCSS = css`

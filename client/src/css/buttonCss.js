@@ -1,5 +1,5 @@
-import { css } from "styled-components"
-import { darkPurple } from "./color"
+import styled, { css } from "styled-components"
+import { darkPurple } from "./Color"
 
 export const buttonCSS = css`
   border-radius: 15px;
@@ -12,6 +12,16 @@ export const buttonCSS = css`
     background-color: ${darkPurple};
     border: 2px solid white;
   }
+`
+
+export const BasicButton = styled.button`
+  ${buttonCSS}
+`
+
+export const SmallButton = styled(BasicButton)`
+  border-radius: 8px;
+  margin-right: 4px;
+  padding: 2px 4px 2px 4px;
 `
 
 export const blueButton = css`

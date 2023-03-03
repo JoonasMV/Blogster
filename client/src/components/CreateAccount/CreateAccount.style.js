@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { gray } from "../../css/color";
-import { inputCSS } from "../../css/inputCss";
+import { gray } from "../../css/Color";
+import { inputCSS } from "../../css/InputCss";
 
 export const Container = styled.div`
   position: absolute;

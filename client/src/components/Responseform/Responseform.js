@@ -1,6 +1,7 @@
 import styled from "styled-components"
 import { useState } from "react"
 import commentService from "../../services/commentService"
+import { RespondButton } from "./Responseform.style"
 
 const Stextarea = styled.textarea`
   width: 100%;
@@ -26,10 +27,10 @@ const Responseform = ({ idToRespond }) => {
         value={response}
         onChange={e => setResponse(e.target.value)}
       />
-      {!show && <button onClick={() => setShow(!show)}>Respond</button>}
+    {!show && <RespondButton onClick={() => setShow(!show)}>Respond</RespondButton>}
       {show && <>
-        <button onClick={submitResponse}>Post response</button>
-        <button onClick={() => setShow(!show)}>Cancel</button>
+        <RespondButton onClick={submitResponse}>Post response</RespondButton>
+        <RespondButton onClick={() => setShow(!show)}>Cancel</RespondButton>
       </>}
     </>
   )

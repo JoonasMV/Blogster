@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { buttonCSS } from "../../css/buttonCss"
+import { buttonCSS } from "../../css/ButtonCss"
 
 export const Background = styled.div`
   background-color: #0d0d1a;

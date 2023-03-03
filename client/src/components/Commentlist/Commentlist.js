@@ -1,24 +1,17 @@
-import styled from "styled-components"
 import Responseform from "../Responseform/Responseform"
 import CommentResponse from "../CommentResponse/CommentResponse"
-import { Timestamp, Time, Date } from "../CommentResponse/CommentResponse.style"
+import { Timestamp, Date, Time } from "css/DateTime"
 import { formatDate, formatTime } from "../../utils/dateFormatter"
-
-export const SResponse = styled.div`
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  border-radius: 5px;
-  padding: 3px;
-  margin-left: 5px;
-`
+import { Response, Responder } from "./Commentlist.style"
 
 const Commentlist = ({ comments, loadMore }) => {
   return (
     <>
       {comments.map((comment) => {
         return (
-          <SResponse key={comment.id}>
+          <Response key={comment.id}>
             <div>{comment.content}</div>
-            <div>{comment.user.username}</div>
+            <Responder>- {comment.user.username}</Responder>
             <Timestamp>
               <Date>{formatDate(comment.dateAdded)}</Date>
               <div> </div>
@@ -29,7 +22,7 @@ const Commentlist = ({ comments, loadMore }) => {
               comment.responses.map((response) => {
                 return <CommentResponse key={response} commentId={response} />
               })}
-          </SResponse>
+          </Response>
         )
       })}
 
