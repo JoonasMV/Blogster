@@ -1,3 +1,4 @@
+import { BasicButton, SmallButton } from "css/ButtonCss"
 import { gray } from "css/Color"
 import styled from "styled-components"
 
@@ -12,4 +13,9 @@ export const Response = styled.div`
 export const Responder = styled.div`
   margin-top: 8px;
   font-size: smaller;
+`
+
+export const LoadMoreButton = styled(SmallButton)`
+  margin: 10px 5px;
+  height: 30px;
 `

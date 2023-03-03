@@ -19,6 +19,7 @@ const Responseform = ({ idToRespond }) => {
 
   return (
     <>
+      {show && <hr></hr>}
       <Stextarea 
         type="text" 
         rows="6" 

@@ -2,7 +2,8 @@ import Responseform from "../Responseform/Responseform"
 import CommentResponse from "../CommentResponse/CommentResponse"
 import { Timestamp, Date, Time } from "css/DateTime"
 import { formatDate, formatTime } from "../../utils/dateFormatter"
-import { Response, Responder } from "./Commentlist.style"
+import { Response, Responder, LoadMoreButton } from "./Commentlist.style"
+import { BasicButton } from "css/ButtonCss"
 
 const Commentlist = ({ comments, loadMore }) => {
   return (
@@ -26,7 +27,7 @@ const Commentlist = ({ comments, loadMore }) => {
         )
       })}
 
-      <button onClick={loadMore}>Load more</button>
+  <LoadMoreButton onClick={loadMore}>Load more</LoadMoreButton>
     </>
   )
 }

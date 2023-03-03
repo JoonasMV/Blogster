@@ -35,5 +35,5 @@
 |22/02|1.5|test writing|
 |23/02|2|test writing|
 |02/03|2|test writing|
-|03/03|1|refactoring|
+|03/03|2|refactoring|
 |total|58.5||
