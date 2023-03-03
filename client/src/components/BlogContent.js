@@ -47,9 +47,9 @@ const BlogContent = ({ user }) => {
     const editedBlog = await blogService.updateBlog(editBlog, blog.id)
     setEditMode(() => false)
 
-    setBlog(prevState => ({
+    setBlog((prevState) => ({
       ...prevState,
-      content: editedBlog.content
+      content: editedBlog.content,
     }))
   }
 
@@ -68,15 +68,13 @@ const BlogContent = ({ user }) => {
         <Time>{formatTime(blog.dateAdded)}</Time>
       </Timestamp>
 
-      {user.id === blog.user.id && !editMode
-      ? <EditButton onClick={handleEditMode}>Edit</EditButton>
-      : <EditButton onClick={() => setEditMode(false)}>Cancel</EditButton> }
-
-      {editMode ? (
+      {user && user.id === blog.user.id && !editMode && <EditButton onClick={handleEditMode}>Edit</EditButton>}
+      {user && user.id === blog.user.id && editMode && 
+      <>
+        <EditButton onClick={() => setEditMode(false)}>Cancel</EditButton>
         <EditButton onClick={handleEditSaving}>Save</EditButton>
-      ) : (
-        <></>
-      )}
+      </>
+      }
 
       <Sh3>- {blog.user.username}</Sh3>
     </BlogWrapper>
