@@ -3,8 +3,8 @@ import { gray } from "css/Color"
 import styled from "styled-components"
 
 export const Response = styled.div`
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  background: ${gray}80;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: ${gray}33;
   border-radius: 5px;
   padding: 3px;
   margin-left: 5px;

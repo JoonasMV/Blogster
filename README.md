@@ -36,4 +36,5 @@
 |23/02|2|test writing|
 |02/03|2|test writing|
 |03/03|2|refactoring|
+|07/03|1.5|blog liking|
 |total|58.5||

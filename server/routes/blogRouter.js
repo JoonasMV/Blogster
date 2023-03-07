@@ -13,10 +13,12 @@ blogRouter.get("/:id", async (req, res) => {
   try {
     const blog = await Blog.findById(id)
       .populate("user")
-      .populate({ path: "comments",
-      populate: {
-        path: "user",
-      }})
+      .populate({
+        path: "comments",
+        populate: {
+          path: "user",
+        },
+      })
     res.json(blog)
   } catch (error) {
     console.log(error)
@@ -37,7 +39,7 @@ blogRouter.post("/", authChecker, async (req, res) => {
     dateAdded: new Date(),
     user: user,
   })
-  
+
   try {
     const savedBlog = await newBlog.save()
     user.blogs = user.blogs.concat(savedBlog._id)
@@ -52,16 +54,39 @@ blogRouter.put("/:id", authChecker, async (req, res) => {
   const { content } = req.body
   //const user = req.user
   const blog = {
-    content: content
+    content: content,
   }
 
   try {
-    const updatedBlog = await Blog.findByIdAndUpdate(req.params.id, blog, { new: true })
+    const updatedBlog = await Blog.findByIdAndUpdate(req.params.id, blog, {
+      new: true,
+    })
     return res.json(updatedBlog)
   } catch (error) {
     return res.send(error).status(400)
   }
-  
+})
+
+blogRouter.post("/like/:id", authChecker, async (req, res) => {
+  const filter = { id: req.params.id }
+  const blogToLike = await Blog.findOne(filter) //.populate("likes")
+
+  const userLiking = await User.findOne({ id: req.user.id })
+
+  const updatedLikes = { likes: blogToLike.likes }
+
+  updatedLikes.likes = blogToLike.likes.includes(userLiking.id) 
+    ? blogToLike.likes.filter(id => id === userLiking.id)
+    : blogToLike.likes.concat(userLiking.id) 
+
+  try {
+    const updatedBlog = await Blog.findOneAndUpdate(filter, updatedLikes, {
+      new: true,
+    })
+    return res.send(updatedBlog).status(200)
+  } catch (error) {
+    return res.send(error).status(400)
+  }
 })
 
 module.exports = blogRouter

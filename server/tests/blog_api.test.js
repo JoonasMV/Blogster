@@ -69,7 +69,7 @@ describe("Blog creation as logged user", () => {
       .set({ Authorization: `Bearer ${accessToken}` })
       .expect(200)
 
-    const blogAfterEditing = await Blog.findOne({ id: blogToEdit.id })  
+    const blogAfterEditing = await Blog.findOne({ id: blogToEdit.id })
     expect(blogAfterEditing.content).not.toBe(blogToEdit.content)
   })
 })
@@ -84,52 +84,53 @@ describe("Blogs get created correctly", () => {
   test("Blogs require a title", async () => {
     const accessToken = await getAccessToken(testUser)
 
-    const blogsWithoutTitle = [{
-      title: "",
-      content: "content"
-    },
-    {
-      content: "content"
-    }
-  ]
+    const blogsWithoutTitle = [
+      {
+        title: "",
+        content: "content",
+      },
+      {
+        content: "content",
+      },
+    ]
 
-  await api
-    .post("/api/blogs/")
-    .send(blogsWithoutTitle[0])
-    .set({ Authorization: `Bearer ${accessToken}` })
-    .expect(400)
-    
     await api
-    .post("/api/blogs/")
-    .send(blogsWithoutTitle[1])
-    .set({ Authorization: `Bearer ${accessToken}` })
-    .expect(400)  
+      .post("/api/blogs/")
+      .send(blogsWithoutTitle[0])
+      .set({ Authorization: `Bearer ${accessToken}` })
+      .expect(400)
+
+    await api
+      .post("/api/blogs/")
+      .send(blogsWithoutTitle[1])
+      .set({ Authorization: `Bearer ${accessToken}` })
+      .expect(400)
   })
 
   test("Blogs require content", async () => {
     const accessToken = await getAccessToken(testUser)
 
-    const blogsWithoutContent = [{
-      title: "title",
-      content: ""
-    },
-    {
-      title: "title"
-    }
-  ]
+    const blogsWithoutContent = [
+      {
+        title: "title",
+        content: "",
+      },
+      {
+        title: "title",
+      },
+    ]
 
-  await api
-    .post("/api/blogs/")
-    .send(blogsWithoutContent[0])
-    .set({ Authorization: `Bearer ${accessToken}` })
-    .expect(400)
-    
     await api
-    .post("/api/blogs/")
-    .send(blogsWithoutContent[1])
-    .set({ Authorization: `Bearer ${accessToken}` })
-    .expect(400) 
+      .post("/api/blogs/")
+      .send(blogsWithoutContent[0])
+      .set({ Authorization: `Bearer ${accessToken}` })
+      .expect(400)
 
+    await api
+      .post("/api/blogs/")
+      .send(blogsWithoutContent[1])
+      .set({ Authorization: `Bearer ${accessToken}` })
+      .expect(400)
   })
 })
 
@@ -139,8 +140,62 @@ describe("Blog creation as non logged user", () => {
       .post("/api/blogs/")
       .send({
         title: "title",
-        content: "content"
+        content: "content",
       })
       .expect(401)
+  })
+})
+
+const initiateDatabaseWithOneUserAndBlog = async () => {
+  beforeEach(async () => {
+    await Blog.deleteMany({})
+    await User.deleteMany({})
+
+    await api.post("/api/users").send(testUser)
+
+    const user = await api.post("/api/login").send(testUser)
+
+    const userAccessToken = user.body.accessToken
+
+    for (const blog of testBlogs) {
+      await api
+        .post("/api/blogs")
+        .send(blog)
+        .set({ Authorization: `Bearer ${userAccessToken}` })
+    }
+  })
+}
+
+describe("Blog liking", () => {
+  initiateDatabaseWithOneUserAndBlog()
+  test("Blogs can be liked", async () => {
+    const blogToLike = await Blog.findOne({})
+    const accessToken = await getAccessToken(testUser)
+
+    await api
+      .post(`/api/blogs/like/${blogToLike.id}`)
+      .set({Authorization: `Bearer ${accessToken}`})
+      .expect(200)
+
+    const blogAfterLiking = await Blog.findOne({ id: blogToLike.id })
+    expect(blogAfterLiking.likes).toHaveLength(1)
+  })
+
+  test("Liking twice removes like", async () => {
+    const blogToLike = await Blog.findOne({})
+    const accessToken = await getAccessToken(testUser)
+
+    await api
+      .post(`/api/blogs/like/${blogToLike.id}`)
+      .set({ Authorization: `Bearer ${accessToken}`})
+      .expect(200)
+
+    await api
+      .post(`/api/blogs/like/${blogToLike.id}`)
+      .set({ Authorization: `Bearer ${accessToken}`})
+      .expect(200)
+
+    const blogAfterTest = await Blog.findOne({ id: blogToLike.id })
+    expect(blogAfterTest.likes).toHaveLength(0)
   })
 })

@@ -9,6 +9,7 @@ import {
   BlogWrapper,
   EditButton,
   Editarea,
+  LikesAndFavs
 } from "./BlogContent.style"
 import { formatDate, formatTime } from "../../utils/dateFormatter"
 import blogService from "../../services/blogService"
@@ -67,6 +68,11 @@ const BlogContent = ({ user }) => {
         <Date>{formatDate(blog.dateAdded)}</Date>
         <Time>{formatTime(blog.dateAdded)}</Time>
       </Timestamp>
+      
+      <LikesAndFavs>
+        <button>Like</button>
+        <button>Favourite</button>
+      </LikesAndFavs>
 
       {user && user.id === blog.user.id && !editMode && <EditButton onClick={handleEditMode}>Edit</EditButton>}
       {user && user.id === blog.user.id && editMode && 

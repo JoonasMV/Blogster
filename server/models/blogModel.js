@@ -3,29 +3,31 @@ const mongoose = require("mongoose")
 const blogSchema = new mongoose.Schema({
   title: {
     type: String,
-    required: true
+    required: true,
   },
   content: {
     type: String,
-    required: true
+    required: true,
   },
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
   },
-  likes: {
-    type: Number,
-    default: 0,
-  },
-  favs: {
+  likes: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+    },
+  ],
+  favourites: {
     type: Number,
     default: 0,
   },
   comments: [
     {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Comment"
-    },  
+      ref: "Comment",
+    },
   ],
   dateAdded: Date,
   dateUpdated: Date,
@@ -34,9 +36,7 @@ const blogSchema = new mongoose.Schema({
 blogSchema.set("toJSON", {
   virtuals: true,
   transform: (doc, ret) => {
-    delete ret._id,
-    delete ret.__v,
-    delete ret.comments
+    delete ret._id, delete ret.__v, delete ret.comments
   },
 })
 

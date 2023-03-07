@@ -19,6 +19,18 @@ const userSchema = new mongoose.Schema({
       ref: "Blog"
     }
   ],
+  favourites: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Blog"
+    }
+  ],
+  likes: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Blog"
+    }
+  ],
   bio: String,
 })
 

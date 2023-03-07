@@ -55,3 +55,7 @@ export const BlogWrapper = styled.div`
 export const Sh3 = styled.h3`
   margin: 0;
 `
+
+export const LikesAndFavs = styled.div`
+  float: right;
+`
