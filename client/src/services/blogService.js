@@ -23,4 +23,10 @@ const updateBlog = async (updatedBlog, id) => {
   return updateBlog.data
 }
 
-export default { getAll, getOne, postBlog, updateBlog }
+const likeBlog = async (id) => {
+  // console.log(getToken)
+  const likedBlog = await axios.post(`${baseUrl}/like/${id}`, null, getToken)
+  return likedBlog.data
+}
+
+export default { getAll, getOne, postBlog, updateBlog, likeBlog }

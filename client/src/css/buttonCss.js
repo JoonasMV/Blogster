@@ -5,7 +5,8 @@ export const buttonCSS = css`
   border-radius: 15px;
   font-size: 15px;
   margin: 0;
-  border: 2px solid ${darkPurple};
+  /* border: 2px solid ${darkPurple}; */
+  border: none;
   &:hover {
     cursor: pointer;
     color: white;

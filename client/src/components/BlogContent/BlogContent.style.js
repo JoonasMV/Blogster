@@ -26,6 +26,8 @@ export const Timestamp = styled.div`
 `
 export const EditButton = styled(SmallButton)`
   float: right;
+  height: 2rem;
+  width: 5rem;
 `
 
 export const Editarea = styled.textarea`
@@ -55,7 +57,16 @@ export const BlogWrapper = styled.div`
 export const Sh3 = styled.h3`
   margin: 0;
 `
-
 export const LikesAndFavs = styled.div`
   float: right;
+  `
+
+export const LikeButton = styled.button`
+  ${buttonCSS}
+  height: 2rem;
+  width: 5rem;
+  `
+
+export const FavouriteButton = styled(LikeButton)`
+  margin-left: 0.5rem;
 `

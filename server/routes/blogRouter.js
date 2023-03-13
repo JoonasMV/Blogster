@@ -1,4 +1,5 @@
 const blogRouter = require("express").Router()
+const { rawListeners } = require("../models/blogModel")
 const Blog = require("../models/blogModel")
 const User = require("../models/userModel")
 const authChecker = require("../utils/authChecker")
@@ -68,21 +69,33 @@ blogRouter.put("/:id", authChecker, async (req, res) => {
 })
 
 blogRouter.post("/like/:id", authChecker, async (req, res) => {
-  const filter = { id: req.params.id }
-  const blogToLike = await Blog.findOne(filter) //.populate("likes")
+  const blogToLike = await Blog.findById(req.params.id) //.populate("likes")
 
-  const userLiking = await User.findOne({ id: req.user.id })
-
-  const updatedLikes = { likes: blogToLike.likes }
-
-  updatedLikes.likes = blogToLike.likes.includes(userLiking.id) 
-    ? blogToLike.likes.filter(id => id === userLiking.id)
-    : blogToLike.likes.concat(userLiking.id) 
-
+  const userLiking = await User.findById(req.user.id)
+  // console.log(userLiking)
+  
+  const updatedBlogLikes = { likes: blogToLike.likes }
+  
+  updatedBlogLikes.likes = blogToLike.likes.includes(userLiking.id)
+  ? blogToLike.likes.filter((id) => id === userLiking.id)
+  : blogToLike.likes.concat(userLiking.id)
+  
+  const updatedUserLikes = { likes: userLiking.likes}
+  
+  updatedUserLikes.likes = userLiking.likes.includes(blogToLike.id)
+  ? userLiking.likes.filter(id => id === blogToLike.id)
+  : userLiking.likes.concat(blogToLike.id)
+  
   try {
-    const updatedBlog = await Blog.findOneAndUpdate(filter, updatedLikes, {
+    const updatedBlog = await Blog.findByIdAndUpdate(req.params.id, updatedBlogLikes, {
       new: true,
     })
+    console.log(updatedBlog)
+
+    await User.findByIdAndUpdate(req.user.id, updatedUserLikes, {
+      new: true,
+    })
+
     return res.send(updatedBlog).status(200)
   } catch (error) {
     return res.send(error).status(400)
