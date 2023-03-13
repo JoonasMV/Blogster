@@ -38,4 +38,4 @@
 |03/03|2|refactoring|
 |07/03|1.5|blog liking|
 |13/03|2|bug fixing|
-|total|58.5||
+|total|60.5||

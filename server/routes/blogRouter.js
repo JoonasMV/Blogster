@@ -1,5 +1,5 @@
 const blogRouter = require("express").Router()
-const { rawListeners } = require("../models/blogModel")
+const { rawListeners, findOneAndUpdate } = require("../models/blogModel")
 const Blog = require("../models/blogModel")
 const User = require("../models/userModel")
 const authChecker = require("../utils/authChecker")
@@ -85,14 +85,17 @@ blogRouter.post("/like/:id", authChecker, async (req, res) => {
   updatedUserLikes.likes = userLiking.likes.includes(blogToLike.id)
   ? userLiking.likes.filter(id => id === blogToLike.id)
   : userLiking.likes.concat(blogToLike.id)
+
+  // const test = await Blog.findOneAndUpdate({ _id: req.params.id }, {})
+  // console.log(test)
   
   try {
-    const updatedBlog = await Blog.findByIdAndUpdate(req.params.id, updatedBlogLikes, {
+    const updatedBlog = await Blog.findOneAndUpdate({_id: req.params.id}, updatedBlogLikes, {
       new: true,
     })
     console.log(updatedBlog)
 
-    await User.findByIdAndUpdate(req.user.id, updatedUserLikes, {
+    await User.findOneAndUpdate({_id: req.user.id}, updatedUserLikes, {
       new: true,
     })
 
