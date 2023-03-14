@@ -9,7 +9,7 @@ import {
   CommentBox,
   PostButton,
 } from "./Blog.style"
-import BlogContent from "../BlogContent/BlogContent"
+import BlogContent from "../Bloglist/BlogContent/BlogContent"
 
 const Blog = ({ user }) => {
   const [blogComments, setBlogComments] = useState([])

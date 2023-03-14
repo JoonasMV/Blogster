@@ -1,7 +1,9 @@
 const getToken = () => {
-  const token = JSON.parse(sessionStorage.getItem("accessToken"))
-  const auth = { headers: { authorization: `Bearer ${token}` }}
-  return auth
+  const user = JSON.parse(sessionStorage.getItem("user"))
+  if(user) {
+    const auth = { headers: { authorization: `Bearer ${user.accessToken}` }}
+    return auth
+  }
 }
 
 export default getToken()

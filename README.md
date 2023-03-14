@@ -38,4 +38,6 @@
 |03/03|2|refactoring|
 |07/03|1.5|blog liking|
 |13/03|2|bug fixing|
-|total|60.5||
+|13/02|1|fixed urls|
+|14/02|0.5|refactoring|
+|total|64.5||

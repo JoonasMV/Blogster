@@ -1,6 +1,6 @@
 import { useState } from "react"
 import loginService from "../../services/loginService"
-import Notification from "../Notification/Notification"
+import Notification from "./Notification/Notification"
 import { StyledInput, isValid, Container, Sh3, StyledButton } from "./UserLogin.style"
 
 const UserLogin = ({ setUser, setShowLogin }) => {
@@ -18,9 +18,7 @@ const UserLogin = ({ setUser, setShowLogin }) => {
       )
       setUser({ username, id: logged.id })
       setShowLogin(false)
-      sessionStorage.setItem("accessToken", JSON.stringify(logged.accessToken))
-      sessionStorage.setItem("username", JSON.stringify(logged.username))
-      sessionStorage.setItem("id", JSON.stringify(logged.id))
+      sessionStorage.setItem("user", JSON.stringify(logged))
     } catch (error) {
       setNotification(error.response.data.error)
     }

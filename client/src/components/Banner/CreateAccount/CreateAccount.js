@@ -1,9 +1,9 @@
 import { useState, useRef } from "react"
 import { Container, StyledInput, StyledTextArea, StyledButton } from "./CreateAccount.style"
-import { isValid } from "../UserLogin/UserLogin.style"
-import loginService from "../../services/loginService"
-import userService from "../../services/userService"
-import Notification from "../Notification/Notification"
+import { isValid } from "../../UserLogin/UserLogin.style"
+import loginService from "../../../services/loginService"
+import userService from "../../../services/userService"
+import Notification from "../../UserLogin/Notification/Notification"
 
 const CreateAccount = ({ setUser, setBoxVisibility }) => {
   const [username, setUsername] = useState("")

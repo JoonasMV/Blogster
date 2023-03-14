@@ -3,7 +3,7 @@ import { Background, Title, ButtonWrapper, StyledButton } from "./Banner.style"
 import UserLogin from "../UserLogin/UserLogin"
 import Userbox from "../Userbox/Userbox"
 import { useState } from "react"
-import CreateAccount from "../CreateAccount/CreateAccount"
+import CreateAccount from "./CreateAccount/CreateAccount"
 import ToggleVisible from "../ToggleVisibility/ToggleVisible"
 
 const Banner = ({ user, setUser }) => {
