@@ -19,13 +19,6 @@ body {
 }
 `
 
-const PageWrapper = styled.div`
-  padding: 0 25%;
-  @media (max-width: 768px) {
-    padding: 0;
-  }
-`
-
 function App() {
   const [user, setUser] = useState({})
 
@@ -43,14 +36,7 @@ function App() {
         <Route path={"/"} element={<Bloglist />} />
         <Route path={"/newBlog"} element={<Blogform />} />
         <Route path="/blogs/:id" element={<Blog user={user} />} />
-        <Route
-          path="/user/:id"
-          element={
-            <PageWrapper>
-              <User />
-            </PageWrapper>
-          }
-        />
+        <Route path="/user/:id" element={<User />} />
       </Routes>
     </div>
   )

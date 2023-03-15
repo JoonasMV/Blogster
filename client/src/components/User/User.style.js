@@ -73,3 +73,10 @@ export const SLink = styled(Link)`
 export const Sh3 = styled.h3`
   display: inline-block;
 `
+
+export const Wrapper = styled.div`
+  padding: 0 25%;
+  @media (max-width: 768px) {
+    padding: 0;
+  }
+`

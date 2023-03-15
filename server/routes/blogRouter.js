@@ -33,7 +33,6 @@ blogRouter.post("/", authChecker, async (req, res) => {
 
   if (!title) return res.status(400).json({ error: "Title required" })
   if (!content) return res.status(400).json({ error: "Content required" })
-  //const MongoUser = await User.findById(user.id)
   const newBlog = new Blog({
     title,
     content,
@@ -53,7 +52,6 @@ blogRouter.post("/", authChecker, async (req, res) => {
 
 blogRouter.put("/:id", authChecker, async (req, res) => {
   const { content } = req.body
-  //const user = req.user
   const blog = {
     content: content,
   }
@@ -69,10 +67,9 @@ blogRouter.put("/:id", authChecker, async (req, res) => {
 })
 
 blogRouter.post("/like/:id", authChecker, async (req, res) => {
-  const blogToLike = await Blog.findById(req.params.id) //.populate("likes")
+  const blogToLike = await Blog.findById(req.params.id)
 
   const userLiking = await User.findById(req.user.id)
-  // console.log(userLiking)
   
   const updatedBlogLikes = { likes: blogToLike.likes }
   
@@ -85,9 +82,6 @@ blogRouter.post("/like/:id", authChecker, async (req, res) => {
   updatedUserLikes.likes = userLiking.likes.includes(blogToLike.id)
   ? userLiking.likes.filter(id => id === blogToLike.id)
   : userLiking.likes.concat(blogToLike.id)
-
-  // const test = await Blog.findOneAndUpdate({ _id: req.params.id }, {})
-  // console.log(test)
   
   try {
     const updatedBlog = await Blog.findOneAndUpdate({_id: req.params.id}, updatedBlogLikes, {

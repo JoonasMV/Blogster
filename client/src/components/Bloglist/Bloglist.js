@@ -19,8 +19,8 @@ const Bloglist = () => {
     <>
       {blogs.map((blog) => {
         return (
-          <PageWrapper>
-            <Container key={blog.id}>
+          <PageWrapper key={blog.id}>
+            <Container>
               <BlogContent>
                 <SLink to={`/user/${blog.user.id}`}>
                   <TopBar>{blog.user.username}</TopBar>

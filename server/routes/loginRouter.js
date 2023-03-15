@@ -22,7 +22,8 @@ loginRouter.post("/", async (req, res) => {
   }
 
   const accessToken = jwt.sign(userForToken, config.SECRET)
-  res.json({ accessToken, username: user.username, id: user.id })
+  user.accessToken = accessToken
+  res.json(user)
 })
 
 module.exports = loginRouter

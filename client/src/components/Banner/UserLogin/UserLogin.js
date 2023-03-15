@@ -1,5 +1,5 @@
 import { useState } from "react"
-import loginService from "../../services/loginService"
+import loginService from "services/loginService.js"
 import Notification from "./Notification/Notification"
 import { StyledInput, isValid, Container, Sh3, StyledButton } from "./UserLogin.style"
 
