@@ -40,4 +40,6 @@
 |13/03|2|bug fixing|
 |13/02|1|fixed urls|
 |14/02|0.5|refactoring|
-|total|64.5||
+|15/03|1|refactoring|
+|15/03|1|css|
+|total|66.5||

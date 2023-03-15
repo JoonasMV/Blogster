@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { buttonCSS, SmallButton } from "../../../css/ButtonCss"
+import { buttonCSS, SmallButton } from "../../../../css/ButtonCss"
 
 export const Sh2 = styled.h2`
   margin: 0;
@@ -10,8 +10,6 @@ export const BlogText = styled.p`
   margin: 0;
   padding: 0;
   white-space: pre-line;
-  font-family: "Open Sans";
-  line-height: 120%;
 `
 
 export const Date = styled.div``

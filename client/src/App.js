@@ -1,21 +1,29 @@
 import Banner from "./components/Banner/Banner"
 import Bloglist from "./components/Bloglist/Bloglist"
-import Blog from "./components/Blog/Blog"
+import Blog from "./components/Bloglist/Blog/Blog"
 import User from "./components/User/User"
 import Blogform from "./components/Blogform/Blogform"
 import { darkPurple } from "./css/Color"
-import styled, { createGlobalStyle } from "styled-components"
+import { createGlobalStyle } from "styled-components"
 import { Route, Routes } from "react-router-dom"
 import { useState } from "react"
 import { useEffect } from "react"
 
 const StyledBody = createGlobalStyle`
-body {
-  margin: 0;
-  margin-top: 6rem;
+:root{
+  font-size: 20px;
   background-color: ${darkPurple};
   color: white;
-  font-size: 20px;
+  font-family: "Times New Roman";
+}
+
+textarea {
+  font-family: "Times New Roman";
+}
+
+body {
+  margin: 0;
+  margin-top: 65px;
 }
 `
 
