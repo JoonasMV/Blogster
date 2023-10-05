@@ -42,4 +42,5 @@
 |14/02|0.5|refactoring|
 |15/03|1|refactoring|
 |15/03|1|css|
-|total|66.5||
+|05/10|4|refactoring|
+|total|70.5||
