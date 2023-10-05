@@ -1,4 +1,12 @@
-import styled from "styled-components";
+import styled from "styled-components"
+
+export const FormWrapper = styled.div`
+  /* display: flex; */
+  /* flex-direction: column; */
+  height: calc(100vh - 65px);
+  box-sizing: border-box;
+  border: 2px solid red;
+`
 
 export const Sh2 = styled.h2`
   text-align: center;
@@ -9,17 +17,19 @@ export const Sh2 = styled.h2`
     font-size: 40px;
     line-height: 0px;
   }
-`;
+`
+
+export const StyledForm = styled.form`
+  /* height: 100%; */
+`
 
 export const TextAreaWrapper = styled.div`
+  border: 2px solid blue;
   display: flex;
   justify-content: center;
-`;
-
-export const TitleWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-`;
+  /* box-sizing: border-box; */
+  /* height: 100%; */
+`
 
 export const StyledTitleArea = styled.textarea`
   text-align: center;
@@ -43,13 +53,16 @@ export const StyledTitleArea = styled.textarea`
     font-size: 20px;
     margin-top: 1rem;
   }
-`;
+`
 
 export const StyledTextArea = styled.textarea`
   width: 70%;
-  height: 75vh;
   resize: none;
+  height: 100%;
+  flex: 1;
   padding: 0.2rem;
+  box-sizing: border-box;
+  height: 100%;
   border: none;
   border-radius: 10px;
   font-size: 20px;
@@ -61,15 +74,9 @@ export const StyledTextArea = styled.textarea`
     height: 60vh;
     width: 90%;
   }
-`;
+`
 
 export const StyledButton = styled.button`
   width: 5rem;
   font-size: 15px;
-`;
-
-export const ButtonWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  margin-top: 1rem;
-`;
+`

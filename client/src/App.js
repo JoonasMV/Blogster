@@ -3,7 +3,7 @@ import Bloglist from "./components/Bloglist/Bloglist"
 import Blog from "./components/Bloglist/Blog/Blog"
 import User from "./components/User/User"
 import Blogform from "./components/Blogform/Blogform"
-import { darkPurple } from "./css/Color"
+import { darkPurple, magentaRed, skyBlue, teal } from "./css/Color"
 import { createGlobalStyle } from "styled-components"
 import { Route, Routes } from "react-router-dom"
 import { useState } from "react"
@@ -12,18 +12,20 @@ import { useEffect } from "react"
 const StyledBody = createGlobalStyle`
 :root{
   font-size: 20px;
-  background-color: ${darkPurple};
+  background-attachment: fixed;
+  background-image: linear-gradient(to left top, ${magentaRed}, ${skyBlue}, ${teal});
   color: white;
   font-family: "Times New Roman";
+  height: 100%;
 }
 
 textarea {
   font-family: "Times New Roman";
 }
 
-body {
+body, html {
   margin: 0;
-  margin-top: 65px;
+  height: 100%;
 }
 `
 
@@ -37,7 +39,7 @@ function App() {
   }, [])
 
   return (
-    <div>
+    <>
       <StyledBody />
       <Banner user={user} setUser={setUser} />
       <Routes>
@@ -46,7 +48,7 @@ function App() {
         <Route path="/blogs/:id" element={<Blog user={user} />} />
         <Route path="/user/:id" element={<User />} />
       </Routes>
-    </div>
+    </>
   )
 }
 

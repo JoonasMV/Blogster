@@ -12,7 +12,8 @@ export const Container = styled.div`
 
 export const Username = styled.div`
   padding: 0 5px;
-  height: 45px;
+  height: 50px;
+  width: 100px;
   font-size: 30px;
   font-family: "Open Sans";
   font-weight: 600;
@@ -20,6 +21,7 @@ export const Username = styled.div`
   border: 2px solid white;
   border-radius: 15px;
   box-sizing: border-box;
+  text-align: center;
   &:hover {
     color: ${darkPurple};
     background-color: white;

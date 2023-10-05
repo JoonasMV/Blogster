@@ -2,19 +2,20 @@ import styled from "styled-components"
 import { buttonCSS } from "../../css/ButtonCss"
 
 export const Background = styled.div`
-  background-color: #0d0d1a;
-  border-bottom: 1px solid rgba(255, 255, 255, .15);
   display: flex;
   position: fixed;
-  width: 100%;
   top: 0;
-  height: 60px;
+  width: 100%;
+  @media (max-width: 1000px) {
+    position: relative;
+  }
   `
 export const Title = styled.h1`
   margin: 0;
   margin-left: 10px;
   font-size: 60px;
   color: white;
+  text-shadow: 2px 2px 2px black;
 `
 
 export const ButtonWrapper = styled.div`
@@ -27,7 +28,17 @@ export const ButtonWrapper = styled.div`
 
 export const StyledButton = styled.button`
   ${buttonCSS}
-  height: 45px;
-  width: 80px;
+  height: 50px;
+  width: 100px;
   margin-left: 10px;
+  font-size: 19px;
+  font-family: "Open Sans";
+  font-weight: 600;
+`
+
+export const Filler = styled.div`
+  height: 30px;
+  @media (max-width: 1000px) {
+    height: 0;
+  }
 `

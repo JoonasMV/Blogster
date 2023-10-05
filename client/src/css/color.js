@@ -1,2 +1,5 @@
 export const gray = "#343a40"
 export const darkPurple = "#0d0d1a"
+export const magentaRed = "#D16BA5"
+export const skyBlue = "#86A8E7"
+export const teal = "#5FFBF1"
