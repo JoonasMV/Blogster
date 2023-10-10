@@ -1,20 +1,23 @@
-import styled from 'styled-components';
+import styled from "styled-components";
+import { SlideInAnimation, SlideOutAnimation } from "./SlideAnimation.style";
 
 export const Wrapper = styled.div`
   position: fixed;
   right: 0;
-  top: 0;
-  /* transform: translateX(100%); */
-  transition: transform 0.3s ease-in-out;
+  overflow: hidden;
+  height: 100vh;
+  width: 70vw;
+  background: red;
+  ${props => props.animate ? SlideInAnimation : SlideOutAnimation};
   @media (min-width: 1000px) {
     display: none;
   }
 `;
 
 export const ButtonWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 100px;
-  transition: 1s;
-  width: ${props => props.animate ? "100px" : "0px"};
+  gap: 10px;
+`;
+
+export const SButton = styled.button`
+  width: 100%;
 `;

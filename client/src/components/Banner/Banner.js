@@ -1,9 +1,12 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Background, Title, Filler } from "./Banner.style";
+import { Background, Title, Filler, BurgerMenu } from "./Banner.style";
 import DesktopNavButtons from "./DesktopNavButtons/DesktopNavButtons";
 import MobileMenu from "./MobileMenu/MobileMenu";
 
 const Banner = ({ user, setUser }) => {
+  const [showMobileMenu, setShowMobileMenu] = useState(false);
+
   return (
     <>
       <Background>
@@ -11,7 +14,10 @@ const Banner = ({ user, setUser }) => {
           <Title>Blogster</Title>
         </Link>
         <DesktopNavButtons user={user} setUser={setUser} />
-        <MobileMenu />
+        <div>
+          <BurgerMenu onClick={() => setShowMobileMenu(!showMobileMenu)}>Asd</BurgerMenu>
+          <MobileMenu visible={showMobileMenu} setVisible={setShowMobileMenu}/>
+        </div>
       </Background>
       <Filler />
     </>

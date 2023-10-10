@@ -35,3 +35,9 @@ export const Filler = styled.div`
     height: 0;
   }
 `;
+
+export const BurgerMenu = styled.div`
+  background: green;
+  position: absolute;
+  left: 0;
+`;

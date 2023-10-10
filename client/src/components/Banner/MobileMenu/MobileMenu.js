@@ -1,17 +1,17 @@
 import React from "react";
-import { useState } from "react";
-import { Wrapper, ButtonWrapper } from "./MobileMenu.style";
+import {
+  Wrapper,
+  ButtonWrapper,
+  SButton,
+} from "./MobileMenu.style";
 
-const MobileMenu = () => {
-  const [visible, setVisible] = useState(false);
-
+const MobileMenu = ({ visible, setVisible }) => {
   return (
-    <Wrapper>
-      <button onClick={() => setVisible(!visible)}>Menu</button>
-      <ButtonWrapper animate={visible}>
-        <button>1</button>
-        <button>2</button>
-        <button>3</button>
+    <Wrapper animate={visible}>
+      <ButtonWrapper>
+        <SButton onClick={() => setVisible(false)}>1</SButton>
+        <SButton onClick={() => setVisible(false)}>2</SButton>
+        <SButton onClick={() => setVisible(false)}>3</SButton>
       </ButtonWrapper>
     </Wrapper>
   );
