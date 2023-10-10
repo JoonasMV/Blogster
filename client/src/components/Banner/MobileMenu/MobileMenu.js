@@ -1,17 +1,27 @@
 import React from "react";
-import {
-  Wrapper,
-  ButtonWrapper,
-  SButton,
-} from "./MobileMenu.style";
+import useOutsideClick from "../../../hooks/useOutsideClick";
+import { Wrapper, ButtonWrapper, CloseIcon } from "./MobileMenu.style";
+import { SButton, UsernameButton } from "css/ButtonCss";
 
-const MobileMenu = ({ visible, setVisible }) => {
+const MobileMenu = ({ user, visible, setVisible }) => {
+  const ref = useOutsideClick(() => setVisible(false));
+
   return (
-    <Wrapper animate={visible}>
+    <Wrapper animate={visible} ref={ref}>
       <ButtonWrapper>
-        <SButton onClick={() => setVisible(false)}>1</SButton>
-        <SButton onClick={() => setVisible(false)}>2</SButton>
-        <SButton onClick={() => setVisible(false)}>3</SButton>
+        {user ? (
+          <>
+            <CloseIcon onClick={() => setVisible(false)} />
+            <UsernameButton>{user.username}</UsernameButton>
+            <SButton>New blog</SButton>
+            <SButton>Log out</SButton>
+          </>
+        ) : (
+          <>
+            <SButton onClick={() => setVisible(false)}>Login</SButton>
+            <SButton onClick={() => setVisible(false)}>Sign up</SButton>
+          </>
+        )}
       </ButtonWrapper>
     </Wrapper>
   );

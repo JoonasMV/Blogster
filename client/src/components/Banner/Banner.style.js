@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import { buttonCSS } from "../../css/ButtonCss";
+import { CgMenu } from "react-icons/cg";
+
 
 export const Background = styled.div`
   display: flex;
@@ -36,8 +38,12 @@ export const Filler = styled.div`
   }
 `;
 
-export const BurgerMenu = styled.div`
-  background: green;
+export const MenuIcon = styled(CgMenu)`
+  margin: 10px;
   position: absolute;
-  left: 0;
+  right: 0;
+  font-size: 50px;
+  @media (min-width: 1000px) {
+    display: none;
+  }
 `;

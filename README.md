@@ -44,4 +44,5 @@
 |15/03|1|css|
 |05/10|4|refactoring|
 |10/10|1|Animations|
+|1010|2|css refactoring|
 |total|71.5||

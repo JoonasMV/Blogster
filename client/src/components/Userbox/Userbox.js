@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router-dom"
-import { Username } from "./Userbox.style"
-import { StyledButton } from "../Banner/Banner.style"
+import { UsernameButton, SButton } from "css/ButtonCss"
+import { Wrapper } from "./Userbox.style"
 
 const Userbox = ({ user, setUser }) => {
   const location = useLocation()
@@ -11,17 +11,17 @@ const Userbox = ({ user, setUser }) => {
   }
 
   return (
-    <>
+    <Wrapper>
       <Link to={`user/${user.id}`} style={{ textDecoration: "none" }}>
-        <Username>{user.username}</Username>
+        <UsernameButton>{user.username}</UsernameButton>
       </Link>
       {location.pathname !== "/newBlog" && (
         <Link to="/newBlog">
-          <StyledButton>New blog</StyledButton>
+          <SButton>New blog</SButton>
         </Link>
       )}
-      <StyledButton onClick={logout}>Log out</StyledButton>
-    </>
+      <SButton onClick={logout}>Log out</SButton>
+    </Wrapper>
   )
 }
 
