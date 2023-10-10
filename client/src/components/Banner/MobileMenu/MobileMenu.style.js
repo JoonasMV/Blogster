@@ -8,8 +8,11 @@ export const Wrapper = styled.div`
   position: fixed;
   right: 0;
   height: 100vh;
+  box-sizing: border-box;
   width: 70vw;
   background: linear-gradient(140deg, ${magentaRed}E6, ${skyBlue}E6, ${teal}E6);
+  border-top-left-radius: 50px;
+  border-bottom-left-radius: 50px;
   ${(props) => (props.animate ? SlideInAnimation : SlideOutAnimation)};
   @media (min-width: 1000px) {
     display: none;
