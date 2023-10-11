@@ -5,7 +5,7 @@ import DesktopNavButtons from "./DesktopNavButtons/DesktopNavButtons";
 import MobileMenu from "./MobileMenu/MobileMenu";
 
 const Banner = ({ user, setUser }) => {
-  const [showMobileMenu, setShowMobileMenu] = useState(false);
+  const [showMobileMenu, setShowMobileMenu] = useState(null);
 
   return (
     <>

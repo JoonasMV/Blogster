@@ -1,12 +1,12 @@
 import styled from "styled-components";
+import { mobileSize } from "css/MediaQuery";
 
 export const ButtonWrapper = styled.div`
-  display: flex;
   margin-left: auto;
-  align-items: center;
   padding-right: 10px;
+  margin-top: auto;
   display: ${(props) => props.visible};
-  @media (max-width: 1000px) {
+  @media (max-width: ${mobileSize}) {
     display: none;
   }
 `;

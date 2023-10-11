@@ -2,8 +2,10 @@ import styled from "styled-components";
 import { SlideInAnimation, SlideOutAnimation } from "./SlideAnimation.style";
 import { magentaRed, skyBlue, teal } from "css/Color";
 import { CgClose } from "react-icons/cg";
+import { mobileSize } from "css/MediaQuery";
 
 export const Wrapper = styled.div`
+  display: ${props => props.animate == null ? "none" : ""}; //Stops animation from playing on load
   padding: 10px;
   position: fixed;
   right: 0;
@@ -14,7 +16,7 @@ export const Wrapper = styled.div`
   border-top-left-radius: 50px;
   border-bottom-left-radius: 50px;
   ${(props) => (props.animate ? SlideInAnimation : SlideOutAnimation)};
-  @media (min-width: 1000px) {
+  @media (min-width: ${mobileSize}) {
     display: none;
   }
 `;

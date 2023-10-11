@@ -3,7 +3,7 @@ import Bloglist from "./components/Bloglist/Bloglist"
 import Blog from "./components/Bloglist/Blog/Blog"
 import User from "./components/User/User"
 import Blogform from "./components/Blogform/Blogform"
-import { darkPurple, magentaRed, skyBlue, teal } from "./css/Color"
+import { magentaRed, skyBlue, teal } from "./css/Color"
 import { createGlobalStyle } from "styled-components"
 import { Route, Routes } from "react-router-dom"
 import { useState } from "react"
@@ -25,7 +25,6 @@ textarea {
 
 body, html {
   margin: 0;
-  height: 100%;
 }
 `
 

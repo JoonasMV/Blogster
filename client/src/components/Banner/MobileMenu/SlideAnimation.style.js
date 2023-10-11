@@ -4,21 +4,12 @@ const SlideIn = keyframes`
   0% {
     transform: translateX(100%);
   }
-
-  100% {
-    transform: translateX(0%);
-  }
 `;
 
 const SlideOut = keyframes`
-  0% {
-    transform: translateX(0%);
-  }
-    
   100% {
     transform: translateX(100%);
   }
-
 `;
 
 export const SlideInAnimation = css`

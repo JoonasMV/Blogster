@@ -4,7 +4,7 @@ import UserLogin from "../UserLogin/UserLogin";
 import CreateAccount from "../CreateAccount/CreateAccount";
 import ToggleVisible from "components/ToggleVisibility/ToggleVisible";
 import { ButtonWrapper } from "./DesktopNavButtons.style";
-import { StyledButton } from "../Banner.style";
+import { SButton } from "css/ButtonCss";
 
 const DesktopNavButtons = ({ user, setUser }) => {
   const [showLogin, setShowLogin] = useState(false);
@@ -28,8 +28,8 @@ const DesktopNavButtons = ({ user, setUser }) => {
     <ButtonWrapper>
       {!user.id && (
         <>
-          <StyledButton onClick={handleShowLogin}> Login </StyledButton>
-          <StyledButton onClick={handleShowCreateAcc}> Sign up </StyledButton>
+          <SButton onClick={handleShowLogin}> Login </SButton>
+          <SButton onClick={handleShowCreateAcc}> Sign up </SButton>
         </>
       )}
       {user.id && <Userbox user={user} setUser={setUser} />}
