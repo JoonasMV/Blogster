@@ -45,4 +45,5 @@
 |05/10|4|refactoring|
 |10/10|1|Animations|
 |1010|2|css refactoring|
+|11/10|1|front end fixing|
 |total|71.5||

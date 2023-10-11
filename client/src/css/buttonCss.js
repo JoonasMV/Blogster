@@ -5,6 +5,7 @@ export const buttonCSS = css`
   font-size: 15px;
   margin: 0;
   border: none;
+  filter: drop-shadow(1px 1px 1px black);  
   &:hover {
     cursor: pointer;
     color: white;

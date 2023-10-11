@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Background, Title, Filler, MenuIcon } from "./Banner.style";
+import { Background, Title, MenuIcon } from "./Banner.style";
 import DesktopNavButtons from "./DesktopNavButtons/DesktopNavButtons";
 import MobileMenu from "./MobileMenu/MobileMenu";
 
@@ -26,7 +26,6 @@ const Banner = ({ user, setUser }) => {
           setVisible={setShowMobileMenu}
         />
       </Background>
-      <Filler />
     </>
   );
 };

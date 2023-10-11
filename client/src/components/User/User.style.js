@@ -1,14 +1,9 @@
-import styled, { css } from "styled-components"
+import styled from "styled-components"
 import { gray } from "../../css/Color"
 import { Link } from "react-router-dom"
 
-const borderCSS = css`
-  border: 2px solid rgba(255, 255, 255, 1);
-  border-radius: 15px 0;
-`
 
 export const Blogs = styled.div`
-  ${borderCSS}
   padding: 2vh;
   padding-top: 0;
   margin-top: 1rem;
@@ -32,7 +27,6 @@ export const UserInfo = styled.div`
 `
 
 export const UserWrapper = styled.div`
-  ${borderCSS}
   background-color: ${gray};
   width: 25%;
   text-align: center;
@@ -44,7 +38,6 @@ export const UserWrapper = styled.div`
 `
 
 export const BioBox = styled.div`
-  ${borderCSS}
   background-color: ${gray};
   width: 75%;
   text-align: center;
@@ -72,11 +65,4 @@ export const SLink = styled(Link)`
 
 export const Sh3 = styled.h3`
   display: inline-block;
-`
-
-export const Wrapper = styled.div`
-  padding: 0 25%;
-  @media (max-width: 768px) {
-    padding: 0;
-  }
 `

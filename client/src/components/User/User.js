@@ -10,8 +10,7 @@ import {
   BlogPreview,
   Sh2,
   Sh3,
-  SLink,
-  Wrapper
+  SLink
 } from "./User.style"
 
 const User = () => {
@@ -25,7 +24,7 @@ const User = () => {
   if (!pageUser) return null
 
   return (
-    <Wrapper>
+    <>
       <UserInfo>
         <UserWrapper>
           <h2>{pageUser.username}'s page</h2>
@@ -46,7 +45,7 @@ const User = () => {
           </div>
         ))}
       </Blogs>
-    </Wrapper>
+    </>
   )
 }
 

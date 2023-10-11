@@ -12,7 +12,6 @@ export const Background = styled.div`
   @media (max-width: ${mobileSize}) {
     margin-top: 0;
     background-image: linear-gradient(to left, ${skyBlue}, ${teal});
-    box-shadow: 0px 0px 10px 0px black;
   }
   `;
 
@@ -22,10 +21,6 @@ export const Title = styled.h1`
   font-size: 60px;
   color: white;
   text-shadow: 2px 2px 2px black;
-`;
-
-export const Filler = styled.div`
-  height: 30px;
 `;
 
 export const MenuIcon = styled(CgMenu)`

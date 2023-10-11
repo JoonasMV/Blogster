@@ -6,9 +6,6 @@ export const BlogContent = styled.div`
   background-color: #343a40;
   padding: 1rem;
   border-radius: 5px;
-  @media (max-width: 768px){
-    border-radius: 0;
-  }
 `
 
 export const Sh2 = styled.h2`
@@ -32,7 +29,7 @@ export const TopBar = styled.div`
 `
 
 export const Container = styled.div`
-  margin-top: 2rem;
+  margin-bottom: 2rem;
   box-sizing: border-box;
 `
 
