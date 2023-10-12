@@ -5,6 +5,7 @@ import { CgClose } from "react-icons/cg";
 import { mobileSize } from "css/MediaQuery";
 
 export const Wrapper = styled.div`
+  z-index: 2;
   display: ${props => props.animate == null ? "none" : ""}; //Stops animation from playing on load
   padding: 10px;
   position: fixed;

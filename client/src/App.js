@@ -29,13 +29,13 @@ body, html {
 }
 `
 
-const Content = styled.div`
-   @media (max-width: ${mobileSize}){
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-top: 70px;
-  }
-`;
+// const Content = styled.div`
+//    @media (max-width: ${mobileSize}){
+//     padding-left: 10px;
+//     padding-right: 10px;
+//     padding-top: 70px;
+//   }
+// `;
 
 function App() {
   const [user, setUser] = useState({})
@@ -50,14 +50,14 @@ function App() {
     <>
       <StyledBody />
       <Banner user={user} setUser={setUser} />
-      <Content>
+      {/* <Content> */}
       <Routes>
         <Route path={"/"} element={<Bloglist />} />
         <Route path={"/newBlog"} element={<Blogform />} />
         <Route path="/blogs/:id" element={<Blog user={user} />} />
         <Route path="/user/:id" element={<User />} />
       </Routes>
-      </Content>
+      {/* </Content> */}
     </>
   )
 }

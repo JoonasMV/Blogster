@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { CgMenu } from "react-icons/cg";
-import { magentaRed, skyBlue, teal } from "css/Color";
 import { mobileSize } from "css/MediaQuery";
 
 export const Background = styled.div`
@@ -11,16 +10,8 @@ export const Background = styled.div`
   margin-top: 10px;
   @media (max-width: ${mobileSize}) {
     margin-top: 0;
-    background-image: linear-gradient(
-      to left top,
-      ${magentaRed},
-      ${skyBlue}, 
-      ${teal}
-      );
-      mix-blend-mode: hide;
-      height: 100vh;
-      clip-path: inset(0px 0px calc(100% - 75px) 0px);
-  }
+    backdrop-filter: blur(6px);
+    }
   `;
 
 export const Title = styled.h1`

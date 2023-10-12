@@ -1,5 +1,6 @@
 import styled from "styled-components"
 import { Link } from "react-router-dom"
+import { mobileSize } from "css/MediaQuery"
 
 export const BlogContent = styled.div`
   color: white;
@@ -35,7 +36,8 @@ export const Container = styled.div`
 
 export const PageWrapper = styled.div`
   padding: 0 25%;
-  @media (max-width: 768px) {
+  @media (max-width: ${mobileSize}) {
+    margin-top: 75px;
     padding: 0;
   }
 `
