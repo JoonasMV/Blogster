@@ -46,4 +46,5 @@
 |10/10|1|Animations|
 |1010|2|css refactoring|
 |11/10|1|front end fixing|
-|total|71.5||
+|12/10|1|new login menu|
+|total|72.5||
