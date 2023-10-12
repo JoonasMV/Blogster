@@ -17,7 +17,7 @@ const StyledBody = createGlobalStyle`
   background-image: linear-gradient(to left top, ${magentaRed}, ${skyBlue}, ${teal});
   color: white;
   font-family: "Times New Roman";
-  height: 100%;
+  height: 100vh;
 }
 
 textarea {

@@ -47,4 +47,5 @@
 |1010|2|css refactoring|
 |11/10|1|front end fixing|
 |12/10|1|new login menu|
+|12/10|1|fixed top bar gradient bug|
 |total|72.5||
