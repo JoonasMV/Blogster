@@ -8,9 +8,7 @@ export const Background = styled.div`
   position: fixed;
   top: 0;
   width: 100%;
-  margin-top: 10px;
   @media (max-width: ${mobileSize}) {
-    margin-top: 0;
     background: linear-gradient(to left top, ${magentaRed}, ${skyBlue}, ${teal});
     background-size: 100vw 100vh;
     }

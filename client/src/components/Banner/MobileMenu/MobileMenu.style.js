@@ -16,6 +16,7 @@ export const Wrapper = styled.div`
   background: linear-gradient(140deg, ${magentaRed}E6, ${skyBlue}E6, ${teal}E6);
   border-top-left-radius: 50px;
   border-bottom-left-radius: 50px;
+  backdrop-filter: blur(2px);
   ${(props) => (props.animate ? SlideInAnimation : SlideOutAnimation)};
   @media (min-width: ${mobileSize}) {
     display: none;

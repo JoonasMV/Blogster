@@ -37,7 +37,7 @@ export const Container = styled.div`
 export const PageWrapper = styled.div`
   padding: 0 25%;
   @media (max-width: ${mobileSize}) {
-    margin-top: 75px;
+    /* margin-top: 75px; */
     padding: 0;
   }
 `

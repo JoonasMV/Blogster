@@ -1,5 +1,5 @@
-import blogService from "../../services/blogService"
-import { useEffect, useState } from "react"
+import blogService from "../../services/blogService";
+import { useEffect, useState } from "react";
 import {
   BlogContent,
   Sh2,
@@ -7,14 +7,14 @@ import {
   TopBar,
   Container,
   PageWrapper,
-} from "./Bloglist.style.js"
+} from "./Bloglist.style.js";
 
 const Bloglist = () => {
-  const [blogs, setBlogs] = useState([])
+  const [blogs, setBlogs] = useState([]);
 
   useEffect(() => {
-    blogService.getAll().then((res) => setBlogs(res))
-  }, [])
+    blogService.getAll().then((res) => setBlogs(res));
+  }, []);
   return (
     <>
       {blogs.map((blog) => {
@@ -22,9 +22,13 @@ const Bloglist = () => {
           <PageWrapper key={blog.id}>
             <Container>
               <BlogContent>
-                <SLink to={`/user/${blog.user.id}`}>
-                  <TopBar>{blog.user.username}</TopBar>
-                </SLink>
+                {blog.user ? (
+                  <SLink to={`/user/${blog?.user?.id}`}>
+                    <TopBar>{blog?.user?.username}</TopBar>
+                  </SLink>
+                ) : (
+                  <TopBar>[deleted]</TopBar>
+                )}
                 <SLink to={`/blogs/${blog.id}`}>
                   <Sh2>{blog.title}</Sh2>
                 </SLink>
@@ -33,10 +37,10 @@ const Bloglist = () => {
               </BlogContent>
             </Container>
           </PageWrapper>
-        )
+        );
       })}
     </>
-  )
-}
+  );
+};
 
-export default Bloglist
+export default Bloglist;

@@ -17,6 +17,7 @@ const StyledBody = createGlobalStyle`
   color: white;
   font-family: "Times New Roman";
   height: 100vh;
+  padding-top: 75px;
 }
 
 textarea {

@@ -48,4 +48,5 @@
 |11/10|1|front end fixing|
 |12/10|1|new login menu|
 |12/10|1|fixed top bar gradient bug|
-|total|72.5||
+|15/10|2|new login added|
+|total|76||

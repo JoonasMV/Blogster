@@ -1,12 +1,23 @@
-import React, { useState } from "react";
+import React from "react";
 import useOutsideClick from "../../../hooks/useOutsideClick";
 import { Wrapper, ButtonWrapper, CloseIcon } from "./MobileMenu.style";
 import { SButton, UsernameButton } from "css/ButtonCss";
 import LoginPopUP from "./LoginPopUp.js/LoginPopUp";
+import { useNavigate } from "react-router-dom";
 
 const MobileMenu = ({ user, setUser, visible, setVisible }) => {
-  const [showLogin, setShowLogin] = useState(false);
+  const navigate = useNavigate();
   
+  const logout = () => {
+    sessionStorage.clear()
+    setUser({ username: null, id: null })
+  }
+
+  const handleNewBlogNavigation = () => {
+    navigate("/newBlog")
+    setVisible(false)
+  }
+
   const ref = useOutsideClick(() => setVisible(false));
   
   return (
@@ -16,15 +27,12 @@ const MobileMenu = ({ user, setUser, visible, setVisible }) => {
           <>
             <CloseIcon onClick={() => setVisible(false)} />
             <UsernameButton>{user.username}</UsernameButton>
-            <SButton>New blog</SButton>
-            <SButton >Log out</SButton>
+            <SButton onClick={handleNewBlogNavigation}>New blog</SButton>
+            <SButton onClick={logout}>Log out</SButton>
           </>
         ) : (
           <>
-            {/* <SButton onClick={() => setShowLogin(!showLogin)}>Login</SButton> */}
             <LoginPopUP setUser={setUser} />
-            {/* {showLogin && <UserLogin />} */}
-            {/* <SButton onClick={() => setVisible(false)}>Sign up</SButton> */}
           </>
         )}
       </ButtonWrapper>
