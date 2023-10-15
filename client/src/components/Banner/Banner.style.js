@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { CgMenu } from "react-icons/cg";
 import { mobileSize } from "css/MediaQuery";
+import { magentaRed, skyBlue, teal } from "css/Color";
 
 export const Background = styled.div`
   display: flex;
@@ -10,7 +11,8 @@ export const Background = styled.div`
   margin-top: 10px;
   @media (max-width: ${mobileSize}) {
     margin-top: 0;
-    backdrop-filter: blur(6px);
+    background: linear-gradient(to left top, ${magentaRed}, ${skyBlue}, ${teal});
+    background-size: 100vw 100vh;
     }
   `;
 
