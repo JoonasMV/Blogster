@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import { inputCSS } from "css/InputCss";
 import { UsernameButton } from "css/ButtonCss";
+import { mobileSize } from "css/MediaQuery";
 
 export const LoginPopUpWrapper = styled.div`
-  margin: 10px auto;
   padding: 10px;
   display: flex;
   flex-direction: column;
@@ -12,6 +12,9 @@ export const LoginPopUpWrapper = styled.div`
   border-radius: 10px;
   width: 65%;
   font-family: "Open Sans";
+  @media (min-width: ${mobileSize}) {
+    width: 100%;
+  }
 `;
 
 export const Sh3 = styled.h3`

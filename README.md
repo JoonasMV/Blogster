@@ -49,4 +49,5 @@
 |12/10|1|new login menu|
 |12/10|1|fixed top bar gradient bug|
 |15/10|2|new login added|
-|total|76||
+|16/10|1|desktop nav buttons|
+|total|77||

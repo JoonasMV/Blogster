@@ -20,6 +20,7 @@ const LoginPopUP = ({ setUser }) => {
   const handleLogin = async (e) => {
     e.preventDefault();
 
+    
     try {
       const logged = await loginService.login(username, password);
       setUser({ username, id: logged.id });
@@ -30,24 +31,21 @@ const LoginPopUP = ({ setUser }) => {
   };
 
   const handleUserCreation = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
     const newUser = {
       username,
       password,
       email,
-    }
+    };
 
-    const response = await userService.createNewUser(newUser)
+    const response = await userService.createNewUser(newUser);
     if (response.status === 201) {
-      const user = await loginService.login(
-        username,
-        password
-      )
-      setUser({ username, id: user.id })
+      const user = await loginService.login(username, password);
+      setUser({ username, id: user.id });
       // setBoxVisibility(false)
-      sessionStorage.setItem("accessToken", JSON.stringify(user.accessToken))
-      sessionStorage.setItem("username", JSON.stringify(user.username))
-      sessionStorage.setItem("id", JSON.stringify(user.id))
+      sessionStorage.setItem("accessToken", JSON.stringify(user.accessToken));
+      sessionStorage.setItem("username", JSON.stringify(user.username));
+      sessionStorage.setItem("id", JSON.stringify(user.id));
     } else {
       // setNotification(response.data.error)
     }
@@ -67,9 +65,11 @@ const LoginPopUP = ({ setUser }) => {
           placeholder="Password"
           onChange={(e) => setPassword(e.target.value)}
         />
-        <LoginWrapper>
-          <LoginButton>Log in</LoginButton>
-        </LoginWrapper>
+        {!showSignUp && (
+          <LoginWrapper>
+            <LoginButton>Log in</LoginButton>
+          </LoginWrapper>
+        )}
         <SignUpPopUp
           showSignUp={showSignUp}
           setShowSignUp={setShowSignUp}
@@ -81,7 +81,6 @@ const LoginPopUP = ({ setUser }) => {
 };
 
 const SignUpPopUp = ({ showSignUp, setShowSignUp, setEmail }) => {
-
   return (
     <>
       {showSignUp ? (
@@ -91,6 +90,9 @@ const SignUpPopUp = ({ showSignUp, setShowSignUp, setEmail }) => {
             placeholder="Email"
             onChange={(e) => setEmail(e.target.value)}
           />
+          <LoginWrapper>
+            <LoginButton>Create user</LoginButton>
+          </LoginWrapper>
           <SpanWrapper>
             <SSpan onClick={() => setShowSignUp(!showSignUp)}>Cancel</SSpan>
           </SpanWrapper>
