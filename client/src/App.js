@@ -1,6 +1,6 @@
 import Banner from "./components/Banner/Banner";
 import Bloglist from "./components/Bloglist/Bloglist";
-import Blog from "./components/Bloglist/Blog/Blog";
+// import Blog from "./components/Bloglist/Blog/Blog";
 import User from "./components/Userpage/Userpage";
 import Blogform from "./components/Blogform/Blogform";
 import { magentaRed, skyBlue, teal } from "./css/Color";
@@ -9,6 +9,7 @@ import { Route, Routes } from "react-router-dom";
 import { useState } from "react";
 import { useEffect } from "react";
 import { mobileSize } from "css/MediaQuery";
+import SingleBlog from "components/SingleBlog/SingleBlog";
 
 const StyledBody = createGlobalStyle`
 :root{
@@ -54,7 +55,7 @@ function App() {
         <Routes>
           <Route path={"/"} element={<Bloglist />} />
           <Route path={"/newBlog"} element={<Blogform />} />
-          <Route path="/blogs/:id" element={<Blog user={user} />} />
+          <Route path="/blogs/:id" element={<SingleBlog user={user} />} />
           <Route path="/user/:id" element={<User />} />
         </Routes>
       </Content>

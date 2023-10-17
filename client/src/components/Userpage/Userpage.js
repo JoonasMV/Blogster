@@ -23,8 +23,8 @@ const User = () => {
       </ElementWrapper>
       <h3>Entries</h3>
         {user.blogs.map((blog) => (
-      <ElementWrapper>
-          <BlogPreview key={blog.id}>
+      <ElementWrapper key={blog.id}>
+          <BlogPreview>
             <BlogTitle>{blog.title}</BlogTitle>
             <SBlogContentWrapper>
               <BlogContent>{blog.content}</BlogContent>

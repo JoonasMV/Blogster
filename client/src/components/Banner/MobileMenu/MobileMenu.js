@@ -23,7 +23,7 @@ const MobileMenu = ({ user, setUser, visible, setVisible }) => {
     setVisible(false);
   };
 
-  const ref = useOutsideClick(() => setVisible(false));
+  const ref = useOutsideClick(() => visible === null ? "" : setVisible(false));
 
   return (
     <Wrapper animate={visible} ref={ref}>

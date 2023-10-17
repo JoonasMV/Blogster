@@ -36,3 +36,11 @@ export const BlogTitle = styled.h3`
     cursor: pointer;
   }
 `;
+
+export const BlogUsername = styled.h2`
+  margin: 10px;
+  font-size: 16px;
+  :hover {
+    cursor: pointer;
+  }
+`;

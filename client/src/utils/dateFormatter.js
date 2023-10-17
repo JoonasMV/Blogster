@@ -10,7 +10,7 @@ export const formatDate = (dateAsString) => {
 export const formatTime = (dateAsString) => {
   const date = new Date(dateAsString)
   return [ 
-    date.getHours(),
-    date.getMinutes(),
-  ].join(".")
+    ("0" + date.getHours()).slice(-2),
+    ("0" + date.getMinutes()).slice(-2),
+  ].join(":")
 }

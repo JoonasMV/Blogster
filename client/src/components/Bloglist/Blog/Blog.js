@@ -20,12 +20,12 @@ const Blog = ({ user }) => {
   const { id } = useParams()
   const commentRef = useRef()
 
-  useEffect(() => {
-    commentService.getBlogComments(id, min, max).then((res) => {
-      setBlogComments(res)
-    })
-    setUserId(JSON.parse(sessionStorage.getItem("id")))
-  }, [])
+  // useEffect(() => {
+  //   commentService.getBlogComments(id, min, max).then((res) => {
+  //     setBlogComments(res)
+  //   })
+  //   setUserId(JSON.parse(sessionStorage.getItem("id")))
+  // }, [])
 
   const handleCommentArea = (e) => {
     setComment(e.target.value)

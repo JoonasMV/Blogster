@@ -6,8 +6,8 @@ import {
   BlogContentWrapper,
   ElementWrapper,
   PageWrapper,
+  BlogUsername
 } from "css/BlogCss";
-import { Username } from "./Bloglist.style";
 const Bloglist = () => {
   const [blogs, setBlogs] = useState([]);
   const navigate = useNavigate();
@@ -26,9 +26,9 @@ const Bloglist = () => {
               </BlogTitle>
               <BlogContentWrapper>{blog.content}</BlogContentWrapper>
               {blog.user ? (
-                <Username onClick={() => navigate(`/user/${blog?.user?.id}`)}>
+                <BlogUsername onClick={() => navigate(`/user/${blog?.user?.id}`)}>
                   {blog?.user?.username}
-                </Username>
+                </BlogUsername>
               ) : (
                 <div>[deleted]</div>
               )}

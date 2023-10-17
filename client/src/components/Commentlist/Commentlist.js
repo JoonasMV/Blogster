@@ -3,12 +3,38 @@ import CommentResponse from "../CommentResponse/CommentResponse"
 import { Timestamp, Date, Time } from "css/DateTime"
 import { formatDate, formatTime } from "../../utils/dateFormatter"
 import { Response, Responder, LoadMoreButton } from "./Commentlist.style"
-import { BasicButton } from "css/ButtonCss"
+import { useState, useEffect } from "react"
+import commentService from "services/commentService.js"
+import { useParams } from "react-router-dom"
 
-const Commentlist = ({ comments, loadMore }) => {
+const Commentlist = () => {
+  const [min, setMin] = useState(0)
+  const [max, setMax] = useState(5)
+  const [blogComments, setBlogComments] = useState([])
+  const { id } = useParams()
+
+  useEffect(() => {
+    commentService.getBlogComments(id, min, max).then((res) => {
+      setBlogComments(res)
+    })
+  })
+
+  const loadMoreComments = async () => {
+    const commentsToLoad = 2
+    const comments = await commentService.getBlogComments(
+      id,
+      min + commentsToLoad,
+      max + commentsToLoad
+    )
+
+    setMin((prev) => prev + commentsToLoad)
+    setMax((prev) => prev + commentsToLoad)
+    setBlogComments((prev) => prev.concat(comments))
+  }
+
   return (
     <>
-      {comments.map((comment) => {
+      {blogComments.map((comment) => {
         return (
           <Response key={comment.id}>
             <div>{comment.content}</div>
@@ -27,7 +53,7 @@ const Commentlist = ({ comments, loadMore }) => {
         )
       })}
 
-  <LoadMoreButton onClick={loadMore}>Load more</LoadMoreButton>
+  <LoadMoreButton onClick={loadMoreComments}>Load more</LoadMoreButton>
     </>
   )
 }
