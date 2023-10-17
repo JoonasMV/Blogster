@@ -23,7 +23,6 @@ export const Background = styled.div`
 export const Title = styled.h1`
   margin: 0;
   margin-left: 10px;
-  text-align: top;
   font-size: 60px;
   color: white;
   text-shadow: 2px 2px 2px black;

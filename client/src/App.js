@@ -1,14 +1,14 @@
-import Banner from "./components/Banner/Banner"
-import Bloglist from "./components/Bloglist/Bloglist"
-import Blog from "./components/Bloglist/Blog/Blog"
-import User from "./components/User/User"
-import Blogform from "./components/Blogform/Blogform"
-import { magentaRed, skyBlue, teal } from "./css/Color"
-import { createGlobalStyle } from "styled-components"
-import { Route, Routes } from "react-router-dom"
-import { useState } from "react"
-import { useEffect } from "react"
-import { mobileSize } from "css/MediaQuery"
+import Banner from "./components/Banner/Banner";
+import Bloglist from "./components/Bloglist/Bloglist";
+import Blog from "./components/Bloglist/Blog/Blog";
+import User from "./components/Userpage/Userpage";
+import Blogform from "./components/Blogform/Blogform";
+import { magentaRed, skyBlue, teal } from "./css/Color";
+import styled, { createGlobalStyle } from "styled-components";
+import { Route, Routes } from "react-router-dom";
+import { useState } from "react";
+import { useEffect } from "react";
+import { mobileSize } from "css/MediaQuery";
 
 const StyledBody = createGlobalStyle`
 :root{
@@ -20,41 +20,48 @@ const StyledBody = createGlobalStyle`
   height: 100vh;
   padding-top: 75px;
   @media (max-width: ${mobileSize}) {
-    padding-left: 10px;
-    padding-right: 10px;
+    font-size: 16px;
   }
 }
 
+
+
 textarea {
-  font-family: "Times New Roman";
+  font-family: "Open Sans";
 }
 
 body, html {
   margin: 0;
 }
-`
+`;
 
 function App() {
-  const [user, setUser] = useState({})
+  const [user, setUser] = useState({});
 
   useEffect(() => {
     if (sessionStorage.length !== 0) {
-      setUser(JSON.parse(sessionStorage.getItem("user")))
+      setUser(JSON.parse(sessionStorage.getItem("user")));
     }
-  }, [])
+  }, []);
+
+  const Content = styled.div`
+    padding: 2vh;
+  `;
 
   return (
     <>
       <StyledBody />
       <Banner user={user} setUser={setUser} />
-      <Routes>
-        <Route path={"/"} element={<Bloglist />} />
-        <Route path={"/newBlog"} element={<Blogform />} />
-        <Route path="/blogs/:id" element={<Blog user={user} />} />
-        <Route path="/user/:id" element={<User />} />
-      </Routes>
+      <Content>
+        <Routes>
+          <Route path={"/"} element={<Bloglist />} />
+          <Route path={"/newBlog"} element={<Blogform />} />
+          <Route path="/blogs/:id" element={<Blog user={user} />} />
+          <Route path="/user/:id" element={<User />} />
+        </Routes>
+      </Content>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
