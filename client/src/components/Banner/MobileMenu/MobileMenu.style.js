@@ -5,7 +5,6 @@ import { CgClose } from "react-icons/cg";
 import { mobileSize } from "css/MediaQuery";
 
 export const Wrapper = styled.div`
-  z-index: 2;
   display: ${props => props.animate == null ? "none" : ""}; //Stops animation from playing on load
   padding: 10px;
   position: fixed;
@@ -31,7 +30,12 @@ export const CloseButtonWrapper = styled.div`
   margin-right: 10px;
 `;
 
+export const IconWrapper = styled.div`
+  display: flex;
+  justify-content: flex-end;
+`;
+
+
 export const CloseIcon = styled(CgClose)`
-  float: right;
   font-size: 50px;
 `;
