@@ -1,16 +1,16 @@
 import blogService from "../../services/blogService";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
-  BlogContent,
-  Sh2,
-  SLink,
-  TopBar,
-  Container,
+  BlogTitle,
+  BlogContentWrapper,
+  ElementWrapper,
   PageWrapper,
-} from "./Bloglist.style.js";
-
+} from "css/BlogCss";
+import { Username } from "./Bloglist.style";
 const Bloglist = () => {
   const [blogs, setBlogs] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     blogService.getAll().then((res) => setBlogs(res));
@@ -20,22 +20,19 @@ const Bloglist = () => {
       {blogs.map((blog) => {
         return (
           <PageWrapper key={blog.id}>
-            <Container>
-              <BlogContent>
-                {blog.user ? (
-                  <SLink to={`/user/${blog?.user?.id}`}>
-                    <TopBar>{blog?.user?.username}</TopBar>
-                  </SLink>
-                ) : (
-                  <TopBar>[deleted]</TopBar>
-                )}
-                <SLink to={`/blogs/${blog.id}`}>
-                  <Sh2>{blog.title}</Sh2>
-                </SLink>
-                <hr></hr>
-                {blog.content}
-              </BlogContent>
-            </Container>
+            <ElementWrapper>
+              <BlogTitle onClick={() => navigate(`/blogs/${blog.id}`)}>
+                {blog.title}
+              </BlogTitle>
+              <BlogContentWrapper>{blog.content}</BlogContentWrapper>
+              {blog.user ? (
+                <Username onClick={() => navigate(`/user/${blog?.user?.id}`)}>
+                  {blog?.user?.username}
+                </Username>
+              ) : (
+                <div>[deleted]</div>
+              )}
+            </ElementWrapper>
           </PageWrapper>
         );
       })}

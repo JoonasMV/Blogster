@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import userService from "../../services/userService"
-import { BlogContent, BlogPreview, BlogTitle, BlogWrapper, ElementWrapper, PageWrapper, Sh2 } from "./Userpage.style"
+import { PageWrapper, ElementWrapper, BlogTitle, BlogContent } from "css/BlogCss"
+import { BlogPreview, Sh2, SBlogContentWrapper } from "./Userpage.style"
 
 const User = () => {
   const [user, setUser] = useState(null)
@@ -20,14 +21,14 @@ const User = () => {
       <ElementWrapper>
         {user.bio || "No bio yet"}
       </ElementWrapper>
-      <h2>Entries</h2>
+      <h3>Entries</h3>
         {user.blogs.map((blog) => (
       <ElementWrapper>
           <BlogPreview key={blog.id}>
             <BlogTitle>{blog.title}</BlogTitle>
-            <BlogWrapper>
+            <SBlogContentWrapper>
               <BlogContent>{blog.content}</BlogContent>
-            </BlogWrapper>
+            </SBlogContentWrapper>
           </BlogPreview>
       </ElementWrapper>
         ))}

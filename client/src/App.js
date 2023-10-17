@@ -24,8 +24,6 @@ const StyledBody = createGlobalStyle`
   }
 }
 
-
-
 textarea {
   font-family: "Open Sans";
 }
