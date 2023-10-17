@@ -50,4 +50,5 @@
 |12/10|1|fixed top bar gradient bug|
 |15/10|2|new login added|
 |16/10|1|desktop nav buttons|
-|total|77||
+|17/10|1|refactoring|
+|total|78||
