@@ -8,6 +8,7 @@ import { createGlobalStyle } from "styled-components"
 import { Route, Routes } from "react-router-dom"
 import { useState } from "react"
 import { useEffect } from "react"
+import { mobileSize } from "css/MediaQuery"
 
 const StyledBody = createGlobalStyle`
 :root{
@@ -18,6 +19,10 @@ const StyledBody = createGlobalStyle`
   font-family: "Times New Roman";
   height: 100vh;
   padding-top: 75px;
+  @media (max-width: ${mobileSize}) {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
 }
 
 textarea {

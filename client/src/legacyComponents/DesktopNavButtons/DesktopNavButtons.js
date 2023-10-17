@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import Userbox from "components/Userbox/Userbox";
-import UserLogin from "../UserLogin/UserLogin";
-import CreateAccount from "../CreateAccount/CreateAccount";
-import ToggleVisible from "components/ToggleVisibility/ToggleVisible";
+import Userbox from "legacyComponents/Userbox/Userbox";
+import UserLogin from "../../components/Banner/UserLogin/UserLogin";
+import CreateAccount from "../../components/Banner/CreateAccount/CreateAccount";
+import ToggleVisible from "legacyComponents/ToggleVisibility/ToggleVisible";
 import { ButtonWrapper } from "./DesktopNavButtons.style";
 import { SButton } from "css/ButtonCss";
 

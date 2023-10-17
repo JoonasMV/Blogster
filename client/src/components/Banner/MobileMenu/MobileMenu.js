@@ -7,7 +7,7 @@ import {
   IconWrapper,
 } from "./MobileMenu.style";
 import { SButton, UsernameButton } from "css/ButtonCss";
-import LoginPopUP from "./LoginPopUp.js/LoginPopUp";
+import LoginPopUP from "../LoginPopUp.js/LoginPopUp";
 import { useNavigate } from "react-router-dom";
 
 const MobileMenu = ({ user, setUser, visible, setVisible }) => {
@@ -31,9 +31,9 @@ const MobileMenu = ({ user, setUser, visible, setVisible }) => {
         <IconWrapper>
           <CloseIcon onClick={() => setVisible(false)} />
         </IconWrapper>
-        {user.id ? (
+        {user?.id ? (
           <>
-            <UsernameButton>{user.username}</UsernameButton>
+            <UsernameButton onClick={() => navigate(`/user/${user.id}`)}>{user.username}</UsernameButton>
             <SButton onClick={handleNewBlogNavigation}>New blog</SButton>
             <SButton onClick={logout}>Log out</SButton>
           </>
