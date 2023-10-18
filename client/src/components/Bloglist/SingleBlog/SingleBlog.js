@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import blogService from "../../services/blogService";
+import blogService from "../../../services/blogService";
 import commentService from "services/commentService";
 import {
   PageWrapper,

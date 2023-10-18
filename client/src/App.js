@@ -9,7 +9,7 @@ import { Route, Routes } from "react-router-dom";
 import { useState } from "react";
 import { useEffect } from "react";
 import { mobileSize } from "css/MediaQuery";
-import SingleBlog from "components/SingleBlog/SingleBlog";
+import SingleBlog from "components/Bloglist/SingleBlog/SingleBlog";
 
 const StyledBody = createGlobalStyle`
 :root{
