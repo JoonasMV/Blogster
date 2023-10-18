@@ -39,7 +39,7 @@ export const BlogTitle = styled.h3`
 
 export const BlogUsername = styled.h2`
   margin: 10px;
-  font-size: 16px;
+  font-size: 18px;
   :hover {
     cursor: pointer;
   }

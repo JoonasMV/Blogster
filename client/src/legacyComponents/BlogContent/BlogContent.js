@@ -66,10 +66,10 @@ const BlogContent = ({ user }) => {
   const handleBlogLiking = async () => {
     try {
       await blogService.likeBlog(blog.id)
-      // const userLikes = (await userService.getById(user.id)).likes
-      // console.log(userLikes)
-      // console.log(userLikes.includes(blog.id))
-      // setLiked(user.likes.includes(blog.id))
+      const userLikes = (await userService.getById(user.id)).likes
+      console.log(userLikes)
+      console.log(userLikes.includes(blog.id))
+      setLiked(user.likes.includes(blog.id))
 
     } catch (error) {
       console.log(error)

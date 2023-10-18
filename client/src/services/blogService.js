@@ -24,9 +24,14 @@ const updateBlog = async (updatedBlog, id) => {
 }
 
 const likeBlog = async (id) => {
-  // console.log(getToken)
   const likedBlog = await axios.post(`${baseUrl}/like/${id}`, null, getToken)
   return likedBlog.data
 }
 
-export default { getAll, getOne, postBlog, updateBlog, likeBlog }
+const checkLike = async (id) => {
+  const likedBlog = await axios.get(`${baseUrl}/like/${id}`, getToken)
+  return likedBlog.data
+}
+
+const blogService = { getAll, getOne, postBlog, updateBlog, likeBlog, checkLike }
+export default blogService

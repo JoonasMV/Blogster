@@ -1,4 +1,4 @@
-const mongoose = require("mongoose")
+const mongoose = require("mongoose");
 
 const commentSchema = new mongoose.Schema({
   content: {
@@ -18,13 +18,13 @@ const commentSchema = new mongoose.Schema({
   dateAdded: {
     type: Date,
   },
-})
+});
 
 commentSchema.set("toJSON", {
   virtuals: true,
   transform: (doc, ret) => {
-    delete ret._id, delete ret.__v
+    delete ret._id, delete ret.__v, delete ret.blog;
   },
-})
+});
 
-module.exports = mongoose.model("Comment", commentSchema)
+module.exports = mongoose.model("Comment", commentSchema);

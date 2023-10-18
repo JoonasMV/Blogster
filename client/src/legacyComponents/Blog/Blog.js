@@ -1,4 +1,4 @@
-import Commentlist from "../../components/Commentlist/Commentlist"
+import Commentlist from "../Commentlist/Commentlist"
 import { useEffect, useRef, useState } from "react"
 import { useParams } from "react-router-dom"
 import commentService from "../../services/commentService"

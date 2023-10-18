@@ -1,11 +1,12 @@
-import Responseform from "../Responseform/Responseform"
-import CommentResponse from "../CommentResponse/CommentResponse"
-import { Timestamp, Date, Time } from "css/DateTime"
-import { formatDate, formatTime } from "../../utils/dateFormatter"
-import { Response, Responder, LoadMoreButton } from "./Commentlist.style"
 import { useState, useEffect } from "react"
-import commentService from "services/commentService.js"
 import { useParams } from "react-router-dom"
+import commentService from "services/commentService"
+import { formatDate, formatTime } from "utils/dateFormatter"
+import CommentResponse from "../CommentResponse/CommentResponse"
+import Responseform from "../Responseform/Responseform"
+import { Response, Responder, Timestamp } from "./Commentlist.style"
+import { Date, Time } from "css/DateTime"
+import { LoadMoreButton } from "css/Buttons"
 
 const Commentlist = () => {
   const [min, setMin] = useState(0)

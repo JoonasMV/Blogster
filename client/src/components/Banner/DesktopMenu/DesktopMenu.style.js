@@ -14,7 +14,6 @@ export const ButtonWrapper = styled(PopUpWrapper)`
   gap: 10px;
 `;
 
-//Merge button styles
 export const NavButton = styled(SButton)`
   width: 120px;
 `;

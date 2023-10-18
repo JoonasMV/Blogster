@@ -18,7 +18,7 @@ commentRouter.post("/:id", authChecker, async (req, res) => {
     const retComment = await comment.save()
     blogToComment.comments = blogToComment.comments.concat(comment._id)
     await blogToComment.save()
-    res.status(201).json(retComment)
+    return res.status(201).json(retComment)
   } catch (error) {
     return res.status(400).json(error.message)
   }
