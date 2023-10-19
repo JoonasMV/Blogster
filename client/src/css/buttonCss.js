@@ -34,6 +34,14 @@ export const SButton = styled.button`
   margin-bottom: 10px;
 `;
 
+export const SquareButton = styled(SButton)`
+  filter: none;
+  border-radius: 5px;
+  font-size: 16px;
+  margin: 0;
+`
+
+
 export const UsernameButton = styled(SButton)`
   color: white;
   background-color: transparent;

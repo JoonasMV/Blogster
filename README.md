@@ -52,5 +52,6 @@
 |16/10|1|desktop nav buttons|
 |17/10|4|refactoring|
 |18/10|6|refactoring|
-|19/10|3|fixes|
-|total|88||
+|19/10|4|fixes|
+|19/10|1|edit bio route added|
+|total|89||
