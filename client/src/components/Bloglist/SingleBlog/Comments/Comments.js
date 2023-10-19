@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import commentService from "services/commentService";
 import { BlogContent, BlogUsername } from "css/BlogCss";
+import { useNavigate } from "react-router-dom";
 import {
   ResponseTextArea,
   ResButton,
@@ -9,12 +10,14 @@ import {
 } from "./Comments.style";
 
 const Comments = ({ comments }) => {
+  const navigate = useNavigate();
+
   return (
     <>
       {comments.map((comment) => {
         return (
           <CommentWrapper key={comment.id}>
-            <BlogUsername>{comment.user.username}</BlogUsername>
+            <BlogUsername onClick={() => navigate(`/user/${comment.user.id}`)}>{comment.user.username}</BlogUsername>
             <BlogContent>{comment.content}</BlogContent>
             <Responseform id={comment.id} />
             {comment.responses.map((response) => {
@@ -29,6 +32,7 @@ const Comments = ({ comments }) => {
 
 const Response = ({ id }) => {
   const [comment, setComment] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     commentService.getResponse(id).then((res) => setComment(res));
@@ -38,7 +42,7 @@ const Response = ({ id }) => {
 
   return (
     <CommentWrapper>
-      <BlogUsername>{comment.user.username}</BlogUsername>
+      <BlogUsername onClick={() => navigate(`/user/${comment.user.id}`)}>{comment.user.username}</BlogUsername>
       <BlogContent>{comment.content}</BlogContent>
       <Responseform id={comment.id} />
       {comment.responses.map((response) => {

@@ -1,6 +1,5 @@
 import { SButton } from "css/ButtonCss";
 import styled, { css } from "styled-components";
-import { Link } from "react-router-dom";
 
 const inputCSS = css`
   width: 100%;

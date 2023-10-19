@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import blogService from "../../../services/blogService";
 import { formatDate, formatTime } from "utils/dateFormatter";
 import { textAreaAdjust } from "utils/textAreaAdjust";
+import { useNavigate } from "react-router-dom";
 import {
   CommentTextArea,
   LeftWrapper,
@@ -32,6 +33,7 @@ const SingleBlog = () => {
   const { id } = useParams();
   const ref = useRef(null);
   const heightRef = useRef(null);
+  const navigate = useNavigate();
   const [blog, setBlog] = useState([]);
   const [liked, setLiked] = useState(false);
   const [comments, setComments] = useState([]);
@@ -101,7 +103,7 @@ const SingleBlog = () => {
 
         <InfoWrapper>
           <LeftWrapper>
-            <BlogUsername>
+            <BlogUsername onClick={() => navigate(`/user/${blog.user.id}`)}>
               {blog.user ? blog.user.username : "[deleted]"}
             </BlogUsername>
             <LikeWrapper>

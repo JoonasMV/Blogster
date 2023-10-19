@@ -1,39 +1,44 @@
-import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
-import userService from "../../services/userService"
-import { PageWrapper, ElementWrapper, BlogTitle, BlogContent } from "css/BlogCss"
-import { BlogPreview, Sh2, SBlogContentWrapper } from "./Userpage.style"
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import userService from "../../services/userService";
+import {
+  PageWrapper,
+  ElementWrapper,
+  BlogTitle,
+  BlogContent,
+} from "css/BlogCss";
+import { BlogPreview, Sh2, SBlogContentWrapper } from "./Userpage.style";
+import { useNavigate } from "react-router-dom";
 
 const User = () => {
-  const [user, setUser] = useState(null)
+  const [user, setUser] = useState(null);
+  const navigate = useNavigate();
 
-  const { id } = useParams()
+  const { id } = useParams();
   useEffect(() => {
-    userService.getById(id).then((res) => setUser(res))
-  }, [id])
+    userService.getById(id).then((res) => setUser(res));
+  }, [id]);
 
-  if (!user) return null
+  if (!user) return null;
 
   return (
     <PageWrapper>
-        <Sh2>{user.username}'s page</Sh2>
+      <Sh2>{user.username}'s page</Sh2>
       <h3>About me</h3>
-      <ElementWrapper>
-        {user.bio || "No bio yet"}
-      </ElementWrapper>
+      <ElementWrapper>{user.bio || "No bio yet"}</ElementWrapper>
       <h3>Entries</h3>
-        {user.blogs.map((blog) => (
-      <ElementWrapper key={blog.id}>
+      {user.blogs.map((blog) => (
+        <ElementWrapper key={blog.id}>
           <BlogPreview>
-            <BlogTitle>{blog.title}</BlogTitle>
+            <BlogTitle onClick={() => navigate(`/blogs/${blog.id}`)}>{blog.title}</BlogTitle>
             <SBlogContentWrapper>
               <BlogContent>{blog.content}</BlogContent>
             </SBlogContentWrapper>
           </BlogPreview>
-      </ElementWrapper>
-        ))}
+        </ElementWrapper>
+      ))}
     </PageWrapper>
-    )
-  }
-  
-  export default User
+  );
+};
+
+export default User;
