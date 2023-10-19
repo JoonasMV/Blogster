@@ -23,6 +23,8 @@ export const ElementWrapper = styled.div`
 export const BlogContentWrapper = styled(ElementWrapper)`
   padding: 10px;
   margin: 0;
+  box-sizing: border-box;
+
 `;
 
 export const BlogContent = styled.p`

@@ -1,75 +1,46 @@
-import styled from "styled-components";
+import { SButton } from "css/ButtonCss";
+import styled, { css } from "styled-components";
+import { Link } from "react-router-dom";
 
-export const Sh2 = styled.h2`
+const inputCSS = css`
+  width: 100%;
+  resize: none;
+  box-sizing: border-box;
+  background: rgba(255, 255, 255, 0.5);
+  border: none;
+  font-size: 20px;
+  color: black;
   text-align: center;
-  font-size: 50px;
-  margin: 0px;
-  margin-bottom: 1.5rem;
-  @media (max-width: 700px) {
-    font-size: 40px;
-    line-height: 0px;
+  :focus {
+    outline: none;
   }
 `;
 
-export const TextAreaWrapper = styled.div`
-  display: flex;
-  justify-content: center;
+export const NewBlogH2 = styled.h2`
+  margin: 0;
+  text-align: center;
+  margin-bottom: 20px;
+`;
+
+export const BlogTitle = styled.input`
+  ${inputCSS}
+  padding: 10px;
+`;
+
+export const BlogTextArea = styled.textarea`
+  padding: 5px;
+  ${inputCSS}
 `;
 
 export const TitleWrapper = styled.div`
-  display: flex;
-  justify-content: center;
+  margin-bottom: 10px;
 `;
 
-export const StyledTitleArea = styled.textarea`
-  text-align: center;
-  font-size: 30px;
-  font-style: italic;
-  color: white;
-  width: 750px;
-
-  background: transparent;
-  border: none;
-  border-bottom: 3px solid white;
-
-  resize: none;
-  padding: 0;
-  margin-bottom: 2vh;
-  &:focus {
-    outline: none;
-  }
-  @media (max-width: 1000px) {
-    width: 90%;
-    font-size: 20px;
-    margin-top: 1rem;
-  }
-`;
-
-export const StyledTextArea = styled.textarea`
-  width: 70%;
-  height: 75vh;
-  resize: none;
-  padding: 0.2rem;
-  border: none;
-  border-radius: 10px;
-  font-size: 20px;
-  resize: none;
-  &:focus {
-    outline: none;
-  }
-  @media (max-width: 1000px) {
-    height: 60vh;
-    width: 90%;
-  }
-`;
-
-export const StyledButton = styled.button`
-  width: 5rem;
-  font-size: 15px;
-`;
-
-export const ButtonWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  margin-top: 1rem;
+export const FormButton = styled(SButton)`
+  filter: none;
+  width: 150px;
+  height: 30px;
+  border-radius: 5px;
+  font-size: 16px;
+  margin: 10px;
 `;

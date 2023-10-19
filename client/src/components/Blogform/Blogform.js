@@ -1,27 +1,25 @@
 import blogService from "../../services/blogService";
-import { useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useRef, useState } from "react";
+import { ElementWrapper, PageWrapper } from "css/BlogCss";
 import {
-  StyledTextArea,
-  StyledTitleArea,
-  StyledButton,
-  Sh2,
+  BlogTextArea,
+  BlogTitle,
+  FormButton,
+  NewBlogH2,
   TitleWrapper,
-  TextAreaWrapper,
-  ButtonWrapper
-} from "./Blogform.style.js";
+} from "./Blogform.style";
+import { textAreaAdjust } from "utils/textAreaAdjust";
 
 const Blogform = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const titleRef = useRef(null);
+  const contentRef = useRef(null);
 
-  const resizeField = (e) => {
-    setTitle(e.target.value);
-    const textarea = titleRef.current;
-    textarea.style.height = "";
-    textarea.style.height = textarea.scrollHeight + "px";
-  };
+  useEffect(() => {
+    textAreaAdjust(titleRef);
+    textAreaAdjust(contentRef);
+  }, [content, title]);
 
   const handleBlogPost = (e) => {
     e.preventDefault();
@@ -35,43 +33,35 @@ const Blogform = () => {
   };
 
   return (
-    <>
-      <Sh2>Write a new blog</Sh2>
+    <PageWrapper>
+      <ElementWrapper>
+        <NewBlogH2>Write a new blog</NewBlogH2>
 
-      <form onSubmit={handleBlogPost}>
+        <form onSubmit={handleBlogPost}>
+          <TitleWrapper>
+            <BlogTitle
+              type="text"
+              ref={titleRef}
+              onChange={(e) => setTitle(e.target.value)}
+              value={title}
+              placeholder="Title"
+            />
+          </TitleWrapper>
 
-        <TitleWrapper>
-          <StyledTitleArea
-            id="textarea"
-            rows={1}
-            type="text"
-            ref={titleRef}
-            onChange={resizeField}
-            value={title}
-            placeholder="Title"
-          />
-        </TitleWrapper>
-    
-        <TextAreaWrapper>
-          <StyledTextArea
-            placeholder="content"
-            onChange={(e) => setContent(e.target.value)}
-            value={content}
-          />
-        </TextAreaWrapper>
+          <div>
+            <BlogTextArea
+              placeholder="content"
+              ref={contentRef}
+              onChange={(e) => setContent(e.target.value)}
+              value={content}
+            />
+          </div>
 
-        <ButtonWrapper>
-
-        <StyledButton type="submit" style={{ marginRight: 20 }}>
-          Post
-        </StyledButton>
-        <Link to="/">
-          <StyledButton type="button">cancel</StyledButton>
-        </Link>
-        </ButtonWrapper>
-
-      </form>
-    </>
+          <FormButton type="submit">Post</FormButton>
+          <FormButton type="button">cancel</FormButton>
+        </form>
+      </ElementWrapper>
+    </PageWrapper>
   );
 };
 

@@ -55,7 +55,9 @@ export const CommentTextArea = styled.textarea`
 `;
 
 export const BlogEditTextArea = styled(CommentTextArea)`
+  margin: 0;
   font-size: 20px;
+  padding-bottom: 0;
   background: rgba(0, 0, 255, 0.1)
 `;
 

@@ -38,8 +38,6 @@ const SingleBlog = () => {
   const [editMode, setEditMode] = useState(false);
   const [editContent, setEditContent] = useState("");
 
-  const [editHeight, setEditHeight] = useState(0);
-
   useEffect(() => {
     blogService.getOne(id).then((res) => setBlog(res));
     blogService.checkLike(id).then((res) => setLiked(res));
@@ -49,12 +47,10 @@ const SingleBlog = () => {
     commentService.getBlogComments(id).then((res) => setComments(res));
   }, [id]);
 
-  // Forces re-render so the edit area becomes the right size. It just works :_)
   useEffect(() => {
-    if (ref?.current?.clientHeight) {
-      setEditHeight(ref?.current?.clientHeight);
-    }
-  }, [editMode, editHeight]);
+    textAreaAdjust(ref);
+    textAreaAdjust(heightRef);
+  }, [editContent, editMode, blog.content]);
 
   const user = JSON.parse(sessionStorage.getItem("user"));
 
@@ -82,7 +78,6 @@ const SingleBlog = () => {
       console.log(error);
     }
   };
-  textAreaAdjust(ref);
 
   return (
     <PageWrapper>
