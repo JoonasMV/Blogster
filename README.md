@@ -51,5 +51,6 @@
 |15/10|2|new login added|
 |16/10|1|desktop nav buttons|
 |17/10|4|refactoring|
-|18/10|5|refactoring|
-|total|85||
+|18/10|6|refactoring|
+|19/10|1|fixes|
+|total|86||

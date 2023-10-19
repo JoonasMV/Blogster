@@ -4,17 +4,16 @@ import { UsernameButton } from "css/ButtonCss";
 import { mobileSize } from "css/MediaQuery";
 
 export const LoginPopUpWrapper = styled.div`
-  padding: 10px;
-  /* display: flex; */
-  /* flex-direction: column; */
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.4);
   border-radius: 10px;
-  /* width: 50%; */
   font-family: "Open Sans";
   margin: auto;
   @media (min-width: ${mobileSize}) {
     width: 100%;
+  }
+  @media (min-width: ${mobileSize}) {
+    pointer-events: all;
   }
 `;
 

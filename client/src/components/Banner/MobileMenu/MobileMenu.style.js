@@ -37,5 +37,6 @@ export const IconWrapper = styled.div`
 
 
 export const CloseIcon = styled(CgClose)`
+  cursor: pointer;
   font-size: 50px;
 `;

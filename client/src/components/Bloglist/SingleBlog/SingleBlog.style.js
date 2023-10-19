@@ -54,6 +54,11 @@ export const CommentTextArea = styled.textarea`
   }
 `;
 
+export const BlogEditTextArea = styled(CommentTextArea)`
+  font-size: 20px;
+  background: rgba(0, 0, 255, 0.1)
+`;
+
 const LikeButtonStyle = css`
   font-size: 30px;
   margin: 0;

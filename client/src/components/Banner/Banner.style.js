@@ -18,6 +18,9 @@ export const Background = styled.div`
     );
     background-size: 100vw 100vh;
   }
+  @media (min-width: ${mobileSize}) {
+    pointer-events: none;
+  }
 `;
 
 export const Title = styled.h1`
@@ -26,10 +29,14 @@ export const Title = styled.h1`
   font-size: 60px;
   color: white;
   text-shadow: 2px 2px 2px black;
+  @media (min-width: ${mobileSize}) {
+    pointer-events: all;
+  }
 `;
 
 export const MenuIcon = styled(CgMenu)`
   margin: 10px;
+  cursor: pointer;
   position: absolute;
   right: 0;
   font-size: 50px;

@@ -3,10 +3,16 @@ import { mobileSize } from "css/MediaQuery";
 import styled from "styled-components";
 
 export const PopUpWrapper = styled.div`
+  position: fixed;
+  top: 0;
+  right: 0;
   margin: 10px 10px 10px auto;
   display: flex;
   @media (max-width: ${mobileSize}) {
     display: none;
+  }
+  @media (min-width: ${mobileSize}) {
+    pointer-events: all;
   }
 `;
 

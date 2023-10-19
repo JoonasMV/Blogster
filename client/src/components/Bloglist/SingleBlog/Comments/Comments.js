@@ -82,19 +82,5 @@ const Responseform = ({ id }) => {
       </ResButton>
     </ReponseFormWrapper>
   );
-
-  // return (
-  //   <ReponseFormWrapper>
-  //     {showResponse ? (
-  //       <>
-  //         <ResponseTextArea />
-  //       </>
-  //     ) : <>
-  //     <ResponseButton onClick={() => setShowResponse(!showResponse)}>
-  //     </>}
-  //       Respond
-  //     </ResponseButton>
-  //   </ReponseFormWrapper>
-  // );
 };
 export default Comments;
