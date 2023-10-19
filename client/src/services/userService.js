@@ -1,4 +1,5 @@
 import axios from "axios"
+import getToken from "../utils/getToken"
 const baseUrl = "/api/users"
 
 const getById = async (id) => {
@@ -15,4 +16,12 @@ const createNewUser = async (newUser) => {
   }
 }
 
-export default { getById, createNewUser }
+const editUserBio = async (id, bio) => {
+  console.log(id, bio)
+  const updatedUser = await axios.put(`${baseUrl}/${id}`, bio, getToken)
+  console.log(updatedUser.data)
+  return updatedUser.data
+}
+
+const userService = { getById, createNewUser, editUserBio }
+export default userService
