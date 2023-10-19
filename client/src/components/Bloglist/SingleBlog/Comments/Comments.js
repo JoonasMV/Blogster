@@ -10,45 +10,36 @@ import {
 } from "./Comments.style";
 
 const Comments = ({ comments }) => {
-  const navigate = useNavigate();
-
   return (
     <>
       {comments.map((comment) => {
-        return (
-          <CommentWrapper key={comment.id}>
-            <BlogUsername onClick={() => navigate(`/user/${comment.user.id}`)}>{comment.user.username}</BlogUsername>
-            <BlogContent>{comment.content}</BlogContent>
-            <Responseform id={comment.id} />
-            {comment.responses.map((response) => {
-              return <Response key={response} id={response} />;
-            })}
-          </CommentWrapper>
-        );
+        return <Response id={comment.id}></Response>;
       })}
     </>
   );
 };
 
 const Response = ({ id }) => {
-  const [comment, setComment] = useState("");
+  const [response, setResponse] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
-    commentService.getResponse(id).then((res) => setComment(res));
+    commentService.getResponses(id).then((res) => setResponse(res));
   }, [id]);
 
-  if (!comment) return null;
+  if (!response) return null;
 
   return (
     <CommentWrapper>
-      <BlogUsername onClick={() => navigate(`/user/${comment.user.id}`)}>{comment.user.username}</BlogUsername>
-      <BlogContent>{comment.content}</BlogContent>
-      <Responseform id={comment.id} />
-      {comment.responses.map((response) => {
-        return <Response key={response} id={response} />;
-      })
-      }
+      <BlogUsername onClick={() => navigate(`/user/${response.user.id}`)}>
+        {response?.user?.username || "loading..."}
+      </BlogUsername>
+      <BlogContent>{response.content}</BlogContent>
+      <Responseform id={response.id} />
+      {response?.responses &&
+        response.responses.map((response) => {
+          return <Response key={response} id={response} />;
+        })}
     </CommentWrapper>
   );
 };
@@ -59,12 +50,9 @@ const Responseform = ({ id }) => {
 
   const submitResponse = async (e) => {
     e.preventDefault();
-    try {
-      const res = await commentService.postResponse(id, response);
-      console.log(res);
-    } catch (error) {
-      console.log(error);
-    }
+    await commentService.postResponse(id, response);
+    setShowResponse(!showResponse);
+    setResponse("");
   };
 
   return showResponse ? (

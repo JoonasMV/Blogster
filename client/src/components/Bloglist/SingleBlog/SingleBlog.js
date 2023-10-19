@@ -47,7 +47,7 @@ const SingleBlog = () => {
 
   useEffect(() => {
     commentService.getBlogComments(id).then((res) => setComments(res));
-  }, [id]);
+  });
 
   useEffect(() => {
     textAreaAdjust(ref);

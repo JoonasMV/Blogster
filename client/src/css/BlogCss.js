@@ -24,7 +24,7 @@ export const BlogContentWrapper = styled(ElementWrapper)`
   padding: 10px;
   margin: 0;
   box-sizing: border-box;
-
+  white-space: pre-wrap;
 `;
 
 export const BlogContent = styled.p`

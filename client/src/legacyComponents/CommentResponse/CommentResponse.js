@@ -10,7 +10,7 @@ const CommentResponse = ({ commentId }) => {
   const [comment, setComment] = useState("")
 
   useEffect(() => {
-    commentService.getResponse(commentId).then((res) => setComment(res))
+    commentService.getResponses(commentId).then((res) => setComment(res))
   }, [])
 
   if (!comment) return null

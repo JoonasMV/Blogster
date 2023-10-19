@@ -43,7 +43,7 @@ commentRouter.post("/response/:id", authChecker, async (req, res) => {
       savedResponse._id
     )
     await commentToRespond.save()
-    res.sendStatus(201)
+    return res.status(201).json(savedResponse)
   } catch (error) {
     return res.status(400).json(error.message)
   }

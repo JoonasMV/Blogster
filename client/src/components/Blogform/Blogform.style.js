@@ -27,8 +27,9 @@ export const BlogTitle = styled.input`
 `;
 
 export const BlogTextArea = styled.textarea`
-  padding: 5px;
+  padding: 10px;
   ${inputCSS}
+  text-align: start;
 `;
 
 export const TitleWrapper = styled.div`
