@@ -52,5 +52,5 @@
 |16/10|1|desktop nav buttons|
 |17/10|4|refactoring|
 |18/10|6|refactoring|
-|19/10|1|fixes|
-|total|86||
+|19/10|2|fixes|
+|total|87||

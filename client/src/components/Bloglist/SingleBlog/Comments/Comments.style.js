@@ -10,10 +10,10 @@ export const ResButton = styled(PostButton)`
   width: 100px;
   height: 30px;
   margin-right: 10px;
+  margin-left: 0;
 `;
 
 export const ReponseFormWrapper = styled.div`
-  padding: 10px 0;
 `;
 
 export const CommentWrapper = styled(ElementWrapper)`

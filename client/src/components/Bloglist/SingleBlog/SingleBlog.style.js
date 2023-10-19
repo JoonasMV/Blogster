@@ -84,4 +84,9 @@ export const PostButton = styled(SButton)`
   border-radius: 5px;
   font-size: 16px;
   margin: 10px;
+  margin-left: 10px;
+`;
+
+export const EditButton = styled(PostButton)`
+  width: 100px;
 `;

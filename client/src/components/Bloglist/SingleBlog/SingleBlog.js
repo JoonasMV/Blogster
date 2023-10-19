@@ -15,6 +15,7 @@ import {
   LikeWrapper,
   PostButton,
   BlogEditTextArea,
+  EditButton,
 } from "./SingleBlog.style";
 import commentService from "services/commentService";
 import Comments from "./Comments/Comments";
@@ -37,6 +38,8 @@ const SingleBlog = () => {
   const [editMode, setEditMode] = useState(false);
   const [editContent, setEditContent] = useState("");
 
+  const [editHeight, setEditHeight] = useState(0);
+
   useEffect(() => {
     blogService.getOne(id).then((res) => setBlog(res));
     blogService.checkLike(id).then((res) => setLiked(res));
@@ -46,20 +49,12 @@ const SingleBlog = () => {
     commentService.getBlogComments(id).then((res) => setComments(res));
   }, [id]);
 
+  // Forces re-render so the edit area becomes the right size. It just works :_)
   useEffect(() => {
-    let height;
-    let height2;
-    if (heightRef?.current?.clientHeight) {
-      height = heightRef?.current?.clientHeight;
-      console.log("updated 1")
-    }
     if (ref?.current?.clientHeight) {
-      height2 = ref?.current?.clientHeight;
-      console.log("updated 2")
+      setEditHeight(ref?.current?.clientHeight);
     }
-    console.log(height);
-    console.log(height2);
-  }, [editMode]);
+  }, [editMode, editHeight]);
 
   const user = JSON.parse(sessionStorage.getItem("user"));
 
@@ -80,7 +75,7 @@ const SingleBlog = () => {
 
   const handleBlogEdit = async () => {
     try {
-      const res = await blogService.editBlog(blog.id, editContent);
+      const res = await blogService.updateBlog(editContent, blog.id );
       setBlog((prevState) => ({ ...prevState, content: res.content }));
       setEditMode(false);
     } catch (error) {
@@ -100,13 +95,14 @@ const SingleBlog = () => {
               value={editContent}
               onChange={(e) => setEditContent(e.target.value)}
             />
+            <EditButton onClick={handleBlogEdit}>save</EditButton>
           </>
         ) : (
           <BlogContentWrapper ref={heightRef}>
             <BlogContent>{blog.content}</BlogContent>
           </BlogContentWrapper>
         )}
-        <button onClick={handleEditMode}>edit</button>
+        <EditButton onClick={handleEditMode}>{editMode ? "Cancel" : "Edit"}</EditButton>
 
         <InfoWrapper>
           <LeftWrapper>
