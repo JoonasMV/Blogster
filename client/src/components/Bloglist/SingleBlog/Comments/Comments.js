@@ -25,7 +25,7 @@ const Response = ({ id }) => {
 
   useEffect(() => {
     commentService.getResponses(id).then((res) => setResponse(res));
-  }, [id]);
+  }, [id, response]); 
 
   if (!response) return null;
 
