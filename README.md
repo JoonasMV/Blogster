@@ -1,4 +1,6 @@
-[Sovellus verkossa](https://blogster.fly.dev/)
+[Link to app](https://blogster.fly.dev/)
+
+Blogster is a simple blogging website for blog posting, commenting and liking. To start posting, create an account from the top right.
 
 |Date|Hours|Achieved|
 |:---|:----|:-------|
