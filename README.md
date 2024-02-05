@@ -1,3 +1,5 @@
+[Sovellus verkossa](https://blogster.fly.dev/)
+
 |Date|Hours|Achieved|
 |:---|:----|:-------|
 |20/11|1|project config|
